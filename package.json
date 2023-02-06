@@ -38,6 +38,6 @@
   },
   "devDependencies": {
     "tailwindcss": "^3.2.4",
-    "@heroicons/react": "^2.0.14",
+    "@heroicons/react": "^2.0.14"
   }
 }
