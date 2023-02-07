@@ -1,7 +1,8 @@
+import Registration from "../Components/forms/Registration";
 const HomePage = () => {
     return(
-        <h1>Home</h1>
+    <Registration/>
     )
 }
 
-export default HomePage
+export default HomePage;
