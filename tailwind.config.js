@@ -28,6 +28,7 @@ module.exports = {
         },
         extend: {
             colors: {
+                
             },
             borderRadius: {
                 default: "4px",

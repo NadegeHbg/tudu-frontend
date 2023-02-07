@@ -1,6 +1,7 @@
 import { createBrowserRouter, Route, createRoutesFromElements, RouterProvider } from "react-router-dom";
 import RootLayout from "./layouts/rootLayout.jsx";
-import Tudu from "./pages/personalTudu.jsx";
+import Tudu from "./pages/PersonalTudu.jsx";
+import HomePage from "./pages/Home";
 
 // pages
 
@@ -8,7 +9,7 @@ const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<RootLayout />}>
       {/* from origin project - example of routing*/}
-      <Route index element={<HomePage />} /> 
+      <Route index element={<HomePage/>} /> 
       <Route path="/personal/:id" element={<Tudu />} /> 
     </Route>
   )
