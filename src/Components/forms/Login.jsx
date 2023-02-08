@@ -16,7 +16,7 @@ export default function Login() {
     return (
         <form onSubmit={handleSubmit(onSubmit)}>
             <label htmlFor="email">Email
-                <input type="email" required name="email" className="textBox" {...register("email")} />
+                <input type="email" required name="email" {...register("email")} />
             </label>
             <label htmlFor="password"> Password
                 <input type="Password" required name="password" {...register("password")} />

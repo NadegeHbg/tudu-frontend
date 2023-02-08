@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 
 const url = '';
-const HandleConnetion = () => {
+const HandleConnection = () => {
     const [connection, setConnection] = useState('')
     useEffect(()=>{
         const fetchData = async(req,res) =>{
@@ -23,4 +23,4 @@ const HandleConnetion = () => {
   )
 }
 
-export default HandleConnetion
+export default HandleConnection
