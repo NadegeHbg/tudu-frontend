@@ -1,7 +1,7 @@
-import Registration from "../Components/forms/Registration";
+import Login from "../Components/forms/Login";
 const HomePage = () => {
     return(
-    <Registration/>
+<Login/>
     )
 }
 
