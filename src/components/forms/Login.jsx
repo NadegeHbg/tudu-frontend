@@ -14,13 +14,13 @@ export default function Login() {
     }
 
     return (
-        <form onSubmit={handleSubmit(onSubmit)}> 
-                <label htmlFor="email">Email 
+        <form onSubmit={handleSubmit(onSubmit)}>
+            <label htmlFor="email">Email
                 <input type="email" required name="email" className="textBox" {...register("email")} />
-                </label>          
-                <label htmlFor="password"> Password 
+            </label>
+            <label htmlFor="password"> Password
                 <input type="Password" required name="password" {...register("password")} />
-                </label>
+            </label>
             <input type="Submit" name="Submit" defaultValue="Sign in" />
         </form>
     )
