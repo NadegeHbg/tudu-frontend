@@ -1,6 +1,6 @@
-import React from 'react';
+import React,{useState} from 'react';
 import { useForm } from 'react-hook-form';
-
+import { HandleLogin } from '../../events/axiosGlobal';
 export default function Login() {
 
     const {
@@ -11,7 +11,21 @@ export default function Login() {
 
     const onSubmit = async (data = {}) => {
         console.log(data, 'data')
+        HandleLogin(data)
     }
+
+
+    //     const fetchData = async(req,res) =>{
+    //       try{
+    //           const response = axios.get(''+id,{data})
+    
+    //           console.log(response,'LoginConnectionResponse')
+    //           setConnection(response)
+    //       } catch(err){
+    //           console.log(err,'LoginConnectionError')
+    //       }
+    //     }
+    // fetchData()
 
     return (
         <form onSubmit={handleSubmit(onSubmit)}>
