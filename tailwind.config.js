@@ -25,10 +25,20 @@ module.exports = {
             xxl: "2rem",
         },
         fontFamily: {
+            logoFont: ["Omegle", "sans-serif"],
+            sloganFontRegular: ["RobotoMonoRegular", "monospace"],
+            sloganFontThin: ["RobotoMonoThin", "monospace"],
+            sloganFontBold: ["RobotoMonoBold", "monospace"],
         },
+
         extend: {
             colors: {
-                
+                primary: "#FF4252",
+                primaryVariant: "#FF6F51",
+                secondary: "#14375A",
+                secondaryVariant: "#5C7792",
+                tertiary: "#6BBEB9",
+                coolBlack: "#3A3C3D",
             },
             borderRadius: {
                 default: "4px",
@@ -51,22 +61,22 @@ module.exports = {
                 "3/4": "75%",
                 "1/2": "50%",
                 "1/4": "25%",
-                "1/5": "20%"
+                "1/5": "20%",
             },
             maxHeight: {
                 1: "100%",
                 "3/4": "75%",
                 "1/2": "50%",
                 "1/4": "25%",
-                "1/5": "20%"
+                "1/5": "20%",
             },
             minWidth: {
                 1: "100%",
                 "3/4": "75%",
                 "1/2": "50%",
                 "1/4": "25%",
-                "1/5": "20%"
-            }
+                "1/5": "20%",
+            },
         },
     },
     plugins: [],
