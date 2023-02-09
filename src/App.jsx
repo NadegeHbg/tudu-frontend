@@ -4,7 +4,6 @@ import Tudu from "./pages/PersonalTudu.jsx";
 import HomePage from "./pages/Home";
 import Dashboard from "./pages/Dashboard.jsx";
 import './index.css'
-// pages
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -18,7 +17,8 @@ const router = createBrowserRouter(
 );
 
 function App() {
-  return <RouterProvider router={router} />;
+    return <RouterProvider router={router} />;
 }
+
 
 export default App;
