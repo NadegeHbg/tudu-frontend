@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { FaSearch } from 'react-icons/fa';
+import { FaSearch, FaRegStar,  FaWatchmanMonitoring } from 'react-icons/fa';
+
 
 const searchHandler = (event) => {
     event.preventDefault();
@@ -27,8 +28,10 @@ export default function Sidebar() {
             </form>
             <div>
                 <button>All</button>
+                <FaRegStar/>
                 <button>Active</button>
                 <button>Upcoming</button>
+                <FaWatchmanMonitoring/>
                 <button>Done</button>
             </div>
             <div className="dropdown">
