@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { FaRegEyeSlash } from "react-icons/fa";
-
+import {handleRegistration} from  "../../events/axiosGlobal"
 export default function Registration() {
-
+    const url =''
     const {
         register,
         handleSubmit,
@@ -18,8 +18,10 @@ export default function Registration() {
 
     const onSubmit = async (data = {}) => {
         console.log(data, 'data')
+        handleRegistration(data)
     }
-
+    
+    
     return (
         <form onSubmit={handleSubmit(onSubmit)} style={{ display: 'flex', flexDirection: "column" }}>
             <label htmlFor="username">Username
