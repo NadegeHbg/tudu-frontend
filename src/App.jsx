@@ -2,7 +2,8 @@ import { createBrowserRouter, Route, createRoutesFromElements, RouterProvider } 
 import RootLayout from "./layouts/rootLayout.jsx";
 import Tudu from "./pages/PersonalTudu.jsx";
 import HomePage from "./pages/Home";
-
+import Dashboard from "./pages/Dashboard.jsx";
+import './index.css'
 // pages
 
 const router = createBrowserRouter(
@@ -10,6 +11,7 @@ const router = createBrowserRouter(
     <Route path="/" element={<RootLayout />}>
       {/* from origin project - example of routing*/}
       <Route index element={<HomePage/>} /> 
+      <Route path="/dashboard" element={<Dashboard />} /> 
       <Route path="/personal/:id" element={<Tudu />} /> 
     </Route>
   )
