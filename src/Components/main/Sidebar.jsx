@@ -39,7 +39,7 @@ export default function Sidebar() {
                 {open ? (
                     <ul>
                         <li className="menu-item">
-                            <button>Menu 1</button>
+                            <button>Project</button>
                         </li>
                     </ul>
                 ) : null}
