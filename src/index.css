@@ -1,3 +1,14 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@font-face {
+    font-family: "Omegle";
+    src: url(/src/fonts/OMEGLE.ttf);
+    font-family: "RobotoMonoRegular";
+    src: url(/src/fonts/RobotoMono-Medium.ttf);
+    font-family: "RobotoMonoThin";
+    src: url(/src/fonts/RobotoMono-Thin.ttf);
+    font-family: "RobotoMonoBold";
+    src: url(/src/fonts/RobotoMono-Bold.ttf);
+}
