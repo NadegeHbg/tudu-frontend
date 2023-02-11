@@ -3,7 +3,7 @@ import axios from 'axios'
 // Default setup
 // axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
 const axiosGlobal = axios.create({
-    // baseURL: '',
+    // baseURL: 'https://f7b2-83-134-77-199.eu.ngrok.io',
     headers: {
         Accept:'application/json',
     //     Authorization: AUTH_TOKEN,
@@ -13,9 +13,9 @@ const axiosGlobal = axios.create({
 const handleRegistration = async(data) =>{
       try{
         console.log(data,'axios global registration data')
-        // const response = await axios.post(url,{data})
-        // resData = await response.json()
-        // console.log(resData,'registration post request')
+        const response = await axios.post('https://f7b2-83-134-77-199.eu.ngrok.io/register',data)
+        const resData = await response.data
+        console.log(resData,'registration post request')
 
       }catch(error){
         console.log(error,'registration post error')
