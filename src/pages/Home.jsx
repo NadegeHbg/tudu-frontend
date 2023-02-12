@@ -1,11 +1,8 @@
-import Login from "../Components/forms/Login";
-import Registration from "../Components/forms/Registration";
-
+import Sidebar from '../Components/main/Sidebar';
 const HomePage = () => {
     return(
 <>
-<Login/>
-<Registration/>
+<Sidebar/>
 </>
     )
 }

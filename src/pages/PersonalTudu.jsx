@@ -4,4 +4,4 @@ const Tudu = () => {
     )
 }
 
-export default Tudu
+export default Tudu;
