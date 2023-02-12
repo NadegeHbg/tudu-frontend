@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { FaSearch, FaRegStar,  FaWatchmanMonitoring } from 'react-icons/fa';
+import { FaSearch, FaRegStar, FaRegBell, FaTag, FaRegCalendar} from 'react-icons/fa';
+import { InboxStackIcon } from "@heroicons/react/24/solid";
 
 
 const searchHandler = (event) => {
@@ -27,14 +28,25 @@ export default function Sidebar() {
                 <button type="submit" onClick={searchHandler}><FaSearch /></button>
             </form>
             <div>
-                <button>All</button>
-                <FaRegStar/>
-                <button>Active</button>
-                <button>Upcoming</button>
-                <FaWatchmanMonitoring/>
-                <button>Done</button>
+                <div>
+                <InboxStackIcon/>
+                    <button>All</button>
+                </div>
+                <div>
+                    <FaRegStar />
+                    <button>Active</button>
+                </div>
+                <div>
+                    <FaRegCalendar />
+                    <button>Upcoming</button>
+                </div>
+                <div>
+                    <FaRegBell />
+                    <button>Done</button>
+                </div>
             </div>
             <div className="dropdown">
+                <FaTag />
                 <button onClick={handleOpen}>Tags</button>
                 {open ? (
                     <ul>
@@ -42,7 +54,7 @@ export default function Sidebar() {
                             <button>Project</button>
                         </li>
                     </ul>
-                ) : null}
+                )|| <p>You do not have any todo</p> : null}
             </div>
         </div>
     )
