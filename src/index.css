@@ -12,3 +12,33 @@
     font-family: "RobotoMonoBold";
     src: url(/src/fonts/RobotoMono-Bold.ttf);
 }
+
+.top {
+    clip-path: polygon(0 0, 100% 0, 100% calc(100% - 50px), 0 100%);
+}
+
+.bottom {
+    clip-path: polygon(0 50px, 100% 0, 100% 100%, 0 100%);
+    margin-top: -40px;
+}
+
+.rounded-button {
+    border-radius: 0 5px 0 5px;
+}
+
+.wave {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+    transform: rotate(180deg);
+}
+
+.wave svg {
+    position: relative;
+    display: block;
+    width: calc(176% + 1.3px);
+    height: 108px;
+}

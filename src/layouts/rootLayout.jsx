@@ -1,13 +1,15 @@
-import { Outlet } from "react-router-dom";
+// import { Outlet } from "react-router-dom";
 
-const RootLayout = ({ logedIn }) => {
+import Header from "../Components/header/header";
+
+const RootLayout = () => {
     return (
         <div className="root-layout">
-            <header>
-                Hello Tudu's team ! Tudu or not todu, it's up to u !
+            <header  className='text-neutral'>
+                <Header />
             </header>
             <main >
-                < Outlet />
+                {/* < Outlet /> */}
             </main>
             <footer className="">
             </footer>

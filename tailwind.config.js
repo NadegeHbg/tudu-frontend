@@ -39,6 +39,7 @@ module.exports = {
                 secondaryVariant: "#5C7792",
                 tertiary: "#6BBEB9",
                 coolBlack: "#3A3C3D",
+                neutral: "#FFFFFF"
             },
             borderRadius: {
                 default: "4px",
