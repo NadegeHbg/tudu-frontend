@@ -39,7 +39,6 @@ const HandleLogin =async (data) => {
 
       const resData = await response.data
       console.log(resData,'login post request')
-
       Cookies.set('email',resData.email , { path: '/' })
       document.cookie = `token=${resData.token}`
       // document.cookie = `email=${resData.email}`
