@@ -1,31 +1,39 @@
-import React from 'react';
-import { useForm } from 'react-hook-form';
-import { HandleLogin } from '../../events/axiosGlobal';
+import React from "react";
+import { useForm } from "react-hook-form";
+import { HandleLogin } from "../../events/axiosGlobal";
+import { useNavigate } from "react-router-dom";
 export default function Login() {
+  const {
+    register,
+    handleSubmit,
+    // formState: { errors }
+  } = useForm();
 
-    const {
-        register,
-        handleSubmit,
-        // formState: { errors }
-    } = useForm();
+  const navigate = useNavigate();
 
-    const onSubmit = async (data = {}) => {
-        console.log(data, 'data')
-        HandleLogin(data)
-    }
+  const onSubmit = async (data = {}) => {
+    console.log(data, "data");
+    HandleLogin(data);
+    navigate("/dashboard");
+  };
 
-
-    
-
-    return (
-        <form onSubmit={handleSubmit(onSubmit)}>
-            <label htmlFor="email">Email
-                <input type="email" required name="email" {...register("email")} />
-            </label>
-            <label htmlFor="password"> Password
-                <input type="Password" required name="password" {...register("password")} />
-            </label>
-            <input type="Submit" name="Submit" defaultValue="Sign in" />
-        </form>
-    )
+  return (
+    <form onSubmit={handleSubmit(onSubmit)}>
+      <label htmlFor="email">
+        Email
+        <input type="email" required name="email" {...register("email")} />
+      </label>
+      <label htmlFor="password">
+        {" "}
+        Password
+        <input
+          type="Password"
+          required
+          name="password"
+          {...register("password")}
+        />
+      </label>
+      <input type="Submit" name="Submit" defaultValue="Sign in" />
+    </form>
+  );
 }
