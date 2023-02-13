@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { FaRegEyeSlash } from "react-icons/fa";
-import {handleRegistration} from  "../../events/axiosGlobal"
+import { handleRegistration } from "../../events/axiosGlobal";
+import { motion } from "framer-motion";
+
 export default function Registration() {
     const {
         register,
@@ -16,13 +18,26 @@ export default function Registration() {
     };
 
     const onSubmit = async (data = {}) => {
-        console.log(data, 'data')
-        handleRegistration(data)
-    }
-    
-    
+        console.log(data, "data");
+        handleRegistration(data);
+    };
+
     return (
         <form onSubmit={handleSubmit(onSubmit)} style={{ display: "flex", flexDirection: "column" }}>
+            <div className="text-tertiary xl">
+                <motion.h1
+                    animate={{ x: [50, 150, 50], opacity: 1, scale: 1 }}
+                    transition={{
+                        duration: 5,
+                        delay: 0.3,
+                        ease: [0.5, 0.71, 1, 1.5],
+                    }}
+                    initial={{ opacity: 0, scale: 0.5 }}
+                    whileHover={{ scale: 1.2 }}
+                >
+                    TUDU TUDU TUDUUU DUUU DUUUU
+                </motion.h1>
+            </div>
             <label htmlFor="username">
                 Username
                 <input
