@@ -76,9 +76,17 @@ module.exports = {
                 "1/2": "50%",
                 "1/4": "25%",
                 "1/5": "20%",
-                "1/3": "33%"
+                "1/3": "33%",
             },
         },
     },
     plugins: [],
 };
+
+//*  GRADIENT
+
+// Tertiary gradient = bg-gradient-to-r from-[#6BBEB9] to-[#14375A]
+// Secondary gradient = bg-gradient-to-r from-[#6F88A1] to-[#14375A]
+// Try one = bg-gradient-to-r from-[#45BCB7] via-[#064566] via-[#1C373F] via-[#733C47] to-[#E73F4E]
+// Try two = bg-gradient-to-r from-[#FF4353] via-[#803D57] to-[#14375A]
+// Try three = bg-gradient-to-r from-[#88c9cd] via-[#7ba3b4] via-[#8c9ca0] via-[#b79ca2] to-[#dc9ba4]
