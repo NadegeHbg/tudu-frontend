@@ -1,6 +1,6 @@
 import React from "react";
 import { useForm } from "react-hook-form";
-
+import { handleAdd } from "../../events/axiosGlobal"; 
 export default function TodoItemForm() {
   const {
     register,
@@ -10,6 +10,7 @@ export default function TodoItemForm() {
 
   const onSubmit = async (data = {}) => {
     console.log(data, "data");
+    handleAdd(data)
   };
 
   return (
@@ -68,3 +69,4 @@ export default function TodoItemForm() {
     </div>
   );
 }
+//taskname | description | category | duedate | entrydate | url | place | style
