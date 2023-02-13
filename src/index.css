@@ -12,3 +12,8 @@
     font-family: "RobotoMonoBold";
     src: url(/src/fonts/RobotoMono-Bold.ttf);
 }
+
+#root {
+    height: vh;
+    width: wv;
+}

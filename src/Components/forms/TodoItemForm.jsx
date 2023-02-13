@@ -1,6 +1,9 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import { handleAdd } from "../../events/axiosGlobal";
+import Cookies from "js-cookie";
+import { useEffect, useState } from "react";
+
 export default function TodoItemForm() {
   const {
     register,
@@ -8,9 +11,17 @@ export default function TodoItemForm() {
     formState: { errors },
   } = useForm();
 
+  const [userId, setUserId] = useState(null);
+
+  useEffect(() => {
+    setUserId(Cookies.get("id"));
+  }, []);
+
+
   const onSubmit = async (data = {}) => {
+    data.user_id = userId;
     console.log(data, "data");
-    // handleAdd(data);
+    handleAdd(data);
   };
 
   return (
@@ -19,13 +30,13 @@ export default function TodoItemForm() {
         Adding a new TuDu
       </div>
       <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col">
-        <label htmlFor="taskname">
+        <label htmlFor="ptaskname">
           Task Name:
           <input
             type="text"
-            name="taskname"
+            name="ptaskname"
             className="bg-secondary text-white border-2 border-white"
-            {...register("taskname", { required: true })}
+            {...register("ptaskname", { required: true })}
           />
         </label>
         <label htmlFor="description">
@@ -34,17 +45,17 @@ export default function TodoItemForm() {
             type="text"
             name="description"
             className="bg-secondary text-white border-2 border-white"
-            {...register("descriprion", {
+            {...register("description", {
               required: true,
               minLength: {
                 value: 2,
-                message: "Your todo is to short. Try to do more",
+                message: "Your todo is too short. Try to write more",
               },
             })}
           />
         </label>
-        {errors.todoItem && (
-          <p style={{ color: "red" }}>{errors.todoItem.message}</p>
+        {errors.description && (
+          <p style={{ color: "red" }}>{errors.description.message}</p>
         )}
 
         <label htmlFor="category">
@@ -76,7 +87,7 @@ export default function TodoItemForm() {
             type="date"
             name="entrydate"
             className="bg-secondary text-white border-2 border-white"
-            {...register("entrydate", { required: true })}
+            {...register("entrydate", {required: true })}
           />
         </label>
 
@@ -105,14 +116,14 @@ export default function TodoItemForm() {
           <select
             className="bg-secondary text-white border-white border-solid border-1"
             name="style"
-            {...register("style", { required: true })}
+            // {...register("style", { required: true })}
           >
             <option>Select a style</option>
-            <option>Dark</option>
-            <option>Light</option>
+            <option defaultValue="1">Dark</option>
+            <option defaultValue="2">Light</option>
           </select>
         </label>
-
+      
         <label htmlFor="addTodo">
           {" "}
           Add Todo
