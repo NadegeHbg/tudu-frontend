@@ -23,12 +23,14 @@ export default function Sidebar({tudu}) {
                 className="inline-flex items-center p-2 mt-2 ml-3 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
             >
                 <span className="sr-only">Open sidebar</span>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className="w-6 h-6">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                </svg>
             </button>
 
             <aside
                 id="default-sidebar"
-                className="h-screen transition-transform -translate-x-full sm:translate-x-0"
-                // fixed top-0 left-0 z-40 
+                class="fixed top-0 left-0 z-40 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0"
                 aria-label="Sidebar"
             >
                 <div className="h-full px-3 py-4 overflow-y-auto bg-gray-50 dark:bg-gray-800">
@@ -59,7 +61,7 @@ export default function Sidebar({tudu}) {
 
                                     <input className="flex items-center text-coolBlack font-normal" type="text" name="search" placeholder=" Search " />
                                 </label>
-                                <button type="submit" onClick={searchHandler}>Submit</button>
+                                <button type="submit" onClick={searchHandler}></button>
                             </form>
                         </li>
 
@@ -147,27 +149,28 @@ export default function Sidebar({tudu}) {
                             </button>
                             {open
                                 ? (
-                                    <ul>
-                                        <li className="flex items-center  text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
-                                            <svg
-                                                xmlns="http://www.w3.org/2000/svg"
-                                                fill="none"
-                                                viewBox="0 0 24 24"
-                                                strokeWidth={1.5}
-                                                stroke="yellow"
-                                                className="w-6 h-6 flex-1 "
-                                            >
-                                                <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
-                                            </svg>
-                                            <button class="flex- mr-14 whitespace-nowrap p-2 text-base font-normal">Project</button>
-                                        </li>
-                                    </ul>
-                                ) || <p>You do not have any todo</p>
+                                      <ul>
+                                          <li className="flex items-center  text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
+                                              <svg
+                                                  xmlns="http://www.w3.org/2000/svg"
+                                                  fill="none"
+                                                  viewBox="0 0 24 24"
+                                                  strokeWidth={1.5}
+                                                  stroke="yellow"
+                                                  className="w-6 h-6 flex-1 "
+                                              >
+                                                  <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+                                              </svg>
+                                              <button class="flex- mr-14 whitespace-nowrap p-2 text-base font-normal">Project</button>
+                                          </li>
+                                      </ul>
+                                  ) || <p>You do not have any todo</p>
                                 : null}
                         </li>
                     </ul>
                 </div>
             </aside>
+            <div class="p-4 sm:ml-64"></div>
         </div>
     );
 }
