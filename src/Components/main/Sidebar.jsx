@@ -18,25 +18,26 @@ export default function Sidebar() {
                 data-drawer-toggle="default-sidebar"
                 aria-controls="default-sidebar"
                 type="button"
-                class="inline-flex items-center p-2 mt-2 ml-3 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+                className="inline-flex items-center p-2 mt-2 ml-3 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
             >
-                <span class="sr-only">Open sidebar</span>
+                <span className="sr-only">Open sidebar</span>
             </button>
 
             <aside
                 id="default-sidebar"
-                class="fixed top-0 left-0 z-40 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0"
+                className="h-screen transition-transform -translate-x-full sm:translate-x-0"
+                // fixed top-0 left-0 z-40 
                 aria-label="Sidebar"
             >
-                <div class="h-full px-3 py-4 overflow-y-auto bg-gray-50 dark:bg-gray-800">
+                <div className="h-full px-3 py-4 overflow-y-auto bg-gray-50 dark:bg-gray-800">
                     <div className="flex justify-center ">
                         <img className="w-36 " src={require("../assets/tudu.png")} alt="Logo" />
                     </div>{" "}
-                    <ul class="space-y-2">
+                    <ul className="space-y-2">
                         <li>
                             <form action="">
                                 <label
-                                    class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
+                                    className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
                                     htmlFor=" Search "
                                 >
                                     <svg
@@ -54,16 +55,16 @@ export default function Sidebar() {
                                         />
                                     </svg>
 
-                                    <input class="flex items-center text-coolBlack font-normal" type="text" name="search" placeholder=" Search " />
+                                    <input className="flex items-center text-coolBlack font-normal" type="text" name="search" placeholder=" Search " />
                                 </label>
-                                <button type="submit" onClick={searchHandler}></button>
+                                <button type="submit" onClick={searchHandler}>Submit</button>
                             </form>
                         </li>
 
                         <li>
                             <a
                                 href="#"
-                                class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
+                                className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
                             >
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="cyan" className="w-6 h-6">
                                     <path
@@ -73,14 +74,14 @@ export default function Sidebar() {
                                     />
                                 </svg>
 
-                                <span class="flex-1 ml-3 whitespace-nowrap">All</span>
-                                <span class="inline-flex items-center justify-center px-2 ml-3 text-sm font-medium text-gray-800 bg-gray-200 rounded-full dark:bg-gray-700 dark:text-gray-300"></span>
+                                <span className="flex-1 ml-3 whitespace-nowrap">All</span>
+                                <span className="inline-flex items-center justify-center px-2 ml-3 text-sm font-medium text-gray-800 bg-gray-200 rounded-full dark:bg-gray-700 dark:text-gray-300"></span>
                             </a>
                         </li>
                         <li>
                             <a
                                 href="#"
-                                class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
+                                className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
                             >
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="cyan" className="w-6 h-6">
                                     <path
@@ -90,8 +91,8 @@ export default function Sidebar() {
                                     />
                                 </svg>
 
-                                <span class="flex-1 ml-3 whitespace-nowrap">Active</span>
-                                <span class="inline-flex items-center justify-center w-3 h-3 p-3 ml-3 text-sm font-medium text-blue-800 bg-blue-100 rounded-full dark:bg-blue-900 dark:text-blue-300">
+                                <span className="flex-1 ml-3 whitespace-nowrap">Active</span>
+                                <span className="inline-flex items-center justify-center w-3 h-3 p-3 ml-3 text-sm font-medium text-blue-800 bg-blue-100 rounded-full dark:bg-blue-900 dark:text-blue-300">
                                     3
                                 </span>
                             </a>
@@ -99,7 +100,7 @@ export default function Sidebar() {
                         <li>
                             <a
                                 href="#"
-                                class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
+                                className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
                             >
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="cyan" className="w-6 h-6">
                                     <path
@@ -109,24 +110,24 @@ export default function Sidebar() {
                                     />
                                 </svg>
 
-                                <span class="flex-1 ml-3 whitespace-nowrap">Upcoming</span>
+                                <span className="flex-1 ml-3 whitespace-nowrap">Upcoming</span>
                             </a>
                         </li>
                         <li>
                             <a
                                 href="#"
-                                class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
+                                className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
                             >
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="cyan" className="w-6 h-6">
                                     <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                                 </svg>
 
-                                <span class="flex-1 ml-3 whitespace-nowrap">Done</span>
+                                <span className="flex-1 ml-3 whitespace-nowrap">Done</span>
                             </a>
                         </li>
                         <li>
                             <button
-                                class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
+                                className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
                                 onClick={handleOpen}
                             >
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="cyan" className="w-6 h-6">
@@ -138,26 +139,26 @@ export default function Sidebar() {
                                     <path strokeLinecap="round" strokeLinejoin="round" d="M6 6h.008v.008H6V6z" />
                                 </svg>
 
-                                <span class="flex-1 ml-3 whitespace-nowrap">Tags</span>
+                                <span className="flex-1 ml-3 whitespace-nowrap">Tags</span>
                             </button>
                             {open
                                 ? (
-                                      <ul>
-                                          <li className="flex items-center  text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
-                                              <svg
-                                                  xmlns="http://www.w3.org/2000/svg"
-                                                  fill="none"
-                                                  viewBox="0 0 24 24"
-                                                  strokeWidth={1.5}
-                                                  stroke="yellow"
-                                                  className="w-6 h-6 flex-1 "
-                                              >
-                                                  <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
-                                              </svg>
-                                              <button class="flex- mr-14 whitespace-nowrap p-2 text-base font-normal">Project</button>
-                                          </li>
-                                      </ul>
-                                  ) || <p>You do not have any todo</p>
+                                    <ul>
+                                        <li className="flex items-center  text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
+                                            <svg
+                                                xmlns="http://www.w3.org/2000/svg"
+                                                fill="none"
+                                                viewBox="0 0 24 24"
+                                                strokeWidth={1.5}
+                                                stroke="yellow"
+                                                className="w-6 h-6 flex-1 "
+                                            >
+                                                <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+                                            </svg>
+                                            <button class="flex- mr-14 whitespace-nowrap p-2 text-base font-normal">Project</button>
+                                        </li>
+                                    </ul>
+                                ) || <p>You do not have any todo</p>
                                 : null}
                         </li>
                     </ul>
