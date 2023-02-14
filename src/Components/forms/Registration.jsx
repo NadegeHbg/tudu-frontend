@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import { FaRegEyeSlash } from "react-icons/fa";
 import { handleRegistration } from "../../events/axiosGlobal";
 import { motion } from "framer-motion";
+import { useNavigate } from 'react-router-dom';
 
 export default function Registration() {
     const {
@@ -17,9 +18,12 @@ export default function Registration() {
         setPasswordShown(!passwordShown);
     };
 
+    const navigate = useNavigate();
+
     const onSubmit = async (data = {}) => {
         console.log(data, "data");
         handleRegistration(data);
+        navigate('/login')        
     };
 
     return (
@@ -100,7 +104,7 @@ export default function Registration() {
                 />
             </label>
             {errors.confirmPassword && <p style={{ color: "red" }}>{errors.confirmPassword.message}</p>}
-            <input type="Submit" name="Submit" defaultValue="Sign in" />
+            <input type="Submit" name="Submit" defaultValue="Register" />
         </form>
     );
 }
