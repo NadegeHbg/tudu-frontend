@@ -25,7 +25,7 @@ export default function Sidebar() {
 
             <aside
                 id="default-sidebar"
-                className="w-64 h-screen transition-transform -translate-x-full sm:translate-x-0"
+                className="h-screen transition-transform -translate-x-full sm:translate-x-0"
                 // fixed top-0 left-0 z-40 
                 aria-label="Sidebar"
             >

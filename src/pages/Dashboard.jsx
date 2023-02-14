@@ -3,6 +3,7 @@ import TodoItemForm from "../Components/forms/TodoItemForm";
 import { GetTodos } from "../events/axiosGlobal";
 import Cookies from "js-cookie";
 import Sidebar from "../Components/main/Sidebar";
+import MiddleSection from "../Components/main/MiddleSection";
 
 const Dashboard = () => {
   useEffect(() => {
@@ -16,7 +17,7 @@ const Dashboard = () => {
   return (
     <div className="flex justify-between">
       <Sidebar />
-
+      <MiddleSection />
       <TodoItemForm />
     </div>
   );
