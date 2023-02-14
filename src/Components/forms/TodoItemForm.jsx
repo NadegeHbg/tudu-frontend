@@ -17,7 +17,6 @@ export default function TodoItemForm() {
     setUserId(Cookies.get("id"));
   }, []);
 
-
   const onSubmit = async (data = {}) => {
     data.user_id = userId;
     console.log(data, "data");
@@ -25,20 +24,47 @@ export default function TodoItemForm() {
   };
 
   return (
-    <div className="flex flex-col items-center bg-secondary text-white w-1/3 h-full rounded-l-large">
-      <div className="border-2 border-white m-5 py-2 px-10 text-center">
+    <div className="flex flex-col items-center bg-secondary text-white w-1/3 h-screen rounded-l-large">
+      <div className="m-5 py-2 px-10 text-center text-xxl">
         Adding a new TuDu
       </div>
-      <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col">
+      <form
+        onSubmit={handleSubmit(onSubmit)}
+        className="flex flex-col text-xl w-full px-10"
+      >
         <label htmlFor="ptaskname">
-          Task Name:
+          TuDu Name:
           <input
             type="text"
             name="ptaskname"
-            className="bg-secondary text-white border-2 border-white"
+            className="bg-secondary my-5 ml-5 w-3/4 text-white border-2 border-white"
             {...register("ptaskname", { required: true })}
           />
         </label>
+
+        <div className="flex">
+          <label htmlFor="duedate">
+            Due date:
+            <input
+              type="date"
+              name="duedate"
+              className="w-full my-2 bg-secondary text-white border-2 border-white"
+              // style={{ WebkitAppearance: "none", color: "white", filter: "invert(1)" }}
+              {...register("duedate", { required: true })}
+            />
+          </label>
+
+          <label htmlFor="entrydate">
+            Entry date:
+            <input
+              type="date"
+              name="entrydate"
+              className="w-full my-2 bg-secondary text-white border-2 border-white"
+              {...register("entrydate", { required: true })}
+            />
+          </label>
+        </div>
+
         <label htmlFor="description">
           Write your todo:
           <input
@@ -71,25 +97,6 @@ export default function TodoItemForm() {
             <option>Business</option>
           </select>
         </label>
-        <label htmlFor="duedate">
-          Date:
-          <input
-            type="date"
-            name="duedate"
-            className="bg-secondary text-white border-2 border-white"
-            {...register("duedate", { required: true })}
-          />
-        </label>
-
-        <label htmlFor="entrydate">
-          Entry date:
-          <input
-            type="date"
-            name="entrydate"
-            className="bg-secondary text-white border-2 border-white"
-            {...register("entrydate", {required: true })}
-          />
-        </label>
 
         <label htmlFor="url">
           Url:
@@ -97,7 +104,7 @@ export default function TodoItemForm() {
             type="text"
             name="url"
             className="bg-secondary text-white border-2 border-white"
-            {...register("url", { required: true })}
+            {...register("url")}
           />
         </label>
 
@@ -107,7 +114,7 @@ export default function TodoItemForm() {
             type="text"
             name="place"
             className="bg-secondary text-white border-2 border-white"
-            {...register("place", { required: true })}
+            {...register("place")}
           />
         </label>
 
@@ -116,20 +123,19 @@ export default function TodoItemForm() {
           <select
             className="bg-secondary text-white border-white border-solid border-1"
             name="style"
-            // {...register("style", { required: true })}
+            {...register("style", { required: true })}
           >
             <option>Select a style</option>
             <option defaultValue="1">Dark</option>
             <option defaultValue="2">Light</option>
           </select>
         </label>
-      
+
         <label htmlFor="addTodo">
           {" "}
           Add Todo
           <input type="Submit" name="addTodo" defaultValue="Add Todo" />
         </label>
-
       </form>
     </div>
   );

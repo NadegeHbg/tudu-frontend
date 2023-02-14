@@ -6,7 +6,7 @@ export default function Login() {
   const {
     register,
     handleSubmit,
-    // formState: { errors }
+    formState: { errors }
   } = useForm();
 
   const navigate = useNavigate();

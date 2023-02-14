@@ -3,7 +3,7 @@ import { InboxStackIcon } from "@heroicons/react/24/solid";
 
 export default function MiddleSection() {
   return (
-    <div className="bg-white h-screen w-screen">
+    <div className="bg-white h-screen">
       <div className="flex  border-2 border-secondary w-1/3  ml-4">
         <div className="flex justify-center bg-secondary p-2">
           <button>
@@ -31,9 +31,9 @@ export default function MiddleSection() {
           </div>     
         </div>
       </div>
-      <div className="h-screen w-screen">
+      <div className="h-screen">
         <h2 className="text-secondary ml-4 text-xl">Current</h2>
-        <div className="flex h-screen w-screen">
+        <div className="flex h-screen">
           <div className="flex flex-col border-2 border-secondary rounded-tl-xl_large rounded-br-xl_large w-1/3 h-1/6 px-4 m-4 justify-center">
             <h3 className="text-secondary">Laundry</h3>
             <p className="text-secondary">Date 13/02/2023</p>
