@@ -12,7 +12,7 @@ export default function Sidebar() {
         setOpen(!open);
     };
     return (
-        <div>
+        <div >
             <button
                 data-drawer-target="default-sidebar"
                 data-drawer-toggle="default-sidebar"
