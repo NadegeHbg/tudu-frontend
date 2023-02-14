@@ -11,14 +11,15 @@ const Dashboard = () => {
     async function fetchData() {
       const data = Cookies.get("id");
       setTudu(await GetTodos(data));
+      console.log(tudu)
     }
     fetchData();
   }, []);
 
   return (
     <div className="flex justify-between">
-      <Sidebar />
-      <MiddleSection />
+      <Sidebar tudu={tudu} />
+      <MiddleSection tudu={tudu}/>
       <TodoItemForm />
     </div>
   );

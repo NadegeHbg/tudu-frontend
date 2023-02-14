@@ -5,14 +5,16 @@ const searchHandler = (event) => {
     console.log("i am working");
 };
 
-export default function Sidebar() {
+export default function Sidebar({tudu}) {
     const [open, setOpen] = useState(false);
+    const [allLiClicked, setAllLiClicked] = useState(false);
+
 
     const handleOpen = () => {
         setOpen(!open);
     };
     return (
-        <div>
+        <div >
             <button
                 data-drawer-target="default-sidebar"
                 data-drawer-toggle="default-sidebar"
@@ -63,7 +65,9 @@ export default function Sidebar() {
                             </form>
                         </li>
 
-                        <li>
+                        <li onClick={() => {
+                            setAllLiClicked(true)
+                            console.log(allLiClicked)}}>
                             <a
                                 href="#"
                                 className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
