@@ -1,15 +1,15 @@
-import { Outlet } from "react-router-dom";
+// import { Outlet } from "react-router-dom";
 
 import Header from "../Components/header/header";
 
-const RootLayout = ({ logedIn }) => {
+const RootLayout = () => {
     return (
         <div className="root-layout">
-            <header>
+            <header  className='text-neutral'>
                 <Header />
             </header>
             <main >
-                < Outlet />
+                {/* < Outlet /> */}
             </main>
             <footer className="">
             </footer>
