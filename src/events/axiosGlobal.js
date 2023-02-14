@@ -11,7 +11,7 @@ const axiosGlobal = axios.create({
     //     Authorization: AUTH_TOKEN,
   },
 });
-axios.defaults.baseURL = " https://0095-84-199-109-84.eu.ngrok.io";
+axios.defaults.baseURL = "https://864b-84-199-109-84.eu.ngrok.io";
 
 //registration handler => POST
 
@@ -92,7 +92,8 @@ const GetTodos = async (data) => {
       headers: {
         "ngrok-skip-browser-warning": "69420",
       }});
-    console.log(response, "connectionResponse");
+    await console.log(response.data, "connectionResponse");
+    return response.data
   } catch (err) {
     console.log(err, "connectionError");
   }
