@@ -4,11 +4,14 @@ import { GetTodos } from "../events/axiosGlobal";
 import Cookies from "js-cookie";
 
 const Dashboard = () => {
-  useEffect(() => {
-    const data = Cookies.get("id");
-    GetTodos(data);
+  useEffect( () => {
+    async function fetchData() {
+      const data = Cookies.get("id");
+      await GetTodos(data);
+    }
+    fetchData()
   }, []);
-
+  
   return <TodoItemForm />;
 };
 
