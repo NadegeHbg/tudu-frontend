@@ -56,7 +56,7 @@ export default function Sidebar() {
 
                                     <input class="flex items-center text-coolBlack font-normal" type="text" name="search" placeholder=" Search " />
                                 </label>
-                                <button type="submit" onClick={searchHandler}></button>
+                                <button type="submit" onClick={searchHandler}>Submit</button>
                             </form>
                         </li>
 
@@ -142,22 +142,22 @@ export default function Sidebar() {
                             </button>
                             {open
                                 ? (
-                                      <ul>
-                                          <li className="flex items-center  text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
-                                              <svg
-                                                  xmlns="http://www.w3.org/2000/svg"
-                                                  fill="none"
-                                                  viewBox="0 0 24 24"
-                                                  strokeWidth={1.5}
-                                                  stroke="yellow"
-                                                  className="w-6 h-6 flex-1 "
-                                              >
-                                                  <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
-                                              </svg>
-                                              <button class="flex- mr-14 whitespace-nowrap p-2 text-base font-normal">Project</button>
-                                          </li>
-                                      </ul>
-                                  ) || <p>You do not have any todo</p>
+                                    <ul>
+                                        <li className="flex items-center  text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
+                                            <svg
+                                                xmlns="http://www.w3.org/2000/svg"
+                                                fill="none"
+                                                viewBox="0 0 24 24"
+                                                strokeWidth={1.5}
+                                                stroke="yellow"
+                                                className="w-6 h-6 flex-1 "
+                                            >
+                                                <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+                                            </svg>
+                                            <button class="flex- mr-14 whitespace-nowrap p-2 text-base font-normal">Project</button>
+                                        </li>
+                                    </ul>
+                                ) || <p>You do not have any todo</p>
                                 : null}
                         </li>
                     </ul>
