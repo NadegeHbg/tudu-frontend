@@ -22,8 +22,8 @@ const HomePage = () => {
                 <img src={cardLeft} alt="" className='rotate-90 scale-75 col-start-2 col-end-7 row-start-2 row-end-6' />
                 <h2 className='z-10 col-start-3 col-end-5 row-start-3 row-end-5 -translate-y-4 flex justify-center items-center '>Let's do something</h2>
             </div>
-            
-             <div className='aspect-square col-start-6 col-end-9 row-start-3 row-end-6 grid grid-cols-6 grid-rows-6 bg/50'>
+
+            <div className='aspect-square col-start-6 col-end-9 row-start-3 row-end-6 grid grid-cols-6 grid-rows-6 bg/50'>
                 <img src={cardRight} alt="" className='col-start-3 col-end-6 row-start-3 row-end-6' />
                 <h2 className='z-10 col-start-3 col-end-6 row-start-3 row-end-6 -translate-y-4 flex justify-center items-center text-center'>
                     Tudu or not Tudu
@@ -66,7 +66,7 @@ const HomePage = () => {
             </div>
 
             <div className='flex items-center justify-center col-start-3 col-end-7 row-start-2 row-end-5'>
-                <div className='bg-red-300/50 max-h-full aspect-square rounded-full flex justify-center items-end overflow-hidden -z-50'>
+                <div className='bg-gradient-to-bl from-[hsla(177,47%,50%,.5)] via-[hsla(201,89%,21%,.5)] via-[hsla(194,38%,18%,.5)] via-[hsla(348,31%,34%,.5)] to-[hsla(355,78%,58%,.5)] max-h-full aspect-square rounded-full flex justify-center items-end overflow-hidden -z-50'>
                     <img src={perso} alt="" className='h-[75%] translate-y-2 aspect-square' />
                 </div>
             </div>
@@ -77,5 +77,12 @@ const HomePage = () => {
         </div>
     )
 }
+
+// <stop offset="0%" stopColor="#45BCB7" stopOpacity=".7" />
+//                         <stop offset="20%" stopColor="#064566" stopOpacity=".7" />
+//                         <stop offset="25%" stopColor="#1C373F" stopOpacity=".7" />
+//                         <stop offset="50%" stopColor="#DE3F4D" stopOpacity=".7" />
+//                         <stop offset="75%" stopColor="#733C47" stopOpacity=".7" />
+//                         <stop offset="100%" stopColor="#733C47" stopOpacity=".7" />
 
 export default HomePage;
