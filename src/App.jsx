@@ -5,6 +5,7 @@ import Registration from "./Components/forms/Registration.jsx";
 import Tudu from "./pages/PersonalTudu.jsx";
 import HomePage from "./pages/Home";
 import Dashboard from "./pages/Dashboard.jsx";
+import MainFrame from "./Components/main/MainFrame.jsx";
 import './index.css'
 
 const router = createBrowserRouter(
@@ -12,9 +13,10 @@ const router = createBrowserRouter(
     <Route path="/" element={<RootLayout />}>
       {/* from origin project - example of routing*/}
       <Route index element={<HomePage/>} /> 
+      <Route path="/mainframe" element={<MainFrame/>}/>
       <Route path="/dashboard" element={<Dashboard />} /> 
       <Route path="/register" element={<Registration/>} /> 
-      <Route path="/Login" element={<Login/>} /> 
+      <Route path="/login" element={<Login/>} /> 
       <Route path="/personal/:id" element={<Tudu />} /> 
     </Route>
   )

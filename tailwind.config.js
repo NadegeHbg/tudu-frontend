@@ -44,6 +44,8 @@ module.exports = {
             borderRadius: {
                 default: "4px",
                 large: "12px",
+                xl_large: "32px"
+                
             },
             padding: {
                 sm: "8px",
@@ -63,6 +65,9 @@ module.exports = {
                 "1/2": "50%",
                 "1/4": "25%",
                 "1/5": "20%",
+                "1/3": "30%",
+
+                
             },
             maxHeight: {
                 1: "100%",
@@ -70,6 +75,7 @@ module.exports = {
                 "1/2": "50%",
                 "1/4": "25%",
                 "1/5": "20%",
+                "1/6": "10%",
             },
             minWidth: {
                 1: "100%",
