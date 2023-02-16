@@ -44,7 +44,7 @@ module.exports = {
                 default: "4px",
                 large: "12px",
                 xl_large: "32px"
-                
+
             },
             padding: {
                 sm: "8px",
@@ -66,7 +66,7 @@ module.exports = {
                 "1/5": "20%",
                 "1/3": "30%",
 
-                
+
             },
             maxHeight: {
                 1: "100%",
