@@ -15,7 +15,7 @@ const Dashboard = () => {
     }, []);
 
     return (
-        <div className="flex">
+        <div className="flex justify-center">
             <Sidebar />
             <MiddleSection />
         </div>

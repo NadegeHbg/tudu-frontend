@@ -18,7 +18,7 @@ export default function Sidebar({ tudu }) {
     
     return (
         <div className="">
-            <nav class="fixed top-0 z-50 w-full border-b bg-gray-800 border-gray-700">
+            <nav class="z-50 w-full border-b bg-gray-800 border-gray-700 absolute left-0 top-0">
                 <div class="px-3 py-3 lg:px-5 lg:pl-3">
                     <div class="flex items-center justify-between">
                         <div className="flex justify-center ">
