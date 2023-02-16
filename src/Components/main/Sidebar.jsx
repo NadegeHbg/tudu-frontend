@@ -6,8 +6,9 @@ const searchHandler = (event) => {
     console.log("i am working");
 };
 
-export default function Sidebar() {
+export default function Sidebar({ tudu }) {
     const [open, setOpen] = useState(false);
+    const [allLiClicked, setAllLiClicked] = useState(false);
 
     const handleOpen = () => {
         setOpen(!open);
