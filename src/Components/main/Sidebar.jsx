@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-import TodoItemForm from "../forms/TodoItemForm";
-import { ArchiveBoxIcon, Bars3BottomLeftIcon, CalendarDaysIcon, CheckCircleIcon, ChevronRightIcon, MagnifyingGlassIcon, StarIcon, TagIcon } from '@heroicons/react/24/outline'
+import { ArchiveBoxIcon, CalendarDaysIcon, CheckCircleIcon, ChevronRightIcon, MagnifyingGlassIcon, StarIcon, TagIcon } from '@heroicons/react/24/outline'
 
 
 const searchHandler = (event) => {
@@ -18,33 +17,11 @@ export default function Sidebar({ tudu }) {
     
     return (
         <div className="">
-            <nav class="z-50 w-full border-b bg-gray-800 border-gray-700 absolute left-0 top-0">
-                <div class="px-3 py-3 lg:px-5 lg:pl-3">
-                    <div class="flex items-center justify-between">
-                        <div className="flex justify-center ">
-                            <img className="w-14 " src={require("../assets/tudu.png")} alt="Logo" />
 
-                            <button
-                                data-drawer-target="default-sidebar"
-                                data-drawer-toggle="default-sidebar"
-                                aria-controls="default-sidebar"
-                                type="button"
-                                class="inline-flex items-center p-2 mt-2 ml-3 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200"
-                            >
-                                <span class="sr-only">Open sidebar</span>
-                                <Bars3BottomLeftIcon className="w-6 h-6 text-neutral-100" />
-                            </button>
-                        </div>
-                        <div class="flex items-center ml-3">
-                            <TodoItemForm />
-                        </div>
-                    </div>
-                </div>
-            </nav>
 
             <aside
                 id="default-sidebar"
-                class="fixed top-0 left-0 z-40 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0"
+                class=" z-40 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0"
                 aria-label="Sidebar"
             >
                 <div className="h-full px-3 py-4 pt-24 overflow-y-auto bg-gray-800">

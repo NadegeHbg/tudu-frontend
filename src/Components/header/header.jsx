@@ -7,10 +7,10 @@
 //     { repeat: 999, duration: 3000, yoyo: true }
 // );
 // tween.start()
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 
-const Header = () => {
+const HeaderStyle = () => {
     const navigate = useNavigate();
 
     return (
@@ -42,6 +42,14 @@ const Header = () => {
         </div>
 
     )
+}
+
+const Header = () => {
+    const location = useLocation();
+
+    if (location.pathname === '/' || location.pathname === '/login' ) {
+        return <HeaderStyle />
+    }
 }
 
 export default Header
