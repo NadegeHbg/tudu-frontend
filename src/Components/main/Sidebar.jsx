@@ -14,7 +14,7 @@ export default function Sidebar() {
     };
     return (
         <div>
-            <nav class="fixed top-0 z-50 w-full bg-white border-b border-gray-200 dark:bg-gray-800 dark:border-gray-700">
+            <nav class="fixed top-0 z-50 w-full border-b  bg-gray-800 border-gray-700">
                 <div class="px-3 py-3 lg:px-5 lg:pl-3">
                     <div class="flex items-center justify-between">
                         <div className="flex justify-center ">
@@ -25,7 +25,7 @@ export default function Sidebar() {
                                 data-drawer-toggle="default-sidebar"
                                 aria-controls="default-sidebar"
                                 type="button"
-                                class="inline-flex items-center p-2 mt-2 ml-3 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+                                class="inline-flex items-center p-2 mt-2 ml-3 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200"
                             >
                                 <span class="sr-only">Open sidebar</span>
                                 <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
@@ -37,12 +37,8 @@ export default function Sidebar() {
                                 </svg>
                             </button>
                         </div>
-                        <div class="flex items-center">
-                            <div class="flex items-center ml-3">
-                                <div>
-                                    <TodoItemForm />
-                                </div>
-                            </div>
+                        <div class="flex items-center ml-3">
+                            <TodoItemForm />
                         </div>
                     </div>
                 </div>
@@ -53,8 +49,7 @@ export default function Sidebar() {
                 class="fixed top-0 left-0 z-40 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0"
                 aria-label="Sidebar"
             >
-                <div className="h-full px-3 py-4 overflow-y-auto bg-gray-50 dark:bg-gray-800">
-                    <div className="flex justify-center "></div>{" "}
+                <div className="h-full px-3 py-4 overflow-y-auto bg-gray-800">
                     <ul className="space-y-2">
                         <li>
                             <form action="">
