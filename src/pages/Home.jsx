@@ -12,9 +12,13 @@ const HomePage = () => {
     const navigate = useNavigate();
 
     return (
-        // <div className='flex'>
-        //<button className='flex p-2 border-2 border-primary' onClick={() => {navigate('/login')}}>Login</button>
-        //</div>
+        // <div>
+        //      <div className='flex'>
+        //     <button className='flex p-2 border-2 border-primary' onClick={() => {navigate('/login')}}>Login</button>
+        //     </div>
+        //     {/*  */}
+
+        // </div>
 
         <div className='grid grid-cols-8 grid-rows-5 w-full h-screen container mx-auto'>
             {/* grid principale à diviser en 8 colones et 14 lignes */}
@@ -61,6 +65,9 @@ const HomePage = () => {
                 <div className='bg-red-300/50 max-h-full aspect-square rounded-full flex justify-center items-end overflow-hidden -z-50'>
                     <img src={perso} alt="" className='h-[75%] translate-y-2 aspect-square' />
                 </div>
+            </div>
+            <div className='col-start-4 col-end-6 row-start-4 row-end-5 flex justify-center items-end'>
+                <button className='p-2 border-2 border-primary bg-red-500' onClick={() => { navigate('/register') }}>Register</button>
             </div>
             <div className='col-start-4 col-end-6 row-start-4 row-end-5 flex justify-center items-end'>
                 <button className='p-2 border-2 border-primary bg-red-500' onClick={() => { navigate('/register') }}>Register</button>
