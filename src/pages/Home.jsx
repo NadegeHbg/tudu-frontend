@@ -66,7 +66,7 @@ const HomePage = () => {
                     <img src={perso} alt="" className="h-[75%] translate-y-2 aspect-square" />
                 </div>
             </div>
-            <div className="col-start-4 col-end-6 row-start-4 row-end-5 flex justify-center items-end">
+            {/* <div className="col-start-4 col-end-6 row-start-4 row-end-5 flex justify-center items-end">
                 <button
                     className="p-2 border-2 border-primary bg-red-500"
                     onClick={() => {
@@ -75,8 +75,8 @@ const HomePage = () => {
                 >
                     Register
                 </button>
-            </div>
-            <div className="col-start-4 col-end-6 row-start-4 row-end-5 flex justify-center items-end">
+            </div> */}
+            {/* <div className="col-start-4 col-end-6 row-start-4 row-end-5 flex justify-center items-end">
                 <button
                     className="p-2 border-2 border-primary bg-red-500"
                     onClick={() => {
@@ -85,7 +85,7 @@ const HomePage = () => {
                 >
                     Register
                 </button>
-            </div>
+            </div> */}
         </div>
     );
 };

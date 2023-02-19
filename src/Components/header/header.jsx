@@ -20,9 +20,9 @@ const HeaderStyle = () => {
 
     return (
         <div className="">
-            <nav class="z-50 w-full border-b bg-gradient-to-r from-rose-300 to-cyan-600">
-                <div class="px-3 py-3 lg:px-5 lg:pl-3">
-                    <div class="flex items-center justify-between">
+            <nav className="z-50 w-full border-b bg-gradient-to-r from-rose-300 to-cyan-600">
+                <div className="px-3 py-3 lg:px-5 lg:pl-3">
+                    <div className="flex items-center justify-between">
                         <div className="flex justify-center ">
                             <img className="w-14 " src={require("../assets/tudu.png")} alt="Logo" />
 
@@ -31,13 +31,13 @@ const HeaderStyle = () => {
                                 data-drawer-toggle="default-sidebar"
                                 aria-controls="default-sidebar"
                                 type="button"
-                                class="inline-flex items-center p-2 mt-2 ml-3 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200"
+                                className="inline-flex items-center p-2 mt-2 ml-3 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200"
                             >
-                                <span class="sr-only">Open sidebar</span>
+                                <span className="sr-only">Open sidebar</span>
                                 <Bars3BottomLeftIcon className="w-6 h-6 text-neutral-100" />
                             </button>
                         </div>
-                        <div class="flex items-center ml-3">
+                        <div className="flex items-center ml-3">
                             <div className="container mx-auto flex justify-end z-50">
                                 <Login />
                                 <Register />
