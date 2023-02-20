@@ -51,7 +51,8 @@ const HeaderStyle = () => {
                         data-drawer-toggle="default-sidebar"
                         aria-controls="default-sidebar"
                         type="button"
-                        className="inline-flex items-center mr-8 text-sm text-secondary rounded-lg md:hidden hover:bg-secondaryVariant focus:outline-none focus:ring-2 focus:ring-gray-200"
+                        className="inline-flex items-center mr-4 p-4
+                         text-sm text-secondary rounded-lg md:hidden hover:bg-secondaryVariant focus:outline-none focus:ring-2 focus:ring-gray-200"
                     >
                         <span className="sr-only">Open sidebar</span>
                         <Bars3BottomLeftIcon className="w-6 h-6 text-secondary" />
