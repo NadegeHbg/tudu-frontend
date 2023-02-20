@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-import { ArchiveBoxIcon, CalendarDaysIcon, CheckCircleIcon, ChevronRightIcon, MagnifyingGlassIcon, StarIcon, TagIcon } from '@heroicons/react/24/outline'
-
+import { ArchiveBoxIcon, CalendarDaysIcon, CheckCircleIcon, ChevronRightIcon, MagnifyingGlassIcon, StarIcon, TagIcon } from "@heroicons/react/24/outline";
 
 const searchHandler = (event) => {
     event.preventDefault();
@@ -14,17 +13,11 @@ export default function Sidebar({ tudu }) {
     const handleOpen = () => {
         setOpen(!open);
     };
-    
+
     return (
         <div className="">
-
-
-            <aside
-                id="default-sidebar"
-                class=" z-40 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0"
-                aria-label="Sidebar"
-            >
-                <div className="h-full px-3 py-4 pt-24 overflow-y-auto bg-gray-800">
+            <aside id="default-sidebar" class=" z-40 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0" aria-label="Sidebar">
+                <div className="h-full px-3 py-4 pt-24 overflow-y-auto bg-gray-800 border-gray-700">
                     <ul className="space-y-2">
                         <li>
                             <form action="">
@@ -61,7 +54,7 @@ export default function Sidebar({ tudu }) {
 
                         <li>
                             <span className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
-                                < CalendarDaysIcon className="w-6 h-6 text-cyan-300" />
+                                <CalendarDaysIcon className="w-6 h-6 text-cyan-300" />
                                 <span className="flex-1 ml-3 whitespace-nowrap">Upcoming</span>
                             </span>
                         </li>
@@ -86,7 +79,7 @@ export default function Sidebar({ tudu }) {
                                 ? (
                                       <ul>
                                           <li className="flex items-center  text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
-                                              < ChevronRightIcon className="w-6 h-6" />
+                                              <ChevronRightIcon className="w-6 h-6" />
                                               <button class="flex- mr-14 whitespace-nowrap p-2 text-base font-normal">Project</button>
                                           </li>
                                       </ul>
