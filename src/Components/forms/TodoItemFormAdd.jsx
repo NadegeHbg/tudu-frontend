@@ -28,12 +28,11 @@ export default function TodoItemFormAdd() {
     return (
         <div className="container mx-auto">
             <button
-                className="w-full sm:w-auto bg-gray-800 hover:bg-gray-600 focus:ring-4 focus:outline-none focus:ring-gray-300 text-white rounded-lg inline-flex items-center justify-center px-2 py-2.5"
+                className="justify-center items-center flex bg-cyan-900 text-white active:bg-pink-600 font-logoFont uppercase text-sm px-3 py-3 rounded shadow hover:shadow-lg outline-none  mr-1 mb-1  transition-all duration-150"
                 type="button"
                 onClick={() => setShowModal(true)}
-            >
+            > Add
                 {" "}
-                <EllipsisVerticalIcon className="h-6 w-6 " />
             </button>
             {showModal ? (
                 <>
