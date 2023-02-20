@@ -22,7 +22,7 @@ const HeaderStyle = () => {
     return (
 
         <div className='min-h-20 w-full fixed top-0 left-0'>
-            <div className="wave h-26 -z-50">
+            <div className="hidden md:block wave h-26 -z-50">
                 <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
                     <linearGradient
                         id="gradient"
@@ -52,13 +52,13 @@ const HeaderStyle = () => {
                         data-drawer-toggle="default-sidebar"
                         aria-controls="default-sidebar"
                         type="button"
-                        className="inline-flex items-center p-2 mt-2 ml-3 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200"
+                        className="inline-flex items-center p-2 mt-2 ml-3 text-sm text-secondary rounded-lg md:hidden hover:bg-secondaryVariant focus:outline-none focus:ring-2 focus:ring-gray-200"
                     >
                         <span className="sr-only">Open sidebar</span>
-                        <Bars3BottomLeftIcon className="w-6 h-6 text-neutral-100" />
+                        <Bars3BottomLeftIcon className="w-6 h-6 text-secondary" />
                     </button>
                 </div>
-                <div className="flex items-center ml-3">
+                <div className="flex items-center ml-3 hidden md:block">
                     <div className="container mx-auto flex justify-end z-50">
                         <Login />
                         <Register />
