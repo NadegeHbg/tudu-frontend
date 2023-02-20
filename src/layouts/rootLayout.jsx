@@ -5,14 +5,13 @@ import Header from "../Components/header/header";
 const RootLayout = () => {
     return (
         <div className="root-layout">
-            <header>
+            <header  >
                 <Header />
                 <HeaderDashboard />
             </header>
             <main>
                 <Outlet />
             </main>
-            <footer className=""></footer>
         </div>
     );
 };
