@@ -3,8 +3,8 @@ import { useForm } from "react-hook-form";
 import { FaRegEyeSlash } from "react-icons/fa";
 import { handleRegistration } from "../../events/axiosGlobal";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
-import Cookies from "js-cookie";
+// import axios from "axios";
+// import Cookies from "js-cookie";
 
 export default function Registration() {
     const [showModal, setShowModal] = React.useState(false);
@@ -14,6 +14,7 @@ export default function Registration() {
         watch,
         formState: { errors },
     } = useForm();
+
     const [passwordShown, setPasswordShown] = useState(false);
 
     const togglePassword = () => {
@@ -31,18 +32,18 @@ export default function Registration() {
     return (
         <div className="container mx-auto">
             <button
-                className="justify-center items-center flex bg-cyan-900 text-white active:bg-pink-600 font-logoFont uppercase text-sm px-3 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                className="justify-center items-center flex bg-cyan-900 text-white active:bg-pink-600 font-logoFont uppercase text-sm px-3 py-3 rounded shadow hover:shadow-lg  mr-1 mb-1 "
                 type="button"
                 onClick={() => setShowModal(true)}
             >
                 Register
             </button>
-            {showModal ? (
+            {!showModal ? null : (
                 <>
-                    <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
+                    <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50  ">
                         <div className="relative w-auto my-6 mx-auto max-w-3xl">
                             {/*Content*/}
-                            <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
+                            <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white  ">
                                 {/*Title Section*/}
 
                                 {/*Body*/}
@@ -152,30 +153,29 @@ export default function Registration() {
 
                                             {errors.confirmPassword && <p style={{ color: "red" }}>{errors.confirmPassword.message}</p>}
                                         </div>
+                                        {/*footer*/}
+                                        <div className="flex items-center justify-end p-6 border-t border-solid border-slate-200 rounded-b">
+                                            <button
+                                                className="text-red-500 background-transparent font-logoFont uppercase px-6 py-2 text-sm  mr-1 mb-1 transition-all duration-150"
+                                                type="button"
+                                                onClick={() => setShowModal(false)}
+                                            >
+                                                Close
+                                            </button>
+                                            <button
+                                                type="submit"
+                                                className="bg-cyan-900 text-white active:bg-emerald-600 font-logoFont uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg  mr-1 mb-1 transition-all duration-150 "
+                                            >
+                                                Register
+                                            </button>
+                                        </div>
                                     </form>
-                                </div>
-                                {/*footer*/}
-                                <div className="flex items-center justify-end p-6 border-t border-solid border-slate-200 rounded-b">
-                                    <button
-                                        className="text-red-500 background-transparent font-logoFont uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
-                                        type="button"
-                                        onClick={() => setShowModal(false)}
-                                    >
-                                        Close
-                                    </button>
-                                    <button
-                                        name="Submit"
-                                        className="bg-cyan-900 text-white active:bg-emerald-600 font-logoFont uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
-                                        type="button"
-                                    >
-                                        Register
-                                    </button>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </>
-            ) : null}
+            )}
         </div>
     );
 }

@@ -80,6 +80,18 @@ export default function TodoItemForm() {
                                                 required
                                             />
                                         </div>
+                                        <div>
+                                            <label htmlFor="name" className="block mb-2 text-sm font-logoFont text-gray-900 ">
+                                                Add your Description if you want
+                                            </label>
+                                            <input
+                                                type="text"
+                                                id="ptaskdescription"
+                                                className="shadow-sm text-gray-900 text-sm rounded-lg block w-full p-2.5 bg-lightcream"
+                                                {...register("ptaskdescription", { required: true })}
+                                                placeholder="Description "
+                                            />
+                                        </div>
                                         <div className="flex">
                                             <label htmlFor="duedate">
                                                 <label
