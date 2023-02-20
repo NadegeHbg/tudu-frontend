@@ -11,7 +11,7 @@ const axiosGlobal = axios.create({
     //     Authorization: AUTH_TOKEN,
   },
 });
-axios.defaults.baseURL = "https://864b-84-199-109-84.eu.ngrok.io";
+axios.defaults.baseURL = "https://446f-193-91-102-198.eu.ngrok.io/";
 
 //registration handler => POST
 
