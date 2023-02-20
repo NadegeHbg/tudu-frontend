@@ -25,6 +25,11 @@ const Dashboard = () => {
             <Sidebar allTodo={allTodo} handleClick={handleClick} />
             <MiddleSection tudu={tudu} allTodo={allTodo}/>
         </div>
+        //error for map function in the dashboard
+            // {tudu && tudu.map((todo) => (
+            //     <TodoCard key={todo._id} todo={todo} allTodo={allTodo} />
+            // ))}
+        
     );
 };
 
