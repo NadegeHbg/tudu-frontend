@@ -22,20 +22,19 @@ const HomePage = () => {
 
         <div className="grid grid-cols-8 grid-rows-5 w-full h-screen container mx-auto">
             {/* grid principale à diviser en 8 colones et 14 lignes */}
-            <div className="aspect-square flex justify-center items-start col-start-1 col-end-4 row-start-1 row-end-3 relative">
-                <img src={cardLeft} alt="" className="rotate-90 max-w-1/2 absolute" />
+            <div className='aspect-square col-start-1 col-end-4 row-start-1 row-end-2 grid grid-cols-6 grid-rows-6'>
+                <img src={cardLeft} alt="" className='rotate-90 scale-75 col-start-2 col-end-7 row-start-2 row-end-6' />
+                <h2 className='z-10 col-start-3 col-end-5 row-start-3 row-end-5 -translate-y-4 flex justify-center items-center '>Let's do something</h2>
             </div>
-            <div className="z-10 flex justify-center items-center -translate-y-8 col-start-2 col-end-3 row-start-1 row-end-3 ">
-                <h2>Let's do something</h2>
-            </div>
-            <div className="flex justify-center items-end col-start-7 col-end-9 row-start-4 row-end-5">
-                <img src={cardRight} alt="" className="max-w-3/4" />
-            </div>
-            <div className="z-10 flex justify-center items-center col-start-7 col-end-9 row-start-3 row-end-5 ">
-                <h2>Let's do something</h2>
-            </div>
-            <div className=" flex justify-end items-end col-start-7 col-end-9 row-start-3 row-end-4">
-                <img src={pen} alt="" className="z-50 -translate-x-8 translate-y-8" />
+
+            <div className='aspect-square col-start-6 col-end-9 row-start-3 row-end-6 grid grid-cols-6 grid-rows-6 bg/50'>
+                <img src={cardRight} alt="" className='col-start-3 col-end-6 row-start-3 row-end-6' />
+                <h2 className='z-10 col-start-3 col-end-6 row-start-3 row-end-6 -translate-y-4 flex justify-center items-center text-center'>
+                    Tudu or not Tudu
+                    <br />
+                    It's up to you
+                </h2>
+                <img src={pen} alt="" className='z-50 col-start-5 col-end-6 row-start-2 row-end-4 -translate-x-8 translate-y-8' />
             </div>
             <div className="flex justify-center items-center col-start-2 col-end-4 row-start-2 row-end-4">
                 <img src={blueBubble} alt="" />
