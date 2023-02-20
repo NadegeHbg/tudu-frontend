@@ -19,7 +19,7 @@ const searchHandler = (event) => {
 };
 
 export default function Sidebar({ tudu, allTodo, handleClick }) {
-    
+
     const [open, setOpen] = useState(false);
 
     const getAllTodo = () => {
@@ -36,7 +36,7 @@ export default function Sidebar({ tudu, allTodo, handleClick }) {
                 <div className="h-full px-3 py-4 pt-24 overflow-y-auto bg-gray-800 border-gray-700">
                     <ul className="space-y-2">
                         {/*Search Area*/}
-                        <li>
+                        {/* <li>
                             <form action="">
                                 <label
                                     className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
@@ -48,7 +48,7 @@ export default function Sidebar({ tudu, allTodo, handleClick }) {
                                 </label>
                                 <button type="submit" onClick={searchHandler}></button>
                             </form>
-                        </li>
+                        </li> */}
 
                         {/*All Area*/}
                         <li>

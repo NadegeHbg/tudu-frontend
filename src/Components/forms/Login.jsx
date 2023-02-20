@@ -13,8 +13,6 @@ export default function Login() {
         formState: { errors },
     } = useForm();
 
-
-
     const location = useNavigate(); //the old version was using LOCATION in react. In the new version, NAVIGATE is used. can be controlled
     const HandleLogin = async (data) => {
         try {

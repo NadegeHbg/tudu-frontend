@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import { handleAdd } from "../../events/axiosGlobal";
 import Cookies from "js-cookie";
 import { useEffect, useState } from "react";
+import { CheckIcon, EllipsisVerticalIcon, XMarkIcon } from "@heroicons/react/24/outline";
 
 export default function TodoItemForm() {
     const [showModal, setShowModal] = React.useState(false);
@@ -19,7 +20,7 @@ export default function TodoItemForm() {
     }, []);
 
     const onSubmit = async (data = {}) => {
-        setShowModal(false)
+        setShowModal(false);
         data.user_id = userId;
         console.log(data, "data");
         handleAdd(data);
@@ -27,11 +28,12 @@ export default function TodoItemForm() {
     return (
         <div className="container mx-auto">
             <button
-                className="justify-center items-center flex bg-cyan-900 text-white active:bg-pink-600 font-logoFont uppercase text-sm px-3 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                className="w-full sm:w-auto bg-gray-800 hover:bg-gray-600 focus:ring-4 focus:outline-none focus:ring-gray-300 text-white rounded-lg inline-flex items-center justify-center px-2 py-2.5"
                 type="button"
                 onClick={() => setShowModal(true)}
             >
-                Add / Edit
+                {" "}
+                <EllipsisVerticalIcon className="h-6 w-6 " />
             </button>
             {showModal ? (
                 <>
@@ -139,7 +141,7 @@ export default function TodoItemForm() {
                                     <button
                                         className="bg-cyan-900 text-white active:bg-white font-logoFont uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
                                         type="submit"
-                                        onClick={handleSubmit(onSubmit)} 
+                                        onClick={handleSubmit(onSubmit)}
                                     >
                                         Save Changes
                                     </button>
