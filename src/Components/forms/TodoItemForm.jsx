@@ -19,6 +19,7 @@ export default function TodoItemForm() {
     }, []);
 
     const onSubmit = async (data = {}) => {
+        setShowModal(false)
         data.user_id = userId;
         console.log(data, "data");
         handleAdd(data);
@@ -137,8 +138,8 @@ export default function TodoItemForm() {
                                     </button>
                                     <button
                                         className="bg-cyan-900 text-white active:bg-white font-logoFont uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
-                                        type="button"
-                                        onClick={() => setShowModal(false)}
+                                        type="submit"
+                                        onClick={handleSubmit(onSubmit)} 
                                     >
                                         Save Changes
                                     </button>
