@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-
+// import { filteringTudu } from "../../events/axiosGlobal";
 import {
     ArchiveBoxIcon,
     ArrowDownCircleIcon,
@@ -24,6 +24,8 @@ export default function Sidebar({ tudu, allTodo, handleClick }) {
 
     const getAllTodo = () => {
         handleClick(!allTodo);
+        // let data = 'all'
+        // filteringTudu(data)
     }
     const handleOpen = () => {
         setOpen(!open);
