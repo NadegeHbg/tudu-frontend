@@ -18,10 +18,13 @@ const searchHandler = (event) => {
     console.log("i am working");
 };
 
-export default function Sidebar({ tudu }) {
+export default function Sidebar({ tudu, allTodo, handleClick }) {
+    
     const [open, setOpen] = useState(false);
-    const [allLiClicked, setAllLiClicked] = useState(false);
 
+    const getAllTodo = () => {
+        handleClick(!allTodo);
+    }
     const handleOpen = () => {
         setOpen(!open);
     };
@@ -52,7 +55,7 @@ export default function Sidebar({ tudu }) {
                             <span className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
                                 <ArchiveBoxIcon className="w-6 h-6 text-cyan-300" />
 
-                                <span className="flex-1 ml-3 whitespace-nowrap">All</span>
+                                <span className="flex-1 ml-3 whitespace-nowrap" onClick={getAllTodo}>All</span>
                                 <span className="inline-flex items-center justify-center px-2 ml-3 text-sm font-medium text-gray-800 bg-gray-200 rounded-full dark:bg-gray-700 dark:text-gray-300"></span>
                             </span>
                         </li>
@@ -97,13 +100,13 @@ export default function Sidebar({ tudu }) {
                             </button>
                             {open
                                 ? (
-                                      <ul>
-                                          <li className="flex items-center  text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
-                                              <ChevronRightIcon className="w-6 h-6 text-yellow-300" />
-                                              <button className="flex- mr-14 whitespace-nowrap p-2 text-base font-normal">Project</button>
-                                          </li>
-                                      </ul>
-                                  ) || <p>You do not have any todo</p>
+                                    <ul>
+                                        <li className="flex items-center  text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
+                                            <ChevronRightIcon className="w-6 h-6 text-yellow-300" />
+                                            <button className="flex- mr-14 whitespace-nowrap p-2 text-base font-normal">Project</button>
+                                        </li>
+                                    </ul>
+                                ) || <p>You do not have any todo</p>
                                 : null}
                         </li>
                     </ul>
