@@ -67,13 +67,7 @@ const HomePage = () => {
                 </div>
                 <img src={logo} alt="logo" className="max-h-32 col-start-2 col-end-4 row-start-3 row-end-4 translate-x-1/2" />
             </div>
-{/* 
-            <stop offset="0%" stopColor="#45BCB7" stopOpacity=".5" />
-                        <stop offset="20%" stopColor="#064566" stopOpacity=".5" />
-                        <stop offset="25%" stopColor="#1C373F" stopOpacity=".5" />
-                        <stop offset="50%" stopColor="#DE3F4D" stopOpacity=".5" />
-                        <stop offset="75%" stopColor="#733C47" stopOpacity=".5" />
-                        <stop offset="100%" stopColor="#733C47" stopOpacity=".5" /> */}
+
             {/* <div className="col-start-4 col-end-6 row-start-4 row-end-5 flex justify-center items-end">
                 <button
                     className="p-2 border-2 border-primary bg-red-500"
