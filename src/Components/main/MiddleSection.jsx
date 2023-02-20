@@ -1,10 +1,10 @@
 import { CheckIcon, EllipsisVerticalIcon, XMarkIcon } from "@heroicons/react/24/outline";
 import React from "react";
 import TodoItemForm from "../forms/TodoItemForm";
-
+// <div className="p-4 sm:ml-64">dsfsfds</div>
 export default function MiddleSection({ tudu, allTodo }) {
     return (
-        <section className="text-gray-600 body-font w-full">
+        <section className="p-4 sm:ml-64 text-gray-600 body-font w-full">
             <div className="container px-5 py-4 mx-auto">
                 <div className="flex flex-wrap">
                     {allTodo ? (
