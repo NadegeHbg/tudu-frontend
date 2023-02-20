@@ -82,7 +82,7 @@ const HandleConnection = async (data) => {
     console.log(err, "connectionError");
   }
 };
-
+const allTudu =[]
 //get todos  => GET
 const GetTodos = async (data) => {
   try {
@@ -93,10 +93,24 @@ const GetTodos = async (data) => {
         "ngrok-skip-browser-warning": "69420",
       }});
     await console.log(response.data, "connectionResponse");
+    allTudu = response.data
     return response.data
+
   } catch (err) {
     console.log(err, "connectionError");
   }
 };
+
+//filtering
+const filteringTudu = async(data) =>{
+  try {
+    const dataF = Cookies.get("id");
+    const allTudu = await GetTodos(dataF)
+    console.log(allTudu,"filteing data")
+    
+  } catch (err) {
+    
+  }
+}
 export default axiosGlobal;
-export { handleRegistration, HandleLogin, handleAdd, GetTodos };
+export { handleRegistration, HandleLogin, handleAdd, GetTodos,filteringTudu };
