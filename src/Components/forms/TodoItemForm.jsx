@@ -27,11 +27,7 @@ export default function TodoItemForm() {
     };
     return (
         <div className="container mx-auto">
-            <button
-                className="w-full sm:w-auto bg-gray-800 hover:bg-gray-600 focus:ring-4 focus:outline-none focus:ring-gray-300 text-white rounded-lg inline-flex items-center justify-center px-2 py-2.5"
-                type="button"
-                onClick={() => setShowModal(true)}
-            >
+            <button type="button" onClick={() => setShowModal(true)}>
                 {" "}
                 <EllipsisVerticalIcon className="h-6 w-6 " />
             </button>
