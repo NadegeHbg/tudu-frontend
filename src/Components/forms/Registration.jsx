@@ -48,7 +48,7 @@ export default function Registration() {
 
                                 {/*Body*/}
                                 <div className="relative p-6 flex-auto">
-                                    <form onSubmit={handleSubmit(onSubmit)} className="space-y-8">
+                                    <form onSubmit={handleSubmit(onSubmit)}  className="space-y-8">
                                         <div>
                                             <label htmlFor="email" className="block mb-2 text-sm font-logoFont text-gray-900 ">
                                                 Username
@@ -117,12 +117,10 @@ export default function Registration() {
                                                 name="password"
                                                 {...register("password", {
                                                     required: true,
-                                                    pattern: /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,15}$/,
+                                                    // pattern: /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,15}$/,
                                                 })}
                                                 className="shadow-sm text-gray-900 text-sm rounded-lg block w-full p-2.5 bg-lightcream"
-                                                {...register("email")}
                                                 placeholder="Add Your Password "
-                                                required
                                             />
                                             <FaRegEyeSlash onClick={togglePassword} />
                                             {errors.password && (
@@ -163,7 +161,7 @@ export default function Registration() {
                                                 Close
                                             </button>
                                             <button
-                                                type="submit"
+                                                type="submit" onClick={handleSubmit(onSubmit)}
                                                 className="bg-cyan-900 text-white active:bg-emerald-600 font-logoFont uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg  mr-1 mb-1 transition-all duration-150 "
                                             >
                                                 Register
