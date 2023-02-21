@@ -152,9 +152,5 @@ const isdoneTudu = async (id) => {
   }
 };
 export default axiosGlobal;
-<<<<<<< HEAD
-export { handleRegistration, HandleLogin, handleAdd, GetTodos, filteringTuduActive, filteringTuduCategory, isdoneTudu };
-=======
 export { handleRegistration, HandleLogin, handleAdd, GetTodos, filteringTuduActive, filteringTuduCategory };
 
->>>>>>> 1f90078 (merged)
