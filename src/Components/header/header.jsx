@@ -12,7 +12,7 @@ import { useLocation } from "react-router-dom";
 import { Bars3BottomLeftIcon } from "@heroicons/react/24/outline";
 import Login from "../forms/Login";
 import Register from "../forms/Registration";
-import logo from "../assets/tudu.png"
+// import logo from "../assets/tudu.png"
 
 
 
