@@ -109,7 +109,21 @@ const filteringTudu = async(data) =>{
     console.log(allTudu,"filteing data")
     
   } catch (err) {
-    
+    console.log(err, "connectionError");
+  }
+}
+// update tudu
+const updateTudu = async(id) =>{
+  try {
+    const response = await axios.patch(`/user/updateTudu/${id}`,{
+      headers: {
+        "ngrok-skip-browser-warning": "69420",
+      }});
+    await console.log(response.data, "connectionResponse");
+    allTudu = response.data
+    return response.data
+  } catch (err) {
+    console.log(err, "connectionError");
   }
 }
 export default axiosGlobal;
