@@ -136,8 +136,8 @@ const filteringTuduCategory = async (category) => {
   }
 };
 
-// update tudu
-const updateTudu = async (id) => {
+// update tudu isdone
+const isdoneTudu = async (id) => {
   try {
     const response = await axios.patch(`/user/updateTudu/${id}`, {
       headers: {
@@ -152,4 +152,4 @@ const updateTudu = async (id) => {
   }
 };
 export default axiosGlobal;
-export { handleRegistration, HandleLogin, handleAdd, GetTodos, filteringTuduActive, filteringTuduCategory };
+export { handleRegistration, HandleLogin, handleAdd, GetTodos, filteringTuduActive, filteringTuduCategory, isdoneTudu };

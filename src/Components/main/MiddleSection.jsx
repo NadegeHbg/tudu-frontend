@@ -5,12 +5,12 @@ import {
 } from "@heroicons/react/24/outline";
 import React from "react";
 import TodoItemForm from "../forms/TodoItemForm";
+import { isdoneTudu } from "../../events/axiosGlobal";
+
 export default function MiddleSection({ tudu }) {
-  // const duedate = (duedate) => {
-  //     const date = new Date();
-  //     const options = { year: "numeric", month: "2-digit", day: "2-digit" };
-  //     return date.toLocaleDateString("en-GB", options).replace(/\//g, "/");
-  // }
+    const handleDone = (id) =>{
+        isdoneTudu(id)
+    }
 
   return (
     <section className="p-4 sm:ml-64 marker:text-gray-600 body-font w-full">
@@ -40,11 +40,11 @@ export default function MiddleSection({ tudu }) {
                   {new Date(todo.duedate).toISOString().slice(0, 10)}
                 </p>
 
-                <div className="items-center justify-center space-y-4 sm:flex sm:space-y-0 sm:space-x-4">
-                  {/*Done Button Blue*/}
-                  <div className="w-full sm:w-auto bg-gray-800 hover:bg-cyan-600 focus:ring-4 focus:outline-none focus:ring-gray-300 text-white rounded-lg inline-flex items-center justify-center px-2 py-2.5 ">
-                    <CheckIcon className="w-6 h-6 text-neutral-100" />
-                  </div>
+                                <div className="items-center justify-center space-y-4 sm:flex sm:space-y-0 sm:space-x-4">
+                                    {/*Done Button Blue*/}
+                                    <div className="w-full sm:w-auto bg-gray-800 hover:bg-cyan-600 focus:ring-4 focus:outline-none focus:ring-gray-300 text-white rounded-lg inline-flex items-center justify-center px-2 py-2.5 " onClick={()=>{handleDone(todo.id)}}>
+                                        <CheckIcon className="w-6 h-6 text-neutral-100" />
+                                    </div>
 
                   {/*Delete button Red*/}
                   <div className="w-full sm:w-auto bg-gray-800 hover:bg-red-600 focus:ring-4 focus:outline-none focus:ring-gray-300 text-white rounded-lg inline-flex items-center justify-center px-2 py-2.5 ">
