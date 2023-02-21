@@ -61,9 +61,9 @@ const handleAdd = async (data) => {
 };
 
 //connection edit tudu => PATCH
-const handleEdit = async (data) => {
+const handleEdit = async (id) => {
   try {
-    const response = axios.patch(`\todo\id=?`, {});
+    const response = axios.patch(`\todo\${id}`);
     // response.data.headers['Content-Type'];
 
     console.log(response, "EditResponse");
@@ -152,4 +152,9 @@ const isdoneTudu = async (id) => {
   }
 };
 export default axiosGlobal;
+<<<<<<< HEAD
 export { handleRegistration, HandleLogin, handleAdd, GetTodos, filteringTuduActive, filteringTuduCategory, isdoneTudu };
+=======
+export { handleRegistration, HandleLogin, handleAdd, GetTodos, filteringTuduActive, filteringTuduCategory };
+
+>>>>>>> 1f90078 (merged)
