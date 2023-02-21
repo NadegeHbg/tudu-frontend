@@ -107,13 +107,12 @@ const filteringTudu = async(data) =>{
     const dataF = Cookies.get("id");
     const allTudu = await GetTodos(dataF)
     console.log(allTudu,"filteing data")
-    
   } catch (err) {
     console.log(err, "connectionError");
   }
 }
-// update tudu
-const updateTudu = async(id) =>{
+// update tudu isdone
+const isdoneTudu = async(id) =>{
   try {
     const response = await axios.patch(`/user/updateTudu/${id}`,{
       headers: {
@@ -126,5 +125,6 @@ const updateTudu = async(id) =>{
     console.log(err, "connectionError");
   }
 }
+
 export default axiosGlobal;
-export { handleRegistration, HandleLogin, handleAdd, GetTodos,filteringTudu };
+export { handleRegistration, HandleLogin, handleAdd, GetTodos,filteringTudu, isdoneTudu};
