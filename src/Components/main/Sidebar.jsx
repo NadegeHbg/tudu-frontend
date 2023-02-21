@@ -22,8 +22,9 @@ export default function Sidebar({ tudu, allTodo, handleClick }) {
     
     const [open, setOpen] = useState(false);
 
-    const getAllTodo = () => {
+    const getAllTodo = (props) => {
         handleClick(!allTodo);
+        console.log(props)
         // let data = 'all'
         // filteringTudu(data)
     }
@@ -66,7 +67,7 @@ export default function Sidebar({ tudu, allTodo, handleClick }) {
                         <li>
                             <span className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
                                 <StarIcon className="w-6 h-6 text-cyan-300" />
-                                <span className="flex-1 ml-3 whitespace-nowrap">Active</span>
+                                <span className="flex-1 ml-3 whitespace-nowrap" onClick={getAllTodo}>Active</span>
                                 <span className="inline-flex items-center justify-center w-3 h-3 p-3 ml-3 text-sm font-medium text-blue-800 bg-blue-100 rounded-full dark:bg-blue-900 dark:text-blue-300">
                                     3
                                 </span>
