@@ -1,7 +1,8 @@
 import { CheckIcon, EllipsisVerticalIcon, XMarkIcon } from "@heroicons/react/24/outline";
 import React from "react";
 import TodoItemForm from "../forms/TodoItemForm";
-
+//p-4 sm:ml-64
+// {/* <div className="p-4 sm:ml-64"></div> */}
 export default function MiddleSection({ tudu, allTodo }) {
     return (
         <section className="p-4 sm:ml-64 marker:text-gray-600 body-font w-full">
@@ -48,7 +49,9 @@ export default function MiddleSection({ tudu, allTodo }) {
                             </div>
                         ))
                     ) : (
-                        <h1>You do not have any todos</h1>
+                        <h1 className="h-full bg-gray-100 bg-opacity-75 px-8 pt-8 pb-8 rounded-lg overflow-hidden text-center relative">
+                            You do not have any todos
+                        </h1>
                     )}
                 </div>
             </div>
