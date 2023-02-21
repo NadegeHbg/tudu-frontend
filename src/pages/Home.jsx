@@ -1,12 +1,12 @@
-import perso from "../Components/assets/homeAssets/perso.png";
-import cardLeft from "../Components/assets/homeAssets/squareOne.png";
-import cardRight from "../Components/assets/homeAssets/squareTwo.png";
-import blueBubble from "../Components/assets/homeAssets/blueBubble.png";
-import redBubble from "../Components/assets/homeAssets/redBubble.png";
-import pen from "../Components/assets/homeAssets/pen.png";
-import note from "../Components/assets/homeAssets/note.png";
-import calendar from "../Components/assets/homeAssets/calendar.png";
-import logo from "../Components/assets/logo_3d.png"
+import perso from "../assets/homeAssets/perso.png";
+import cardLeft from "../assets/homeAssets/squareOne.png";
+import cardRight from "../assets/homeAssets/squareTwo.png";
+import blueBubble from "../assets/homeAssets/blueBubble.png";
+import redBubble from "../assets/homeAssets/redBubble.png";
+import pen from "../assets/homeAssets/pen.png";
+import note from "../assets/homeAssets/note.png";
+import calendar from "../assets/homeAssets/calendar.png";
+import logo from "../assets/logo_3d.png"
 
 // import { useNavigate } from "react-router-dom";
 const HomePageDesktop = () => {

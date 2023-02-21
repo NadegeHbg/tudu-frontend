@@ -1,6 +1,7 @@
 import TodoItemFormAdd from "../forms/TodoItemFormAdd";
 import { Bars3BottomLeftIcon } from "@heroicons/react/24/outline";
 import { useLocation } from "react-router-dom";
+import logo from "../../assets/tudu.png"
 
 const HeaderDashboardStyle = () => {
     return (
@@ -8,7 +9,7 @@ const HeaderDashboardStyle = () => {
             <div className="px-3 py-3 lg:px-5 lg:pl-3">
                 <div className="flex items-center justify-between">
                     <div className="flex justify-center ">
-                        <img className="w-14 " src={require("../assets/tudu.png")} alt="Logo" />
+                        <img className="w-14 " src={logo} alt="Logo" />
 
                         <button
                             data-drawer-target="default-sidebar"
