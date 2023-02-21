@@ -74,8 +74,8 @@ export default function Registration() {
                                                 First Name
                                             </label>
                                             <input
-                                                type="password"
-                                                name="password"
+                                                type="text"
+                                                name="firstName"
                                                 className="shadow-sm text-gray-900 text-sm rounded-lg block w-full p-2.5 bg-lightcream"
                                                 {...register("firstName")}
                                                 placeholder="Add First Name"
@@ -83,15 +83,15 @@ export default function Registration() {
                                             />
                                         </div>
                                         <div>
-                                            <label htmlFor="secondName" className="block mb-2 text-sm font-logoFont text-gray-900 ">
-                                                Second Name
+                                            <label htmlFor="lastName" className="block mb-2 text-sm font-logoFont text-gray-900 ">
+                                                Last Name
                                             </label>
                                             <input
-                                                type="password"
-                                                name="password"
+                                                type="test"
+                                                name="lastName"
                                                 className="shadow-sm text-gray-900 text-sm rounded-lg block w-full p-2.5 bg-lightcream"
                                                 {...register("secondName")}
-                                                placeholder="Add Second Name "
+                                                placeholder="Add Last Name "
                                                 required
                                             />
                                         </div>

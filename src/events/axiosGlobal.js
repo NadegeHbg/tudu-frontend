@@ -82,7 +82,7 @@ const HandleConnection = async (data) => {
     console.log(err, "connectionError");
   }
 };
-const allTudu =[]
+let allTudu =[]
 //get todos  => GET
 const GetTodos = async (data) => {
   try {
