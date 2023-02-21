@@ -8,6 +8,7 @@ import TodoItemForm from "../forms/TodoItemForm";
 import { isdoneTudu } from "../../events/axiosGlobal";
 
 export default function MiddleSection({ tudu }) {
+
     const handleDone = (id) =>{
         isdoneTudu(id)
     }
@@ -40,11 +41,11 @@ export default function MiddleSection({ tudu }) {
                   {new Date(todo.duedate).toISOString().slice(0, 10)}
                 </p>
 
-                                <div className="items-center justify-center space-y-4 sm:flex sm:space-y-0 sm:space-x-4">
-                                    {/*Done Button Blue*/}
-                                    <div className="w-full sm:w-auto bg-gray-800 hover:bg-cyan-600 focus:ring-4 focus:outline-none focus:ring-gray-300 text-white rounded-lg inline-flex items-center justify-center px-2 py-2.5 " onClick={()=>{handleDone(todo.id)}}>
-                                        <CheckIcon className="w-6 h-6 text-neutral-100" />
-                                    </div>
+                <div className="items-center justify-center space-y-4 sm:flex sm:space-y-0 sm:space-x-4">
+                  {/*Done Button Blue*/}
+                  <div className="w-full sm:w-auto bg-gray-800 hover:bg-cyan-600 focus:ring-4 focus:outline-none focus:ring-gray-300 text-white rounded-lg inline-flex items-center justify-center px-2 py-2.5 ">
+                    <CheckIcon className="w-6 h-6 text-neutral-100" />
+                  </div>
 
                   {/*Delete button Red*/}
                   <div className="w-full sm:w-auto bg-gray-800 hover:bg-red-600 focus:ring-4 focus:outline-none focus:ring-gray-300 text-white rounded-lg inline-flex items-center justify-center px-2 py-2.5 ">
