@@ -1,11 +1,12 @@
 import React from "react";
 import { useForm } from "react-hook-form";
-import { handleAdd } from "../../events/axiosGlobal";
+// import { handleAdd } from "../../events/axiosGlobal";
 import Cookies from "js-cookie";
 import { useEffect, useState } from "react";
 import { CheckIcon, EllipsisVerticalIcon, XMarkIcon } from "@heroicons/react/24/outline";
+import handleEdit from '../../events/axiosGlobal';
 
-export default function TodoItemForm() {
+export default function TodoItemForm({todo}) {
     const [showModal, setShowModal] = useState(false);
     const {
         register,
@@ -23,7 +24,7 @@ export default function TodoItemForm() {
         setShowModal(false);
         data.user_id = userId;
         console.log(data, "data");
-        handleAdd(data);
+        handleEdit(data);
     };
     return (
         <div className="container mx-auto">
@@ -49,13 +50,13 @@ export default function TodoItemForm() {
                                     <form action="#" onSubmit={handleSubmit(onSubmit)} className="space-y-8">
                                         <div>
                                             <label htmlFor="name" className="block mb-2 text-sm font-logoFont text-gray-900 ">
-                                                Choose your Category
+                                                category    
                                             </label>
                                             <label htmlFor="category">
                                                 <select
                                                     className="shadow-sm text-gray-900 text-sm rounded-lg block w-full p-2.5 bg-lightcream"
                                                     name="category"
-                                                    {...register("category", { required: true })}
+                                                    {...register("category", { required: true })} value={todo.category}
                                                 >
                                                     <option>Choose here</option>
                                                     <option>Personal</option>
@@ -65,7 +66,7 @@ export default function TodoItemForm() {
                                         </div>
                                         <div>
                                             <label htmlFor="name" className="block mb-2 text-sm font-logoFont text-gray-900 ">
-                                                Add your Tu Du
+                                                {todo.ptaskname}
                                             </label>
                                             <input
                                                 type="name"
@@ -78,7 +79,7 @@ export default function TodoItemForm() {
                                         </div>
                                         <div>
                                             <label htmlFor="name" className="block mb-2 text-sm font-logoFont text-gray-900 ">
-                                                Add your Description if you want
+                                            {todo.description}
                                             </label>
                                             <input
                                                 type="text"
@@ -94,7 +95,7 @@ export default function TodoItemForm() {
                                                     htmlFor="name"
                                                     className="shadow-sm text-gray-900 text-sm rounded-lg font-logoFont block w-full p-2.5 bg-lightcream"
                                                 >
-                                                    Due Date
+                                                  {todo.duedate}
                                                 </label>
                                                 <input
                                                     type="date"
@@ -110,7 +111,7 @@ export default function TodoItemForm() {
                                                     htmlFor="name"
                                                     className="shadow-sm text-gray-900 text-sm rounded-lg font-logoFont block w-full p-2.5 bg-lightcream"
                                                 >
-                                                    Entry Date
+                                                     {todo.entrydate}
                                                 </label>
                                                 <input
                                                     type="date"
