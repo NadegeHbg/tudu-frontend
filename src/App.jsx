@@ -1,10 +1,10 @@
 import { createBrowserRouter, Route, createRoutesFromElements, RouterProvider } from "react-router-dom";
 import RootLayout from "./layouts/rootLayout.jsx";
-import Tudu from "./pages/PersonalTudu.jsx";
 import HomePage from "./pages/Home";
 import Dashboard from "./pages/Dashboard.jsx";
 import MainFrame from "./Components/main/MainFrame.jsx";
 import "./index.css";
+import Test from "./pages/TestPage.jsx";
 
 const router = createBrowserRouter(
     createRoutesFromElements(
@@ -13,7 +13,7 @@ const router = createBrowserRouter(
             <Route index element={<HomePage />} />
             <Route path="/mainframe" element={<MainFrame />} />
             <Route path="/dashboard" element={<Dashboard />} />
-            <Route path="/personal/:id" element={<Tudu />} />
+            <Route path="/test" element={<Test />} />
         </Route>
     )
 );
