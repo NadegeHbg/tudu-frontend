@@ -11,7 +11,7 @@ const axiosGlobal = axios.create({
     //     Authorization: AUTH_TOKEN,
   },
 });
-axios.defaults.baseURL = "https://864b-84-199-109-84.eu.ngrok.io";
+axios.defaults.baseURL = "https://446f-193-91-102-198.eu.ngrok.io/";
 
 //registration handler => POST
 
@@ -82,7 +82,7 @@ const HandleConnection = async (data) => {
     console.log(err, "connectionError");
   }
 };
-
+let allTudu =[]
 //get todos  => GET
 const GetTodos = async (data) => {
   try {
@@ -93,10 +93,38 @@ const GetTodos = async (data) => {
         "ngrok-skip-browser-warning": "69420",
       }});
     await console.log(response.data, "connectionResponse");
+    allTudu = response.data
     return response.data
+
   } catch (err) {
     console.log(err, "connectionError");
   }
 };
+
+//filtering
+const filteringTudu = async(data) =>{
+  try {
+    const dataF = Cookies.get("id");
+    const allTudu = await GetTodos(dataF)
+    console.log(allTudu,"filteing data")
+    
+  } catch (err) {
+    console.log(err, "connectionError");
+  }
+}
+// update tudu
+const updateTudu = async(id) =>{
+  try {
+    const response = await axios.patch(`/user/updateTudu/${id}`,{
+      headers: {
+        "ngrok-skip-browser-warning": "69420",
+      }});
+    await console.log(response.data, "connectionResponse");
+    allTudu = response.data
+    return response.data
+  } catch (err) {
+    console.log(err, "connectionError");
+  }
+}
 export default axiosGlobal;
-export { handleRegistration, HandleLogin, handleAdd, GetTodos };
+export { handleRegistration, HandleLogin, handleAdd, GetTodos,filteringTudu };
