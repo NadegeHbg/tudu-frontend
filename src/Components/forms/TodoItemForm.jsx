@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import Cookies from "js-cookie";
 import { useEffect, useState } from "react";
 import { CheckIcon, EllipsisVerticalIcon, XMarkIcon } from "@heroicons/react/24/outline";
-import handleEdit from '../../events/axiosGlobal';
+import { handleEdit } from '../../events/axiosGlobal';
 
 export default function TodoItemForm({ todo }) {
 
@@ -18,6 +18,7 @@ export default function TodoItemForm({ todo }) {
         formState: { errors },
     } = useForm({
         defaultValues: {
+            id: todo.id,
             category: todo.category,
             ptaskname: todo.ptaskname,
             description: todo.description,
@@ -51,7 +52,7 @@ export default function TodoItemForm({ todo }) {
             >
 
                 {" "}
-                <EllipsisVerticalIcon onClick={() => setShowModal(true)} className="h-6 w-6 " />
+                <EllipsisVerticalIcon  onClick={() => setShowModal(true)} className="h-6 w-6 " />
             </div>
             {showModal ? (
                 <>
