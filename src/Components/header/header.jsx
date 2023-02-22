@@ -58,7 +58,7 @@ const HeaderStyle = () => {
                         <Bars3BottomLeftIcon className="w-6 h-6 text-secondary" />
                     </button>
                 </div>
-                <div className="flex items-center ml-3 hidden md:block">
+                <div className=" items-center ml-3 hidden md:flex">
                     <div className="container mx-auto flex justify-end z-50">
                         <Login />
                         <Register />
@@ -66,7 +66,7 @@ const HeaderStyle = () => {
                 </div>
             </div>
         </div>
-       
+
     );
 };
 

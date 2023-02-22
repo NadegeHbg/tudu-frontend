@@ -61,7 +61,7 @@ const HomePageDesktop = () => {
                 <img src={calendar} alt="" className="xxl:-translate-y-4 xxl:translate-x-4 -z-10" />
             </div>
             <div className="items-center justify-center col-start-3 col-end-7 row-start-2 row-end-5 grid grid-cols-8 grid-rows-6">
-                
+
                 <div className="max-h-full rounded-full aspect-square shadow-2xl col-start-2 col-end-9 row-start-1 row-end-7 flex justify-center items-end overflow-hidden bg-gradient-to-bl from-[hsla(177,47%,50%,.3)] via-[hsla(201,89%,21%,.3)] via-[hsla(194,38%,18%,.3)] via-[hsla(348,31%,34%,.3)] to-[hsla(355,78%,58%,.3)] -z-50 ">
                     <img src={perso} alt="" className="h-[75%] translate-y-2 aspect-square" />
                 </div>
@@ -72,8 +72,9 @@ const HomePageDesktop = () => {
 };
 
 const HomePageMobile = () => {
-    return(
+    return (
         <div className="w-screen h-screen max-w-full max-h-full grid grid-rows-6 grid-cols-8 md:hidden overflow-hidden">
+
             <div className="row-start-1 row-end-5 col-start-1 col-end-9 rounded-b-full -translate-y-8 bg-gradient-to-bl from-[hsla(177,47%,50%,.3)] via-[hsla(201,89%,21%,.3)] via-[hsla(194,38%,18%,.3)] via-[hsla(348,31%,34%,.3)] to-[hsla(355,78%,58%,.3)]"></div>
 
             <div className="row-start-2 row-end-4 col-start-2 col-end-8 flex justify-center items-center font-extrabold text-[100px] text-transparent bg-clip-text bg-gradient-to-l from-[hsl(201,89%,21%)] via-[hsl(194,38%,18%)] to-[hsl(355,78%,58%)]">
@@ -91,7 +92,7 @@ const HomePageMobile = () => {
 }
 
 const HomePage = () => {
-    return(
+    return (
         <>
             <HomePageDesktop />
             <HomePageMobile />

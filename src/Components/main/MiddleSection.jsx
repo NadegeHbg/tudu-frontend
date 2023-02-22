@@ -21,7 +21,7 @@ export default function MiddleSection({ tudu }) {
         deleteTudu(id);
     }
 
-   
+
 
     return (
         <section className="p-4 sm:ml-64 marker:text-gray-600 body-font w-full">
@@ -53,7 +53,7 @@ export default function MiddleSection({ tudu }) {
 
                                 <div className="items-center justify-center space-y-4 sm:flex sm:space-y-0 sm:space-x-4">
                                     {/*Done Button Blue*/}
-                                    <div onClick={() => {handleDone(todo.id)}} className="w-full sm:w-auto bg-gray-800 hover:bg-cyan-600 focus:ring-4 focus:outline-none focus:ring-gray-300 text-white rounded-lg inline-flex items-center justify-center px-2 py-2.5 ">
+                                    <div onClick={() => { handleDone(todo.id) }} className="w-full sm:w-auto bg-gray-800 hover:bg-cyan-600 focus:ring-4 focus:outline-none focus:ring-gray-300 text-white rounded-lg inline-flex items-center justify-center px-2 py-2.5 ">
                                         <CheckIcon className="w-6 h-6 text-neutral-100" />
                                     </div>
 
@@ -63,9 +63,9 @@ export default function MiddleSection({ tudu }) {
                                     </div>
 
                                     {/*Edit Button Gray New*/}
-                                    <button className="w-full sm:w-auto bg-gray-800 hover:bg-gray-600 focus:ring-4 focus:outline-none focus:ring-gray-300 text-white rounded-lg inline-flex items-center justify-center px-2 py-2.5 ">
+                                    <div className="w-full sm:w-auto bg-gray-800 hover:bg-gray-600 focus:ring-4 focus:outline-none focus:ring-gray-300 text-white rounded-lg inline-flex items-center justify-center px-2 py-2.5 ">
                                         <TodoItemForm todo={todo} />
-                                    </button>
+                                    </div>
                                 </div>
                             </div>
                         ))
