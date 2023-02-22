@@ -21,7 +21,6 @@ const handleRegistration = async (data) => {
     const response = await axios.post("/register", data);
     const resData = await response.data;
     console.log(resData, "registration post request");
-    
   } catch (error) {
     console.log(error, "registration post error");
   }
@@ -64,9 +63,8 @@ const handleAdd = async (data) => {
 //connection edit tudu => PATCH
 const handleEdit = async (data) => {
   try {
-    const response = axios.patch(`\todo\id=?`, {});
-    // response.data.headers['Content-Type'];
-
+    const response = await axios.patch(`/user/editTudu/${data.id}`,data);
+        // response.data.headers['Content-Type'];
     console.log(response, "EditResponse");
   } catch (err) {
     console.log(err, "EditError");
@@ -82,7 +80,9 @@ const HandleConnection = async (data) => {
     console.log(err, "connectionError");
   }
 };
-let allTudu =[]
+
+
+let allTudu = [];
 //get todos  => GET
 const GetTodos = async (data) => {
   try {
@@ -91,40 +91,82 @@ const GetTodos = async (data) => {
     const response = await axios.get(`/user/getTudu/${data}`, {
       headers: {
         "ngrok-skip-browser-warning": "69420",
-      }});
+      },
+    });
     await console.log(response.data, "connectionResponse");
-    allTudu = response.data
-    return response.data
-
+    allTudu = response.data;
+    return response.data;
   } catch (err) {
     console.log(err, "connectionError");
   }
 };
 
-//filtering
-const filteringTudu = async(data) =>{
+//filtering Active
+const filteringTuduActive = async (data) => {
   try {
     const dataF = Cookies.get("id");
-    const allTudu = await GetTodos(dataF)
-    console.log(allTudu,"filteing data")
-    
-  } catch (err) {
-    console.log(err, "connectionError");
-  }
-}
-// update tudu
-const updateTudu = async(id) =>{
-  try {
-    const response = await axios.patch(`/user/updateTudu/${id}`,{
+    const response = await axios.get(`/user/${dataF}/${data}`, {
       headers: {
         "ngrok-skip-browser-warning": "69420",
-      }});
-    await console.log(response.data, "connectionResponse");
-    allTudu = response.data
-    return response.data
+      },
+    });
+    await console.log(response.data, "filteringResponseActive");
+    allTudu = response.data;
+    return response.data;
+    console.log(allTudu, "filteing data");
   } catch (err) {
     console.log(err, "connectionError");
   }
-}
+};
+
+//filtering Category
+const filteringTuduCategory = async (category) => {
+  try {
+    const dataF = Cookies.get("id");
+    const response = await axios.get(`/user/getTudu/${dataF}/${category}`, {
+      headers: {
+        "ngrok-skip-browser-warning": "69420",
+      },
+    });
+    await console.log(response.data, "filteringCategoryResponseActive");
+    allTudu = response.data;
+    return response.data;
+    console.log(allTudu, "filteing category data");
+  } catch (err) {
+    console.log(err, "connectionError");
+  }
+};
+
+// update tudu isdone
+const isDoneTudu = async (id) => {
+  try {
+    const response = await axios.patch(`/user/updateTudu/${id}`, {
+      headers: {
+        "ngrok-skip-browser-warning": "69420",
+      },
+    });
+    await console.log(response.data, "connectionResponse");
+    allTudu = response.data;
+    return response.data;
+  } catch (err) {
+    console.log(err, "connectionError");
+  }
+};
+
+// delete todo
+const deleteTudu = async (id) => {
+  try {
+      const response = await axios.delete(`/user/deleteTudu/${id}`, {
+          headers: {
+              "ngrok-skip-browser-warning": "69420",
+          },
+      });
+      console.log(response.data, "DeleteResponse");
+  } catch (err) {
+      console.log(err, "DeleteError");
+  }
+};
+
 export default axiosGlobal;
-export { handleRegistration, HandleLogin, handleAdd, GetTodos,filteringTudu };
+export { handleRegistration, HandleLogin, handleAdd, GetTodos, filteringTuduActive, filteringTuduCategory, handleEdit, isDoneTudu, deleteTudu };
+
