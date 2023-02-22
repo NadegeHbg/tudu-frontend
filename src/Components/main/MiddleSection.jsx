@@ -14,11 +14,11 @@ export default function MiddleSection({ tudu }) {
     //     return date.toLocaleDateString("en-GB", options).replace(/\//g, "/");
     // }
 
-    const newArray = tudu.map((obj) => {
-        return { id: obj.id, category: obj.category };
-    });
+    // const newArray = tudu.map((obj) => {
+    //     return { id: obj.id, category: obj.category };
+    // });
 
-    const categoryArray = [...new Set(newArray.map((item) => item.category))];
+    // const categoryArray = [...new Set(newArray.map((item) => item.category))];
 
     const handleDone = (id) => {
         isDoneTudu(id);
