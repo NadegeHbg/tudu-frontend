@@ -1,18 +1,30 @@
 import React from "react";
 import { useForm } from "react-hook-form";
-// import { handleAdd } from "../../events/axiosGlobal";
 import Cookies from "js-cookie";
 import { useEffect, useState } from "react";
 import { CheckIcon, EllipsisVerticalIcon, XMarkIcon } from "@heroicons/react/24/outline";
 import handleEdit from '../../events/axiosGlobal';
 
-export default function TodoItemForm({todo}) {
+export default function TodoItemForm({ todo }) {
+
+    // console.log(todo.id, 'todo id')
+
     const [showModal, setShowModal] = useState(false);
+
     const {
         register,
         handleSubmit,
+        setValue,
         formState: { errors },
-    } = useForm();
+    } = useForm({
+        defaultValues: {
+            category: todo.category,
+            ptaskname: todo.ptaskname,
+            description: todo.description,
+            duedate: todo.duedate,
+            entrydate: todo.entrydate
+        }
+    });
 
     const [userId, setUserId] = useState(null);
 
@@ -26,6 +38,12 @@ export default function TodoItemForm({todo}) {
         console.log(data, "data");
         handleEdit(data);
     };
+
+    const handleChange = (event) => {
+        const { newInfo, value } = event.target;
+        setValue(newInfo, value);
+    }
+
     return (
         <div className="container mx-auto">
             <div
@@ -50,13 +68,13 @@ export default function TodoItemForm({todo}) {
                                     <form action="#" onSubmit={handleSubmit(onSubmit)} className="space-y-8">
                                         <div>
                                             <label htmlFor="name" className="block mb-2 text-sm font-logoFont text-gray-900 ">
-                                                category    
+                                                Category
                                             </label>
                                             <label htmlFor="category">
                                                 <select
                                                     className="shadow-sm text-gray-900 text-sm rounded-lg block w-full p-2.5 bg-lightcream"
                                                     name="category"
-                                                    {...register("category", { required: true })} value={todo.category}
+                                                    {...register("category", { required: true })}
                                                 >
                                                     <option>Choose here</option>
                                                     <option>Personal</option>
@@ -66,9 +84,10 @@ export default function TodoItemForm({todo}) {
                                         </div>
                                         <div>
                                             <label htmlFor="name" className="block mb-2 text-sm font-logoFont text-gray-900 ">
-                                                {todo.ptaskname}
+                                                Task Name
                                             </label>
                                             <input
+                                                onChange={handleChange}
                                                 type="name"
                                                 id="ptaskname"
                                                 className="shadow-sm text-gray-900 text-sm rounded-lg block w-full p-2.5 bg-lightcream"
@@ -79,25 +98,42 @@ export default function TodoItemForm({todo}) {
                                         </div>
                                         <div>
                                             <label htmlFor="name" className="block mb-2 text-sm font-logoFont text-gray-900 ">
-                                            {todo.description}
+                                              Description
                                             </label>
                                             <input
+                                            onChange={handleChange}
                                                 type="text"
-                                                id="ptaskdescription"
+                                                id="description"
                                                 className="shadow-sm text-gray-900 text-sm rounded-lg block w-full p-2.5 bg-lightcream"
-                                                {...register("ptaskdescription", { required: true })}
+                                                {...register("description", { required: true })}
                                                 placeholder="Description "
                                             />
                                         </div>
                                         <div className="flex">
+                                        <label htmlFor="entrydate">
+                                                <label
+                                                    htmlFor="name"
+                                                    className="shadow-sm text-gray-900 text-sm rounded-lg font-logoFont block w-full p-2.5 bg-lightcream"
+                                                >
+                                                  Entry Date
+                                                </label>
+                                                <input
+                                                onChange={handleChange}
+                                                    type="date"
+                                                    name="entrydate"
+                                                    className="shadow-sm text-gray-900 text-sm rounded-lg block w-full p-2.5 bg-lightcream"
+                                                    {...register("entrydate", { required: true })}
+                                                />
+                                            </label>
                                             <label htmlFor="duedate">
                                                 <label
                                                     htmlFor="name"
                                                     className="shadow-sm text-gray-900 text-sm rounded-lg font-logoFont block w-full p-2.5 bg-lightcream"
                                                 >
-                                                  {todo.duedate}
+                                                   Due Date
                                                 </label>
                                                 <input
+                                                onChange={handleChange}
                                                     type="date"
                                                     name="duedate"
                                                     className="shadow-sm text-gray-900 text-sm rounded-lg block w-full p-2.5 bg-lightcream "
@@ -106,20 +142,6 @@ export default function TodoItemForm({todo}) {
                                                 />
                                             </label>
 
-                                            <label htmlFor="entrydate">
-                                                <label
-                                                    htmlFor="name"
-                                                    className="shadow-sm text-gray-900 text-sm rounded-lg font-logoFont block w-full p-2.5 bg-lightcream"
-                                                >
-                                                     {todo.entrydate}
-                                                </label>
-                                                <input
-                                                    type="date"
-                                                    name="entrydate"
-                                                    className="shadow-sm text-gray-900 text-sm rounded-lg block w-full p-2.5 bg-lightcream"
-                                                    {...register("entrydate", { required: true })}
-                                                />
-                                            </label>
                                         </div>
                                     </form>
                                 </div>
@@ -133,8 +155,8 @@ export default function TodoItemForm({todo}) {
                                     </button>
                                     <button
                                         className="bg-cyan-900 text-white active:bg-white font-logoFont uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
-                                        type="submit"
-                                        onClick={handleSubmit(onSubmit)}
+                                        type="Submit"
+                                    onClick={handleSubmit(onSubmit)}
                                     >
                                         Save Changes
                                     </button>
