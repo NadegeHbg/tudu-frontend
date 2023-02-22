@@ -67,27 +67,6 @@ const HomePageDesktop = () => {
                 </div>
                 <img src={logo} alt="logo" className="max-h-32 col-start-2 col-end-4 row-start-3 row-end-4 translate-x-[50%] -z-10" />
             </div>
-
-            {/* <div className="col-start-4 col-end-6 row-start-4 row-end-5 flex justify-center items-end">
-                <button
-                    className="p-2 border-2 border-primary bg-red-500"
-                    onClick={() => {
-                        navigate("/register");
-                    }}
-                >
-                    Register
-                </button>
-            </div> */}
-            {/* <div className="col-start-4 col-end-6 row-start-4 row-end-5 flex justify-center items-end">
-                <button
-                    className="p-2 border-2 border-primary bg-red-500"
-                    onClick={() => {
-                        navigate("/register");
-                    }}
-                >
-                    Register
-                </button>
-            </div> */}
         </div>
     );
 };
