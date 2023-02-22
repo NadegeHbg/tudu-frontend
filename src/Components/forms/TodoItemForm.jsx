@@ -1,17 +1,50 @@
+// React and react libraries
 import React from "react";
 import { useForm } from "react-hook-form";
-import { handleAdd } from "../../events/axiosGlobal";
-import Cookies from "js-cookie";
 import { useEffect, useState } from "react";
+import Select from 'react-select'
+import Creatable, { useCreatable } from 'react-select/creatable';
+
+
+// Cookies
+import Cookies from "js-cookie";
+
+// Functions
+import { handleAdd } from "../../events/axiosGlobal";
+
+// Icons and components
 import { EllipsisVerticalIcon } from "@heroicons/react/24/outline";
 
-export default function TodoItemForm() {
+export default function TodoItemForm({ tudu }) {
     const [showModal, setShowModal] = useState(false);
     const {
         register,
         handleSubmit,
         // formState: { errors },
     } = useForm();
+
+    const newArray = tudu.map((obj) => {
+        return { category: obj.category };
+    });
+    // console.log(newArray)
+
+    const uniqueArray = [...new Set(newArray.map((item) =>
+        item.category
+    ))];
+
+    const options = uniqueArray.map((item) => {
+        return {
+            value: item, label: item
+        }
+    })
+
+    // console.log(uniqueArray)
+
+    // const options = [
+    //     // { value: categoryArray.categoryArray[0], label: categoryArray.categoryArray[0] },
+    //     // { value: categoryArray.categoryArray[1], label: categoryArray.categoryArray[1] },
+    //     { value: 'bullshit one', label: 'bullshit one' }
+    // ]
 
     const [userId, setUserId] = useState(null);
 
@@ -50,15 +83,12 @@ export default function TodoItemForm() {
                                                 Choose your Category
                                             </label>
                                             <label htmlFor="category">
-                                                <select
+                                                <Select
                                                     className="shadow-sm text-gray-900 text-sm rounded-lg block w-full p-2.5 bg-lightcream"
                                                     name="category"
                                                     {...register("category", { required: true })}
-                                                >
-                                                    <option>Choose here</option>
-                                                    <option>Personal</option>
-                                                    <option>Business</option>
-                                                </select>
+                                                    options={options}
+                                                />
                                             </label>
                                         </div>
                                         <div>

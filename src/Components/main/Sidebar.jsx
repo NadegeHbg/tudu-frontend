@@ -98,21 +98,21 @@ export default function Sidebar({ tudu }) {
               </button>
               {open
                 ? (
-                    <ul>
-                      {uniqueArray.map((item) => (
-                        <li
-                          key={item}
-                          className="flex items-center  text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
-                          onClick={() => handleClick(item)}
-                        >
-                          <ChevronRightIcon className="w-6 h-6 text-yellow-300" />
-                          <button className="flex- mr-14 whitespace-nowrap p-2 text-base font-normal">
-                            {item}
-                          </button>
-                        </li>
-                      ))}
-                    </ul>
-                  ) || <p>You do not have any todo</p>
+                  <ul>
+                    {uniqueArray.map((item) => (
+                      <li
+                        key={item}
+                        className="flex items-center  text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
+                        onClick={() => handleClick(item)}
+                      >
+                        <ChevronRightIcon className="w-6 h-6 text-yellow-300" />
+                        <button className="flex- mr-14 whitespace-nowrap p-2 text-base font-normal">
+                          {item}
+                        </button>
+                      </li>
+                    ))}
+                  </ul>
+                ) || <p>You do not have any todo</p>
                 : null}
             </li>
           </ul>

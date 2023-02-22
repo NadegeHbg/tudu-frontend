@@ -14,6 +14,12 @@ export default function MiddleSection({ tudu }) {
     //     return date.toLocaleDateString("en-GB", options).replace(/\//g, "/");
     // }
 
+    const newArray = tudu.map((obj) => {
+        return { id: obj.id, category: obj.category };
+    });
+
+    const categoryArray = [...new Set(newArray.map((item) => item.category))];
+
     const handleDone = (id) => {
         isDoneTudu(id);
     }
@@ -63,8 +69,8 @@ export default function MiddleSection({ tudu }) {
                                     </div>
 
                                     {/*Edit Button Gray New*/}
-                                    <div className="w-full sm:w-auto bg-gray-800 hover:bg-gray-600 focus:ring-4 focus:outline-none focus:ring-gray-300 text-white rounded-lg inline-flex items-center justify-center px-2 py-2.5 ">
-                                        <TodoItemForm todo={todo} />
+                                    <div className="w-full sm:w-auto bg-gray-800 hover:bg-gray-600 focus:ring-4 focus:outline-none focus:ring-gray-300 text-white rounded-lg inline-flex items-center justify-center px-2 py-2.5" >
+                                        <TodoItemForm tudu={tudu} />
                                     </div>
                                 </div>
                             </div>
