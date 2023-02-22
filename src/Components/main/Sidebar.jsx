@@ -3,12 +3,10 @@ import { useNavigate } from "react-router-dom";
 import { filteringTuduActive, filteringTuduCategory } from "../../events/axiosGlobal";
 import {
   ArchiveBoxIcon,
-  ArrowDownCircleIcon,
   ArrowLeftOnRectangleIcon,
   CalendarDaysIcon,
   CheckCircleIcon,
   ChevronRightIcon,
-  MagnifyingGlassIcon,
   StarIcon,
   TagIcon,
 } from "@heroicons/react/24/outline";

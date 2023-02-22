@@ -1,12 +1,10 @@
 import {
     CheckIcon,
-    EllipsisVerticalIcon,
     XMarkIcon,
 } from "@heroicons/react/24/outline";
 import React from "react";
 import TodoItemForm from "../forms/TodoItemForm";
 import { isDoneTudu, deleteTudu } from "../../events/axiosGlobal";
-import axios from "axios";
 
 export default function MiddleSection({ tudu }) {
 

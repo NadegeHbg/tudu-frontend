@@ -6,6 +6,7 @@ import MiddleSection from "../Components/main/MiddleSection";
 
 const Dashboard = () => {
     const [tudu, setTudu] = useState([]);
+    // eslint-disable-next-line
     const [selectedArray, setSelectedArray] = useState([]);
 
 

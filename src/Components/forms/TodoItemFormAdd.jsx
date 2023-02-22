@@ -3,14 +3,13 @@ import { useForm } from "react-hook-form";
 import { handleAdd } from "../../events/axiosGlobal";
 import Cookies from "js-cookie";
 import { useEffect, useState } from "react";
-import { CheckIcon, EllipsisVerticalIcon, XMarkIcon } from "@heroicons/react/24/outline";
 
 export default function TodoItemFormAdd() {
     const [showModal, setShowModal] = useState(false);
     const {
         register,
         handleSubmit,
-        formState: { errors },
+        // formState: { errors },
     } = useForm();
 
     const [userId, setUserId] = useState(null);
