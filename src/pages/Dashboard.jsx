@@ -21,13 +21,13 @@ const Dashboard = () => {
     return (
         <div className="flex">
             <Sidebar tudu={tudu} />
-            <MiddleSection tudu={tudu}/>
+            <MiddleSection tudu={tudu} />
         </div>
         //error for map function in the dashboard
-            // {tudu && tudu.map((todo) => (
-            //     <TodoCard key={todo._id} todo={todo} allTodo={allTodo} />
-            // ))}
-        
+        // {tudu && tudu.map((todo) => (
+        //     <TodoCard key={todo._id} todo={todo} allTodo={allTodo} />
+        // ))}
+
     );
 };
 

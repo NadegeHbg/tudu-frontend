@@ -3,7 +3,7 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import { useEffect, useState } from "react";
 import Select from 'react-select'
-import Creatable, { useCreatable } from 'react-select/creatable';
+// import Creatable, { useCreatable } from 'react-select/creatable';
 
 
 // Cookies
@@ -31,20 +31,13 @@ export default function TodoItemForm({ tudu }) {
     const uniqueArray = [...new Set(newArray.map((item) =>
         item.category
     ))];
+    // console.log(uniqueArray)
 
     const options = uniqueArray.map((item) => {
         return {
             value: item, label: item
         }
     })
-
-    // console.log(uniqueArray)
-
-    // const options = [
-    //     // { value: categoryArray.categoryArray[0], label: categoryArray.categoryArray[0] },
-    //     // { value: categoryArray.categoryArray[1], label: categoryArray.categoryArray[1] },
-    //     { value: 'bullshit one', label: 'bullshit one' }
-    // ]
 
     const [userId, setUserId] = useState(null);
 
