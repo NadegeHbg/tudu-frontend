@@ -5,12 +5,25 @@ import {
 } from "@heroicons/react/24/outline";
 import React from "react";
 import TodoItemForm from "../forms/TodoItemForm";
+import { isDoneTudu, deleteTudu } from "../../events/axiosGlobal";
+import axios from "axios";
+
 export default function MiddleSection({ tudu }) {
+
     // const duedate = (duedate) => {
     //     const date = new Date();
     //     const options = { year: "numeric", month: "2-digit", day: "2-digit" };
     //     return date.toLocaleDateString("en-GB", options).replace(/\//g, "/");
     // }
+
+    const handleDone = (id) => {
+        isDoneTudu(id);
+    }
+    const handleDelete = (id) => {
+        deleteTudu(id);
+    }
+
+   
 
     return (
         <section className="p-4 sm:ml-64 marker:text-gray-600 body-font w-full">
@@ -42,18 +55,18 @@ export default function MiddleSection({ tudu }) {
 
                                 <div className="items-center justify-center space-y-4 sm:flex sm:space-y-0 sm:space-x-4">
                                     {/*Done Button Blue*/}
-                                    <div className="w-full sm:w-auto bg-gray-800 hover:bg-cyan-600 focus:ring-4 focus:outline-none focus:ring-gray-300 text-white rounded-lg inline-flex items-center justify-center px-2 py-2.5 ">
+                                    <div onClick={() => {handleDone(todo.id)}} className="w-full sm:w-auto bg-gray-800 hover:bg-cyan-600 focus:ring-4 focus:outline-none focus:ring-gray-300 text-white rounded-lg inline-flex items-center justify-center px-2 py-2.5 ">
                                         <CheckIcon className="w-6 h-6 text-neutral-100" />
                                     </div>
 
                                     {/*Delete button Red*/}
-                                    <div className="w-full sm:w-auto bg-gray-800 hover:bg-red-600 focus:ring-4 focus:outline-none focus:ring-gray-300 text-white rounded-lg inline-flex items-center justify-center px-2 py-2.5 ">
+                                    <div onClick={() => { handleDelete(todo.id) }} className="w-full sm:w-auto bg-gray-800 hover:bg-red-600 focus:ring-4 focus:outline-none focus:ring-gray-300 text-white rounded-lg inline-flex items-center justify-center px-2 py-2.5 ">
                                         <XMarkIcon className="h-6 w-6 " />
                                     </div>
 
                                     {/*Edit Button Gray New*/}
                                     <button className="w-full sm:w-auto bg-gray-800 hover:bg-gray-600 focus:ring-4 focus:outline-none focus:ring-gray-300 text-white rounded-lg inline-flex items-center justify-center px-2 py-2.5 ">
-                                        <TodoItemForm todo={todo}/>
+                                        <TodoItemForm todo={todo} />
                                     </button>
                                 </div>
                             </div>
