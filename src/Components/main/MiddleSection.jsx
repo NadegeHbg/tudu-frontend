@@ -37,7 +37,7 @@ export default function MiddleSection({ tudu }) {
                         tudu.map((todo) => (
                             <div
                                 key={todo.id}
-                                className="m-4 h-full bg-gray-100 bg-opacity-75 px-8 pt-8 pb-8 rounded-lg overflow-hidden text-center relative"
+                                className="h-full bg-gray-100 bg-opacity-75 px-8 pt-8 pb-8 rounded-lg overflow-hidden text-center relative"
                             >
                                 <h2 className="tracking-widest text-xs title-font font-medium text-gray-400 mb-1">
                                     {todo.category}
