@@ -71,16 +71,6 @@ const handleEdit = async (data) => {
   }
 };
 
-//connection handler  => GET
-const HandleConnection = async (data) => {
-  try {
-    const response = axios.get("\\");
-    console.log(response, "connectionResponse");
-  } catch (err) {
-    console.log(err, "connectionError");
-  }
-};
-
 
 let allTudu = [];
 //get todos  => GET
@@ -112,8 +102,8 @@ const filteringTuduActive = async (data) => {
     });
     await console.log(response.data, "filteringResponseActive");
     allTudu = response.data;
-    return response.data;
     console.log(allTudu, "filteing data");
+    return response.data;
   } catch (err) {
     console.log(err, "connectionError");
   }
@@ -130,8 +120,8 @@ const filteringTuduCategory = async (category) => {
     });
     await console.log(response.data, "filteringCategoryResponseActive");
     allTudu = response.data;
-    return response.data;
     console.log(allTudu, "filteing category data");
+    return response.data;
   } catch (err) {
     console.log(err, "connectionError");
   }

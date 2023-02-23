@@ -1,31 +1,43 @@
+// React and react libraries
 import React from "react";
 import { useForm } from "react-hook-form";
-import Cookies from "js-cookie";
 import { useEffect, useState } from "react";
-import { CheckIcon, EllipsisVerticalIcon, XMarkIcon } from "@heroicons/react/24/outline";
-import { handleEdit } from '../../events/axiosGlobal';
+import Select from 'react-select'
+// import Creatable, { useCreatable } from 'react-select/creatable';
 
-export default function TodoItemForm({ todo }) {
 
-    // console.log(todo.id, 'todo id')
+// Cookies
+import Cookies from "js-cookie";
 
+// Functions
+import { handleAdd } from "../../events/axiosGlobal";
+
+// Icons and components
+import { EllipsisVerticalIcon } from "@heroicons/react/24/outline";
+
+export default function TodoItemForm({ tudu }) {
     const [showModal, setShowModal] = useState(false);
-
     const {
         register,
         handleSubmit,
-        setValue,
-        formState: { errors },
-    } = useForm({
-        defaultValues: {
-            id: todo.id,
-            category: todo.category,
-            ptaskname: todo.ptaskname,
-            description: todo.description,
-            duedate: todo.duedate,
-            entrydate: todo.entrydate
-        }
+        // formState: { errors },
+    } = useForm();
+
+    const newArray = tudu.map((obj) => {
+        return { category: obj.category };
     });
+    // console.log(newArray)
+
+    const uniqueArray = [...new Set(newArray.map((item) =>
+        item.category
+    ))];
+    // console.log(uniqueArray)
+
+    const options = uniqueArray.map((item) => {
+        return {
+            value: item, label: item
+        }
+    })
 
     const [userId, setUserId] = useState(null);
 
@@ -37,22 +49,14 @@ export default function TodoItemForm({ todo }) {
         setShowModal(false);
         data.user_id = userId;
         console.log(data, "data");
-        handleEdit(data);
+        handleAdd(data);
     };
-
-    const handleChange = (event) => {
-        const { newInfo, value } = event.target;
-        setValue(newInfo, value);
-    }
-
     return (
         <div className="container mx-auto">
             <div
-                className="w-full sm:w-auto bg-gray-800 hover:bg-gray-600 focus:ring-4 focus:outline-none focus:ring-gray-300 text-white rounded-lg inline-flex items-center justify-center px-2 py-2.5"
+                className="w-full sm:w-auto bg-gray-800 hover:bg-gray-600 focus:ring-4 focus:outline-none focus:ring-gray-300 text-white"
             >
-
-                {" "}
-                <EllipsisVerticalIcon  onClick={() => setShowModal(true)} className="h-6 w-6 " />
+                <EllipsisVerticalIcon onClick={() => setShowModal(true)} className="h-6 w-6" />
             </div>
             {showModal ? (
                 <>
@@ -69,26 +73,22 @@ export default function TodoItemForm({ todo }) {
                                     <form action="#" onSubmit={handleSubmit(onSubmit)} className="space-y-8">
                                         <div>
                                             <label htmlFor="name" className="block mb-2 text-sm font-logoFont text-gray-900 ">
-                                                Category
+                                                Choose your Category
                                             </label>
                                             <label htmlFor="category">
-                                                <select
+                                                <Select
                                                     className="shadow-sm text-gray-900 text-sm rounded-lg block w-full p-2.5 bg-lightcream"
                                                     name="category"
                                                     {...register("category", { required: true })}
-                                                >
-                                                    <option>Choose here</option>
-                                                    <option>Personal</option>
-                                                    <option>Business</option>
-                                                </select>
+                                                    options={options}
+                                                />
                                             </label>
                                         </div>
                                         <div>
                                             <label htmlFor="name" className="block mb-2 text-sm font-logoFont text-gray-900 ">
-                                                Task Name
+                                                Add your Tu Du
                                             </label>
                                             <input
-                                                onChange={handleChange}
                                                 type="name"
                                                 id="ptaskname"
                                                 className="shadow-sm text-gray-900 text-sm rounded-lg block w-full p-2.5 bg-lightcream"
@@ -99,42 +99,25 @@ export default function TodoItemForm({ todo }) {
                                         </div>
                                         <div>
                                             <label htmlFor="name" className="block mb-2 text-sm font-logoFont text-gray-900 ">
-                                              Description
+                                                Add your Description if you want
                                             </label>
                                             <input
-                                            onChange={handleChange}
                                                 type="text"
-                                                id="description"
+                                                id="ptaskdescription"
                                                 className="shadow-sm text-gray-900 text-sm rounded-lg block w-full p-2.5 bg-lightcream"
-                                                {...register("description", { required: true })}
+                                                {...register("ptaskdescription", { required: true })}
                                                 placeholder="Description "
                                             />
                                         </div>
                                         <div className="flex">
-                                        <label htmlFor="entrydate">
-                                                <label
-                                                    htmlFor="name"
-                                                    className="shadow-sm text-gray-900 text-sm rounded-lg font-logoFont block w-full p-2.5 bg-lightcream"
-                                                >
-                                                  Entry Date
-                                                </label>
-                                                <input
-                                                onChange={handleChange}
-                                                    type="date"
-                                                    name="entrydate"
-                                                    className="shadow-sm text-gray-900 text-sm rounded-lg block w-full p-2.5 bg-lightcream"
-                                                    {...register("entrydate", { required: true })}
-                                                />
-                                            </label>
                                             <label htmlFor="duedate">
                                                 <label
                                                     htmlFor="name"
                                                     className="shadow-sm text-gray-900 text-sm rounded-lg font-logoFont block w-full p-2.5 bg-lightcream"
                                                 >
-                                                   Due Date
+                                                    Due Date
                                                 </label>
                                                 <input
-                                                onChange={handleChange}
                                                     type="date"
                                                     name="duedate"
                                                     className="shadow-sm text-gray-900 text-sm rounded-lg block w-full p-2.5 bg-lightcream "
@@ -143,6 +126,20 @@ export default function TodoItemForm({ todo }) {
                                                 />
                                             </label>
 
+                                            <label htmlFor="entrydate">
+                                                <label
+                                                    htmlFor="name"
+                                                    className="shadow-sm text-gray-900 text-sm rounded-lg font-logoFont block w-full p-2.5 bg-lightcream"
+                                                >
+                                                    Entry Date
+                                                </label>
+                                                <input
+                                                    type="date"
+                                                    name="entrydate"
+                                                    className="shadow-sm text-gray-900 text-sm rounded-lg block w-full p-2.5 bg-lightcream"
+                                                    {...register("entrydate", { required: true })}
+                                                />
+                                            </label>
                                         </div>
                                     </form>
                                 </div>
@@ -156,8 +153,8 @@ export default function TodoItemForm({ todo }) {
                                     </button>
                                     <button
                                         className="bg-cyan-900 text-white active:bg-white font-logoFont uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
-                                        type="Submit"
-                                    onClick={handleSubmit(onSubmit)}
+                                        type="submit"
+                                        onClick={handleSubmit(onSubmit)}
                                     >
                                         Save Changes
                                     </button>

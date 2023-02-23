@@ -1,12 +1,10 @@
 import {
     CheckIcon,
-    EllipsisVerticalIcon,
     XMarkIcon,
 } from "@heroicons/react/24/outline";
 import React from "react";
 import TodoItemForm from "../forms/TodoItemForm";
 import { isDoneTudu, deleteTudu } from "../../events/axiosGlobal";
-import axios from "axios";
 
 export default function MiddleSection({ tudu }) {
 
@@ -16,6 +14,12 @@ export default function MiddleSection({ tudu }) {
     //     return date.toLocaleDateString("en-GB", options).replace(/\//g, "/");
     // }
 
+    // const newArray = tudu.map((obj) => {
+    //     return { id: obj.id, category: obj.category };
+    // });
+
+    // const categoryArray = [...new Set(newArray.map((item) => item.category))];
+
     const handleDone = (id) => {
         isDoneTudu(id);
     }
@@ -23,7 +27,7 @@ export default function MiddleSection({ tudu }) {
         deleteTudu(id);
     }
 
-   
+
 
     return (
         <section className="p-4 sm:ml-64 marker:text-gray-600 body-font w-full">
@@ -33,7 +37,7 @@ export default function MiddleSection({ tudu }) {
                         tudu.map((todo) => (
                             <div
                                 key={todo.id}
-                                className="m-4 h-full bg-gray-100 bg-opacity-75 px-8 pt-8 pb-8 rounded-lg overflow-hidden text-center relative"
+                                className="h-full bg-gray-100 bg-opacity-75 px-8 pt-8 pb-8 rounded-lg overflow-hidden text-center relative"
                             >
                                 <h2 className="tracking-widest text-xs title-font font-medium text-gray-400 mb-1">
                                     {todo.category}
@@ -55,7 +59,7 @@ export default function MiddleSection({ tudu }) {
 
                                 <div className="items-center justify-center space-y-4 sm:flex sm:space-y-0 sm:space-x-4">
                                     {/*Done Button Blue*/}
-                                    <div onClick={() => {handleDone(todo.id)}} className="w-full sm:w-auto bg-gray-800 hover:bg-cyan-600 focus:ring-4 focus:outline-none focus:ring-gray-300 text-white rounded-lg inline-flex items-center justify-center px-2 py-2.5 ">
+                                    <div onClick={() => { handleDone(todo.id) }} className="w-full sm:w-auto bg-gray-800 hover:bg-cyan-600 focus:ring-4 focus:outline-none focus:ring-gray-300 text-white rounded-lg inline-flex items-center justify-center px-2 py-2.5 ">
                                         <CheckIcon className="w-6 h-6 text-neutral-100" />
                                     </div>
 
@@ -65,9 +69,9 @@ export default function MiddleSection({ tudu }) {
                                     </div>
 
                                     {/*Edit Button Gray New*/}
-                                    <button className="w-full sm:w-auto bg-gray-800 hover:bg-gray-600 focus:ring-4 focus:outline-none focus:ring-gray-300 text-white rounded-lg inline-flex items-center justify-center px-2 py-2.5 ">
-                                        <TodoItemForm todo={todo} />
-                                    </button>
+                                    <div className="w-full sm:w-auto bg-gray-800 hover:bg-gray-600 focus:ring-4 focus:outline-none focus:ring-gray-300 text-white rounded-lg inline-flex items-center justify-center px-2 py-2.5" >
+                                        <TodoItemForm tudu={tudu} />
+                                    </div>
                                 </div>
                             </div>
                         ))
