@@ -1,18 +1,43 @@
+// React and react libraries
 import React from "react";
 import { useForm } from "react-hook-form";
-// import { handleAdd } from "../../events/axiosGlobal";
-import Cookies from "js-cookie";
 import { useEffect, useState } from "react";
-import { CheckIcon, EllipsisVerticalIcon, XMarkIcon } from "@heroicons/react/24/outline";
-import handleEdit from '../../events/axiosGlobal';
+import Select from 'react-select'
+// import Creatable, { useCreatable } from 'react-select/creatable';
 
-export default function TodoItemForm({todo}) {
+
+// Cookies
+import Cookies from "js-cookie";
+
+// Functions
+import { handleAdd } from "../../events/axiosGlobal";
+
+// Icons and components
+import { EllipsisVerticalIcon } from "@heroicons/react/24/outline";
+
+export default function TodoItemForm({ tudu }) {
     const [showModal, setShowModal] = useState(false);
     const {
         register,
         handleSubmit,
-        formState: { errors },
+        // formState: { errors },
     } = useForm();
+
+    const newArray = tudu.map((obj) => {
+        return { category: obj.category };
+    });
+    // console.log(newArray)
+
+    const uniqueArray = [...new Set(newArray.map((item) =>
+        item.category
+    ))];
+    // console.log(uniqueArray)
+
+    const options = uniqueArray.map((item) => {
+        return {
+            value: item, label: item
+        }
+    })
 
     const [userId, setUserId] = useState(null);
 
@@ -29,11 +54,9 @@ export default function TodoItemForm({todo}) {
     return (
         <div className="container mx-auto">
             <div
-                className="w-full sm:w-auto bg-gray-800 hover:bg-gray-600 focus:ring-4 focus:outline-none focus:ring-gray-300 text-white rounded-lg inline-flex items-center justify-center px-2 py-2.5"
+                className="w-full sm:w-auto bg-gray-800 hover:bg-gray-600 focus:ring-4 focus:outline-none focus:ring-gray-300 text-white"
             >
-
-                {" "}
-                <EllipsisVerticalIcon onClick={() => setShowModal(true)} className="h-6 w-6 " />
+                <EllipsisVerticalIcon onClick={() => setShowModal(true)} className="h-6 w-6" />
             </div>
             {showModal ? (
                 <>
@@ -53,15 +76,12 @@ export default function TodoItemForm({todo}) {
                                                 category    
                                             </label>
                                             <label htmlFor="category">
-                                                <select
+                                                <Select
                                                     className="shadow-sm text-gray-900 text-sm rounded-lg block w-full p-2.5 bg-lightcream"
                                                     name="category"
-                                                    {...register("category", { required: true })} value={todo.category}
-                                                >
-                                                    <option>Choose here</option>
-                                                    <option>Personal</option>
-                                                    <option>Business</option>
-                                                </select>
+                                                    {...register("category", { required: true })}
+                                                    options={options}
+                                                />
                                             </label>
                                         </div>
                                         <div>

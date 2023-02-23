@@ -63,24 +63,21 @@ const handleAdd = async (data) => {
 //connection edit tudu => PATCH
 const handleEdit = async (id) => {
   try {
+<<<<<<< HEAD
     const response = axios.patch(`\todo\${id}`);
     // response.data.headers['Content-Type'];
 
+=======
+    const response = await axios.patch(`/user/editTudu/${data.id}`,data);
+        // response.data.headers['Content-Type'];
+>>>>>>> ff990236dcd54d65b6240178866842d2f5905a8c
     console.log(response, "EditResponse");
   } catch (err) {
     console.log(err, "EditError");
   }
 };
 
-//connection handler  => GET
-const HandleConnection = async (data) => {
-  try {
-    const response = axios.get("\\");
-    console.log(response, "connectionResponse");
-  } catch (err) {
-    console.log(err, "connectionError");
-  }
-};
+
 let allTudu = [];
 //get todos  => GET
 const GetTodos = async (data) => {
@@ -111,8 +108,8 @@ const filteringTuduActive = async (data) => {
     });
     await console.log(response.data, "filteringResponseActive");
     allTudu = response.data;
-    return response.data;
     console.log(allTudu, "filteing data");
+    return response.data;
   } catch (err) {
     console.log(err, "connectionError");
   }
@@ -129,15 +126,15 @@ const filteringTuduCategory = async (category) => {
     });
     await console.log(response.data, "filteringCategoryResponseActive");
     allTudu = response.data;
-    return response.data;
     console.log(allTudu, "filteing category data");
+    return response.data;
   } catch (err) {
     console.log(err, "connectionError");
   }
 };
 
 // update tudu isdone
-const isdoneTudu = async (id) => {
+const isDoneTudu = async (id) => {
   try {
     const response = await axios.patch(`/user/updateTudu/${id}`, {
       headers: {
@@ -151,6 +148,25 @@ const isdoneTudu = async (id) => {
     console.log(err, "connectionError");
   }
 };
+
+// delete todo
+const deleteTudu = async (id) => {
+  try {
+      const response = await axios.delete(`/user/deleteTudu/${id}`, {
+          headers: {
+              "ngrok-skip-browser-warning": "69420",
+          },
+      });
+      console.log(response.data, "DeleteResponse");
+  } catch (err) {
+      console.log(err, "DeleteError");
+  }
+};
+
 export default axiosGlobal;
+<<<<<<< HEAD
 export { handleRegistration, HandleLogin, handleAdd, GetTodos, filteringTuduActive, filteringTuduCategory, isdoneTudu };
+=======
+export { handleRegistration, HandleLogin, handleAdd, GetTodos, filteringTuduActive, filteringTuduCategory, handleEdit, isDoneTudu, deleteTudu };
+>>>>>>> ff990236dcd54d65b6240178866842d2f5905a8c
 
