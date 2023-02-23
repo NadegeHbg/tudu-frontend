@@ -1,9 +1,9 @@
 // React and react libraries
 import React from "react";
-import { useForm } from "react-hook-form";
+import { useForm, Controller } from "react-hook-form";
 import { useEffect, useState } from "react";
-import Select from 'react-select'
-// import Creatable, { useCreatable } from 'react-select/creatable';
+// import Select from 'react-select'
+import Creatable from 'react-select/creatable';
 
 
 // Cookies
@@ -21,19 +21,21 @@ export default function TodoItemForm({ tudu }) {
         register,
         handleSubmit,
         // formState: { errors },
+        control,
     } = useForm();
 
+    // select options
     const newArray = tudu.map((obj) => {
         return { category: obj.category };
     });
     // console.log(newArray)
 
-    const uniqueArray = [...new Set(newArray.map((item) =>
+    const categoryArray = [...new Set(newArray.map((item) =>
         item.category
     ))];
-    // console.log(uniqueArray)
+    // console.log(categoryArray)
 
-    const options = uniqueArray.map((item) => {
+    const options = categoryArray.map((item) => {
         return {
             value: item, label: item
         }
@@ -72,24 +74,33 @@ export default function TodoItemForm({ tudu }) {
                                 <div className="relative p-6 flex-auto">
                                     <form action="#" onSubmit={handleSubmit(onSubmit)} className="space-y-8">
                                         <div>
-                                            <label htmlFor="name" className="block mb-2 text-sm font-logoFont text-gray-900 ">
+                                            <label htmlFor="category" className="block mb-2 text-sm font-logoFont text-gray-900 ">
                                                 Choose your Category
                                             </label>
-                                            <label htmlFor="category">
-                                                <Select
+                                            <Controller
+                                            name="category"
+                                            control={control}
+                                            render={({ field }) => {
+                                                // sending integer instead of string.
+                                                return <Creatable
+                                                options={options}
+                                                {...field} />;
+                                              }}
+                                            />
+                                                {/* <Creatable 
                                                     className="shadow-sm text-gray-900 text-sm rounded-lg block w-full p-2.5 bg-lightcream"
                                                     name="category"
                                                     {...register("category", { required: true })}
                                                     options={options}
-                                                />
-                                            </label>
+                                                    
+                                                /> */}
                                         </div>
                                         <div>
-                                            <label htmlFor="name" className="block mb-2 text-sm font-logoFont text-gray-900 ">
+                                            <label htmlFor="taskname" className="block mb-2 text-sm font-logoFont text-gray-900 ">
                                                 Add your Tu Du
                                             </label>
                                             <input
-                                                type="name"
+                                                type="text"
                                                 id="ptaskname"
                                                 className="shadow-sm text-gray-900 text-sm rounded-lg block w-full p-2.5 bg-lightcream"
                                                 {...register("ptaskname", { required: true })}
@@ -98,7 +109,7 @@ export default function TodoItemForm({ tudu }) {
                                             />
                                         </div>
                                         <div>
-                                            <label htmlFor="name" className="block mb-2 text-sm font-logoFont text-gray-900 ">
+                                            <label htmlFor="taskdescription" className="block mb-2 text-sm font-logoFont text-gray-900 ">
                                                 Add your Description if you want
                                             </label>
                                             <input
@@ -110,9 +121,9 @@ export default function TodoItemForm({ tudu }) {
                                             />
                                         </div>
                                         <div className="flex">
-                                            <label htmlFor="duedate">
+
                                                 <label
-                                                    htmlFor="name"
+                                                    htmlFor="duedate"
                                                     className="shadow-sm text-gray-900 text-sm rounded-lg font-logoFont block w-full p-2.5 bg-lightcream"
                                                 >
                                                     Due Date
@@ -124,11 +135,10 @@ export default function TodoItemForm({ tudu }) {
                                                     // style={{ WebkitAppearance: "none", color: "white", filter: "invert(1)" }}
                                                     {...register("duedate", { required: true })}
                                                 />
-                                            </label>
 
-                                            <label htmlFor="entrydate">
+
                                                 <label
-                                                    htmlFor="name"
+                                                    htmlFor="entrydate"
                                                     className="shadow-sm text-gray-900 text-sm rounded-lg font-logoFont block w-full p-2.5 bg-lightcream"
                                                 >
                                                     Entry Date
@@ -139,7 +149,6 @@ export default function TodoItemForm({ tudu }) {
                                                     className="shadow-sm text-gray-900 text-sm rounded-lg block w-full p-2.5 bg-lightcream"
                                                     {...register("entrydate", { required: true })}
                                                 />
-                                            </label>
                                         </div>
                                     </form>
                                 </div>
