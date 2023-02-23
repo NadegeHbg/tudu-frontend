@@ -33,9 +33,9 @@ export default function Sidebar({
 
   const uniqueArray = [...new Set(newArray.map((item) => item.category))];
 
-  function handleClick(item) {
-    console.log("Clicked item key:", item);
-    filteringTuduCategory(item);
+  async function fetchData() {
+    const data = Cookies.get("id");
+    setTudu(await GetTodos(data));
   }
 
   const filteringTuduActive = async (data) => {
@@ -54,9 +54,9 @@ export default function Sidebar({
     }
   };
 
-  async function fetchData() {
-    const data = Cookies.get("id");
-    setTudu(await GetTodos(data));
+  function handleClick(item) {
+    console.log("Clicked item key:", item);
+    filteringTuduCategory(item);
   }
 
   return (

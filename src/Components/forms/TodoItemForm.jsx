@@ -1,43 +1,34 @@
 // React and react libraries
 import React from "react";
-import { useForm } from "react-hook-form";
+import { useForm, Controller } from "react-hook-form";
 import { useEffect, useState } from "react";
-import Select from 'react-select'
-// import Creatable, { useCreatable } from 'react-select/creatable';
-
-
+// import Select from 'react-select'
+import { handleEdit , isDoneTudu} from "../../events/axiosGlobal";
+import Creatable, { useCreatable } from 'react-select/creatable';
 // Cookies
 import Cookies from "js-cookie";
-
-// Functions
-import { handleAdd } from "../../events/axiosGlobal";
-
 // Icons and components
 import { EllipsisVerticalIcon } from "@heroicons/react/24/outline";
 
-export default function TodoItemForm({ tudu }) {
-    const [showModal, setShowModal] = useState(false);
+
+export default function TodoItemForm({ tudu ,todo}) {
+    const [showModal, setShowModal] = useState(false)
+
     const {
         register,
         handleSubmit,
-        // formState: { errors },
-    } = useForm();
-
-    const newArray = tudu.map((obj) => {
-        return { category: obj.category };
-    });
-    // console.log(newArray)
-
-    const uniqueArray = [...new Set(newArray.map((item) =>
-        item.category
-    ))];
-    // console.log(uniqueArray)
-
-    const options = uniqueArray.map((item) => {
-        return {
-            value: item, label: item
+        setValue,
+        formState: { errors, control },
+    } = useForm({
+        defaultValues: {
+            id: todo.id,
+            category: todo.category,
+            ptaskname: todo.ptaskname,
+            description: todo.description,
+            duedate: todo.duedate,
+            entrydate: todo.entrydate
         }
-    })
+    });
 
     const [userId, setUserId] = useState(null);
 
@@ -51,12 +42,37 @@ export default function TodoItemForm({ tudu }) {
         console.log(data, "data");
         handleEdit(data);
     };
+
+    const handleChange = (event) => {
+        const { newInfo, value } = event.target;
+        setValue(newInfo, value);
+    }
+    const newArray = tudu.map((obj) => {
+        return { category: obj.category };
+    });
+    // console.log(newArray)
+
+    const categoryArray = [...new Set(newArray.map((item) =>
+        item.category
+    ))];
+    // console.log(categoryArray)
+
+    const options = categoryArray.map((item) => {
+        return {
+            value: item, label: item
+        }
+    })
+    useEffect(() => {
+        setUserId(Cookies.get("id"));
+    }, []);
     return (
         <div className="container mx-auto">
             <div
-                className="w-full sm:w-auto bg-gray-800 hover:bg-gray-600 focus:ring-4 focus:outline-none focus:ring-gray-300 text-white"
+                className="w-full sm:w-auto bg-gray-800 hover:bg-gray-600 focus:ring-4 focus:outline-none focus:ring-gray-300 text-white rounded-lg inline-flex items-center justify-center px-2 py-2.5"
             >
-                <EllipsisVerticalIcon onClick={() => setShowModal(true)} className="h-6 w-6" />
+
+                {" "}
+                <EllipsisVerticalIcon  onClick={() => setShowModal(true)} className="h-6 w-6 " />
             </div>
             {showModal ? (
                 <>
@@ -72,23 +88,36 @@ export default function TodoItemForm({ tudu }) {
                                 <div className="relative p-6 flex-auto">
                                     <form action="#" onSubmit={handleSubmit(onSubmit)} className="space-y-8">
                                         <div>
-                                            <label htmlFor="name" className="block mb-2 text-sm font-logoFont text-gray-900 ">
-                                                category    
+                                        <label htmlFor="category" className="block mb-2 text-sm font-logoFont text-gray-900 ">
+                                                Choose your Category
                                             </label>
-                                            <label htmlFor="category">
-                                                <Select
+                                            <Controller
+                                            name="category"
+                                            control={control}
+                                            render={({ field }) => {
+                                                // sending integer instead of string.
+                                                return <Creatable
+                                                options={options}
+                                                {...field} />;}}
+                                                />
+                                           
+                                                <select
                                                     className="shadow-sm text-gray-900 text-sm rounded-lg block w-full p-2.5 bg-lightcream"
                                                     name="category"
                                                     {...register("category", { required: true })}
-                                                    options={options}
-                                                />
-                                            </label>
+                                                >
+                                                    <option>Choose here</option>
+                                                    <option>Personal</option>
+                                                    <option>Business</option>
+                                                </select>
+                                           
                                         </div>
                                         <div>
                                             <label htmlFor="name" className="block mb-2 text-sm font-logoFont text-gray-900 ">
-                                                {todo.ptaskname}
+                                                Task Name
                                             </label>
                                             <input
+                                                onChange={handleChange}
                                                 type="name"
                                                 id="ptaskname"
                                                 className="shadow-sm text-gray-900 text-sm rounded-lg block w-full p-2.5 bg-lightcream"
@@ -99,47 +128,49 @@ export default function TodoItemForm({ tudu }) {
                                         </div>
                                         <div>
                                             <label htmlFor="name" className="block mb-2 text-sm font-logoFont text-gray-900 ">
-                                            {todo.description}
+                                              Description
                                             </label>
                                             <input
+                                            onChange={handleChange}
                                                 type="text"
-                                                id="ptaskdescription"
+                                                id="description"
                                                 className="shadow-sm text-gray-900 text-sm rounded-lg block w-full p-2.5 bg-lightcream"
-                                                {...register("ptaskdescription", { required: true })}
+                                                {...register("description", { required: true })}
                                                 placeholder="Description "
                                             />
                                         </div>
                                         <div className="flex">
-                                            <label htmlFor="duedate">
+                                        <label htmlFor="entrydate">
                                                 <label
                                                     htmlFor="name"
                                                     className="shadow-sm text-gray-900 text-sm rounded-lg font-logoFont block w-full p-2.5 bg-lightcream"
                                                 >
-                                                  {todo.duedate}
+                                                  Entry Date
                                                 </label>
                                                 <input
-                                                    type="date"
-                                                    name="duedate"
-                                                    className="shadow-sm text-gray-900 text-sm rounded-lg block w-full p-2.5 bg-lightcream "
-                                                    // style={{ WebkitAppearance: "none", color: "white", filter: "invert(1)" }}
-                                                    {...register("duedate", { required: true })}
-                                                />
-                                            </label>
-
-                                            <label htmlFor="entrydate">
-                                                <label
-                                                    htmlFor="name"
-                                                    className="shadow-sm text-gray-900 text-sm rounded-lg font-logoFont block w-full p-2.5 bg-lightcream"
-                                                >
-                                                     {todo.entrydate}
-                                                </label>
-                                                <input
+                                                onChange={handleChange}
                                                     type="date"
                                                     name="entrydate"
                                                     className="shadow-sm text-gray-900 text-sm rounded-lg block w-full p-2.5 bg-lightcream"
                                                     {...register("entrydate", { required: true })}
                                                 />
                                             </label>
+                                            <label htmlFor="duedate">
+                                                <label
+                                                    htmlFor="name"
+                                                    className="shadow-sm text-gray-900 text-sm rounded-lg font-logoFont block w-full p-2.5 bg-lightcream"
+                                                >
+                                                   Due Date
+                                                </label>
+                                                <input
+                                                onChange={handleChange}
+                                                    type="date"
+                                                    name="duedate"
+                                                    className="shadow-sm text-gray-900 text-sm rounded-lg block w-full p-2.5 bg-lightcream "
+                                                    {...register("duedate", { required: true })}
+                                                />
+                                            </label>
+
                                         </div>
                                     </form>
                                 </div>
@@ -153,8 +184,8 @@ export default function TodoItemForm({ tudu }) {
                                     </button>
                                     <button
                                         className="bg-cyan-900 text-white active:bg-white font-logoFont uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
-                                        type="submit"
-                                        onClick={handleSubmit(onSubmit)}
+                                        type="Submit"
+                                    onClick={handleSubmit(onSubmit)}
                                     >
                                         Save Changes
                                     </button>

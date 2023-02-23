@@ -61,16 +61,10 @@ const handleAdd = async (data) => {
 };
 
 //connection edit tudu => PATCH
-const handleEdit = async (id) => {
+const handleEdit = async (data) => {
   try {
-<<<<<<< HEAD
-    const response = axios.patch(`\todo\${id}`);
-    // response.data.headers['Content-Type'];
-
-=======
     const response = await axios.patch(`/user/editTudu/${data.id}`,data);
         // response.data.headers['Content-Type'];
->>>>>>> ff990236dcd54d65b6240178866842d2f5905a8c
     console.log(response, "EditResponse");
   } catch (err) {
     console.log(err, "EditError");
@@ -164,9 +158,5 @@ const deleteTudu = async (id) => {
 };
 
 export default axiosGlobal;
-<<<<<<< HEAD
-export { handleRegistration, HandleLogin, handleAdd, GetTodos, filteringTuduActive, filteringTuduCategory, isdoneTudu };
-=======
 export { handleRegistration, HandleLogin, handleAdd, GetTodos, filteringTuduActive, filteringTuduCategory, handleEdit, isDoneTudu, deleteTudu };
->>>>>>> ff990236dcd54d65b6240178866842d2f5905a8c
 
