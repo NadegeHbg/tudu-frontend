@@ -1,6 +1,5 @@
 import {
     CheckIcon,
-    EllipsisVerticalIcon,
     XMarkIcon,
 } from "@heroicons/react/24/outline";
 import React from "react";
@@ -10,7 +9,11 @@ import { isDoneTudu, deleteTudu } from "../../events/axiosGlobal";
 export default function MiddleSection({ tudu, selectedFilter }) {
 
     const handleDone = (id) =>{
-        isdoneTudu(id)
+        isDoneTudu(id)
+    }
+
+    const handleDelete = (id) => {
+        deleteTudu(id)
     }
 
     return (

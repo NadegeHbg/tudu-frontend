@@ -3,6 +3,7 @@ import React from "react";
 import { useForm, Controller } from "react-hook-form";
 import { useEffect, useState } from "react";
 // import Select from 'react-select'
+// eslint-disable-next-line
 import { handleEdit , isDoneTudu} from "../../events/axiosGlobal";
 import Creatable from 'react-select/creatable';
 // Cookies
@@ -18,7 +19,7 @@ export default function TodoItemForm({ tudu ,todo}) {
         register,
         handleSubmit,
         setValue,
-        formState: { errors },
+        // formState: { errors },
         control
     } = useForm({
         defaultValues: {
@@ -95,7 +96,6 @@ export default function TodoItemForm({ tudu ,todo}) {
                                             control={control}
                                             render={({ field }) => {
                                                 // sending integer instead of string.
-                                                {console.log(field)}
                                                 return <Creatable
                                                 options={options}
                                                 // {...field}

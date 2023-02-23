@@ -36,7 +36,7 @@ export default function Registration() {
     try {
       console.log(data, "axios global login");
       const response = await axios.post("/user/login", data);
-      const resStatus = response.status;
+      // const resStatus = response.status;
       const resData = response.data;
       console.log(response, "login post request");
 
@@ -47,7 +47,7 @@ export default function Registration() {
 
       navigate("/dashboard");
     } catch (err) {
-      const errStatus = err.response.status;
+      // const errStatus = err.response.status;
       alert(err.response.data);
     }
   };

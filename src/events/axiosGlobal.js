@@ -61,7 +61,7 @@ const handleAdd = async (data) => {
 };
 
 //connection edit tudu => PATCH
-const handleEdit = async (id) => {
+const handleEdit = async (data) => {
   try {
     const response = await axios.patch(`/user/editTudu/${data.id}`,data);
         // response.data.headers['Content-Type'];
