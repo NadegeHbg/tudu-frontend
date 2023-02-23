@@ -12,7 +12,7 @@ import {
   StarIcon,
   TagIcon,
 } from "@heroicons/react/24/outline";
-import { set } from "react-hook-form";
+// import { set } from "react-hook-form";
 
 export default function Sidebar({
   tudu,

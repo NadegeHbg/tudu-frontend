@@ -3,8 +3,9 @@ import React from "react";
 import { useForm, Controller } from "react-hook-form";
 import { useEffect, useState } from "react";
 // import Select from 'react-select'
+// eslint-disable-next-line
 import { handleEdit , isDoneTudu} from "../../events/axiosGlobal";
-import Creatable, { useCreatable } from 'react-select/creatable';
+import Creatable from 'react-select/creatable';
 // Cookies
 import Cookies from "js-cookie";
 // Icons and components
@@ -18,15 +19,16 @@ export default function TodoItemForm({ tudu ,todo}) {
         register,
         handleSubmit,
         setValue,
-        formState: { errors, control },
+        // formState: { errors },
+        control
     } = useForm({
         defaultValues: {
             id: todo.id,
             category: todo.category,
             ptaskname: todo.ptaskname,
             description: todo.description,
-            duedate: todo.duedate,
-            entrydate: todo.entrydate
+            duedate: new Date(todo.duedate).toISOString().slice(0,10),
+            entrydate: new Date(todo.entrydate).toISOString().slice(0,10),
         }
     });
 
@@ -39,7 +41,7 @@ export default function TodoItemForm({ tudu ,todo}) {
     const onSubmit = async (data = {}) => {
         setShowModal(false);
         data.user_id = userId;
-        console.log(data, "data");
+        // console.log(data, "data");
         handleEdit(data);
     };
 
@@ -68,11 +70,9 @@ export default function TodoItemForm({ tudu ,todo}) {
     return (
         <div className="container mx-auto">
             <div
-                className="w-full sm:w-auto bg-gray-800 hover:bg-gray-600 focus:ring-4 focus:outline-none focus:ring-gray-300 text-white rounded-lg inline-flex items-center justify-center px-2 py-2.5"
+                className="w-full sm:w-auto bg-gray-800 hover:bg-gray-600 focus:ring-4 focus:outline-none focus:ring-gray-300 text-white"
             >
-
-                {" "}
-                <EllipsisVerticalIcon  onClick={() => setShowModal(true)} className="h-6 w-6 " />
+                <EllipsisVerticalIcon onClick={() => setShowModal(true)} className="h-6 w-6 inline-flex justify-center" />
             </div>
             {showModal ? (
                 <>
@@ -98,19 +98,12 @@ export default function TodoItemForm({ tudu ,todo}) {
                                                 // sending integer instead of string.
                                                 return <Creatable
                                                 options={options}
-                                                {...field} />;}}
+                                                // {...field}
+                                                value={field.value}
+                                                onChange={(selectedOption) => field.onChange(selectedOption?.value)}
+                                                />;}}        
                                                 />
-                                           
-                                                <select
-                                                    className="shadow-sm text-gray-900 text-sm rounded-lg block w-full p-2.5 bg-lightcream"
-                                                    name="category"
-                                                    {...register("category", { required: true })}
-                                                >
-                                                    <option>Choose here</option>
-                                                    <option>Personal</option>
-                                                    <option>Business</option>
-                                                </select>
-                                           
+                                        
                                         </div>
                                         <div>
                                             <label htmlFor="name" className="block mb-2 text-sm font-logoFont text-gray-900 ">
@@ -136,8 +129,9 @@ export default function TodoItemForm({ tudu ,todo}) {
                                                 id="description"
                                                 className="shadow-sm text-gray-900 text-sm rounded-lg block w-full p-2.5 bg-lightcream"
                                                 {...register("description", { required: true })}
-                                                placeholder="Description "
+                                                placeholder="description "
                                             />
+                                        
                                         </div>
                                         <div className="flex">
                                         <label htmlFor="entrydate">
@@ -152,7 +146,8 @@ export default function TodoItemForm({ tudu ,todo}) {
                                                     type="date"
                                                     name="entrydate"
                                                     className="shadow-sm text-gray-900 text-sm rounded-lg block w-full p-2.5 bg-lightcream"
-                                                    {...register("entrydate", { required: true })}
+
+                                                    {...register("entrydate")}
                                                 />
                                             </label>
                                             <label htmlFor="duedate">
@@ -167,7 +162,8 @@ export default function TodoItemForm({ tudu ,todo}) {
                                                     type="date"
                                                     name="duedate"
                                                     className="shadow-sm text-gray-900 text-sm rounded-lg block w-full p-2.5 bg-lightcream "
-                                                    {...register("duedate", { required: true })}
+                                                    // style={{ WebkitAppearance: "none", color: "white", filter: "invert(1)" }}
+                                                    {...register("duedate")}
                                                 />
                                             </label>
 
