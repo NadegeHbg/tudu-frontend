@@ -1,6 +1,5 @@
 import {
     CheckIcon,
-    EllipsisVerticalIcon,
     XMarkIcon,
 } from "@heroicons/react/24/outline";
 import React from "react";
@@ -10,7 +9,11 @@ import { isDoneTudu, deleteTudu } from "../../events/axiosGlobal";
 export default function MiddleSection({ tudu, selectedFilter }) {
 
     const handleDone = (id) =>{
-        isdoneTudu(id)
+        isDoneTudu(id)
+    }
+
+    const handleDelete = (id) => {
+        deleteTudu(id)
     }
 
     return (
@@ -21,7 +24,7 @@ export default function MiddleSection({ tudu, selectedFilter }) {
                         tudu.map((todo) => (
                             <div
                                 key={todo.id}
-                                className="m-4 h-full bg-gray-100 bg-opacity-75 px-8 pt-8 pb-8 rounded-lg overflow-hidden text-center relative"
+                                className="h-full bg-gray-100 bg-opacity-75 px-8 pt-8 pb-8 rounded-lg overflow-hidden text-center relative"
                             >
                                 <h2 className="tracking-widest text-xs title-font font-medium text-gray-400 mb-1">
                                     {todo.category}
@@ -64,7 +67,7 @@ export default function MiddleSection({ tudu, selectedFilter }) {
                             You do not have any todos
                         </h1>
                     )}
-                    {selectedFilter ? (
+              {selectedFilter ? (
                         selectedFilter.map((todo) => (
                             <div
                                 key={todo.id}
@@ -101,15 +104,14 @@ export default function MiddleSection({ tudu, selectedFilter }) {
 
                                     {/*Edit Button Gray New*/}
                                     <div className="w-full sm:w-auto bg-gray-800 hover:bg-gray-600 focus:ring-4 focus:outline-none focus:ring-gray-300 text-white rounded-lg inline-flex items-center justify-center px-2 py-2.5" >
-                                        <TodoItemForm tudu={tudu} />
+                                        <TodoItemForm tudu={tudu} todo={todo} />
                                     </div>
                                 </div>
                             </div>
                         ))
                     ) : (
-                        <h1 className="h-full bg-gray-100 bg-opacity-75 px-8 pt-8 pb-8 rounded-lg overflow-hidden text-center relative">
-                            You do not have any todos
-                        </h1>
+                        // to correct later
+                        <p></p>
                     )}
                 </div>
             </div>
