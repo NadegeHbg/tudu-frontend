@@ -90,7 +90,7 @@ export default function TodoItemFormAdd() {
                                                 type="text"
                                                 id="ptaskdescription"
                                                 className="shadow-sm text-gray-900 text-sm rounded-lg block w-full p-2.5 bg-lightcream"
-                                                {...register("ptaskdescription", { required: true })}
+                                                {...register("description", { required: true })}
                                                 placeholder="Description "
                                             />
                                         </div>
