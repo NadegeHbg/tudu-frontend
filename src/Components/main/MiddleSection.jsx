@@ -1,5 +1,6 @@
 import {
     CheckIcon,
+    EllipsisVerticalIcon,
     XMarkIcon,
 } from "@heroicons/react/24/outline";
 import React from "react";
@@ -8,26 +9,9 @@ import { isDoneTudu, deleteTudu } from "../../events/axiosGlobal";
 
 export default function MiddleSection({ tudu, selectedFilter }) {
 
-    // const duedate = (duedate) => {
-    //     const date = new Date();
-    //     const options = { year: "numeric", month: "2-digit", day: "2-digit" };
-    //     return date.toLocaleDateString("en-GB", options).replace(/\//g, "/");
-    // }
-
-    // const newArray = tudu.map((obj) => {
-    //     return { id: obj.id, category: obj.category };
-    // });
-
-    // const categoryArray = [...new Set(newArray.map((item) => item.category))];
-
-    const handleDone = (id) => {
-        isDoneTudu(id);
+    const handleDone = (id) =>{
+        isdoneTudu(id)
     }
-    const handleDelete = (id) => {
-        deleteTudu(id);
-    }
-
-
 
     return (
         <section className="p-4 sm:ml-64 marker:text-gray-600 body-font w-full">
@@ -64,14 +48,14 @@ export default function MiddleSection({ tudu, selectedFilter }) {
                                     </div>
 
                                     {/*Delete button Red*/}
-                                    <div onClick={() => { handleDelete(todo.id) }} className="w-full sm:w-auto bg-gray-800 hover:bg-red-600 focus:ring-4 focus:outline-none focus:ring-gray-300 text-white rounded-lg inline-flex items-center justify-center px-2 py-2.5 ">
+                                    <div className="w-full sm:w-auto bg-gray-800 hover:bg-red-600 focus:ring-4 focus:outline-none focus:ring-gray-300 text-white rounded-lg inline-flex items-center justify-center px-2 py-2.5 ">
                                         <XMarkIcon className="h-6 w-6 " />
                                     </div>
 
                                     {/*Edit Button Gray New*/}
-                                    <div className="w-full sm:w-auto bg-gray-800 hover:bg-gray-600 focus:ring-4 focus:outline-none focus:ring-gray-300 text-white rounded-lg inline-flex items-center justify-center px-2 py-2.5" >
-                                        <TodoItemForm todo={todo} tudu={tudu} />
-                                    </div>
+                                    <button className="w-full sm:w-auto bg-gray-800 hover:bg-gray-600 focus:ring-4 focus:outline-none focus:ring-gray-300 text-white rounded-lg inline-flex items-center justify-center px-2 py-2.5 ">
+                                        <TodoItemForm todo={todo}/>
+                                    </button>
                                 </div>
                             </div>
                         ))
