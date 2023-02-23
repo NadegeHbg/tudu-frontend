@@ -7,7 +7,6 @@ import { handleEdit } from '../../events/axiosGlobal';
 
 export default function TodoItemForm({ todo }) {
 
-    // console.log(todo.id, 'todo id')
 
     const [showModal, setShowModal] = useState(false);
 
