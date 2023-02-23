@@ -49,7 +49,7 @@ export default function TodoItemForm({ tudu }) {
         setShowModal(false);
         data.user_id = userId;
         console.log(data, "data");
-        handleAdd(data);
+        handleEdit(data);
     };
     return (
         <div className="container mx-auto">
@@ -73,7 +73,7 @@ export default function TodoItemForm({ tudu }) {
                                     <form action="#" onSubmit={handleSubmit(onSubmit)} className="space-y-8">
                                         <div>
                                             <label htmlFor="name" className="block mb-2 text-sm font-logoFont text-gray-900 ">
-                                                Choose your Category
+                                                category    
                                             </label>
                                             <label htmlFor="category">
                                                 <Select
@@ -86,7 +86,7 @@ export default function TodoItemForm({ tudu }) {
                                         </div>
                                         <div>
                                             <label htmlFor="name" className="block mb-2 text-sm font-logoFont text-gray-900 ">
-                                                Add your Tu Du
+                                                {todo.ptaskname}
                                             </label>
                                             <input
                                                 type="name"
@@ -99,7 +99,7 @@ export default function TodoItemForm({ tudu }) {
                                         </div>
                                         <div>
                                             <label htmlFor="name" className="block mb-2 text-sm font-logoFont text-gray-900 ">
-                                                Add your Description if you want
+                                            {todo.description}
                                             </label>
                                             <input
                                                 type="text"
@@ -115,7 +115,7 @@ export default function TodoItemForm({ tudu }) {
                                                     htmlFor="name"
                                                     className="shadow-sm text-gray-900 text-sm rounded-lg font-logoFont block w-full p-2.5 bg-lightcream"
                                                 >
-                                                    Due Date
+                                                  {todo.duedate}
                                                 </label>
                                                 <input
                                                     type="date"
@@ -131,7 +131,7 @@ export default function TodoItemForm({ tudu }) {
                                                     htmlFor="name"
                                                     className="shadow-sm text-gray-900 text-sm rounded-lg font-logoFont block w-full p-2.5 bg-lightcream"
                                                 >
-                                                    Entry Date
+                                                     {todo.entrydate}
                                                 </label>
                                                 <input
                                                     type="date"
