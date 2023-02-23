@@ -51,13 +51,13 @@ export default function MiddleSection({ tudu, selectedFilter }) {
                                     </div>
 
                                     {/*Delete button Red*/}
-                                    <div className="w-full sm:w-auto bg-gray-800 hover:bg-red-600 focus:ring-4 focus:outline-none focus:ring-gray-300 text-white rounded-lg inline-flex items-center justify-center px-2 py-2.5 ">
+                                    <div onClick={() => { handleDelete(todo.id) }} className="w-full sm:w-auto bg-gray-800 hover:bg-red-600 focus:ring-4 focus:outline-none focus:ring-gray-300 text-white rounded-lg inline-flex items-center justify-center px-2 py-2.5 ">
                                         <XMarkIcon className="h-6 w-6 " />
                                     </div>
 
                                     {/*Edit Button Gray New*/}
                                     <button className="w-full sm:w-auto bg-gray-800 hover:bg-gray-600 focus:ring-4 focus:outline-none focus:ring-gray-300 text-white rounded-lg inline-flex items-center justify-center px-2 py-2.5 ">
-                                        <TodoItemForm todo={todo}/>
+                                        <TodoItemForm todo={todo} tudu={tudu}/>
                                     </button>
                                 </div>
                             </div>
