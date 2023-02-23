@@ -1,6 +1,8 @@
 import React, { useState } from "react";
+import axios from "axios";
+import Cookies from "js-cookie";
 import { useNavigate } from "react-router-dom";
-import { filteringTuduActive, filteringTuduCategory } from "../../events/axiosGlobal";
+import { filteringTuduCategory, GetTodos } from "../../events/axiosGlobal";
 import {
   ArchiveBoxIcon,
   ArrowDownCircleIcon,
@@ -12,8 +14,14 @@ import {
   StarIcon,
   TagIcon,
 } from "@heroicons/react/24/outline";
+import { set } from "react-hook-form";
 
-export default function Sidebar({ tudu }) {
+export default function Sidebar({
+  tudu,
+  setTudu,
+  selectedFilter,
+  setSelectedFilter,
+}) {
   const [open, setOpen] = useState(false);
 
   const handleOpen = () => {
@@ -29,7 +37,28 @@ export default function Sidebar({ tudu }) {
 
   function handleClick(item) {
     console.log("Clicked item key:", item);
-    filteringTuduCategory(item)
+    filteringTuduCategory(item);
+  }
+
+  const filteringTuduActive = async (data) => {
+    try {
+      const dataF = Cookies.get("id");
+      const response = await axios.get(`/user/${dataF}/${data}`, {
+        headers: {
+          "ngrok-skip-browser-warning": "69420",
+        },
+      });
+      setSelectedFilter(response.data);
+      setTudu([]);
+      return response.data;
+    } catch (err) {
+      console.log(err, "connectionError");
+    }
+  };
+
+  async function fetchData() {
+    const data = Cookies.get("id");
+    setTudu(await GetTodos(data));
   }
 
   return (
@@ -42,29 +71,26 @@ export default function Sidebar({ tudu }) {
         <div className="h-full px-3 py-4 pt-24 overflow-y-auto bg-gray-800 border-gray-700">
           <ul className="space-y-2">
             {/*All Area*/}
-            <li>
+            <li
+              onClick={() => {
+                fetchData();
+                setSelectedFilter([]);
+                console.log(tudu);
+              }}
+            >
               <span className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
                 <ArchiveBoxIcon className="w-6 h-6 text-cyan-300" />
 
-                <span
-                  className="flex-1 ml-3 whitespace-nowrap"
-                >
-                  All
-                </span>
+                <span className="flex-1 ml-3 whitespace-nowrap">All</span>
                 <span className="inline-flex items-center justify-center px-2 ml-3 text-sm font-medium text-gray-800 bg-gray-200 rounded-full dark:bg-gray-700 dark:text-gray-300"></span>
               </span>
             </li>
 
             {/*Active Area*/}
-            <li>
+            <li onClick={() => filteringTuduActive(false)}>
               <span className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
                 <StarIcon className="w-6 h-6 text-cyan-300" />
-                <span
-                  className="flex-1 ml-3 whitespace-nowrap"
-                  onClick={() => filteringTuduActive(false)}
-                >
-                  Active
-                </span>
+                <span className="flex-1 ml-3 whitespace-nowrap">Active</span>
                 <span className="inline-flex items-center justify-center w-3 h-3 p-3 ml-3 text-sm font-medium text-blue-800 bg-blue-100 rounded-full dark:bg-blue-900 dark:text-blue-300">
                   3
                 </span>
@@ -80,11 +106,11 @@ export default function Sidebar({ tudu }) {
             </li>
 
             {/*Done Area*/}
-            <li>
+            <li onClick={() => filteringTuduActive(true)}>
               <span className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
                 <CheckCircleIcon className="w-6 h-6 text-cyan-300" />
 
-                <span className="flex-1 ml-3 whitespace-nowrap" onClick={() => filteringTuduActive(true)}>Done</span>
+                <span className="flex-1 ml-3 whitespace-nowrap">Done</span>
               </span>
             </li>
 

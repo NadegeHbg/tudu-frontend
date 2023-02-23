@@ -6,7 +6,7 @@ import MiddleSection from "../Components/main/MiddleSection";
 
 const Dashboard = () => {
     const [tudu, setTudu] = useState([]);
-    const [selectedArray, setSelectedArray] = useState([]);
+    const [selectedFilter, setSelectedFilter] = useState([]);
 
 
     useEffect(() => {
@@ -19,8 +19,8 @@ const Dashboard = () => {
 
     return (
         <div className="flex">
-            <Sidebar tudu={tudu} />
-            <MiddleSection tudu={tudu}/>
+            <Sidebar tudu={tudu} setTudu={setTudu} selectedFilter={selectedFilter} setSelectedFilter={setSelectedFilter}/>
+            <MiddleSection tudu={tudu} selectedFilter={selectedFilter}/>
         </div>
         //error for map function in the dashboard
             // {tudu && tudu.map((todo) => (
