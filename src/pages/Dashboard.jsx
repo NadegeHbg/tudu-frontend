@@ -5,11 +5,10 @@ import Sidebar from "../Components/main/Sidebar";
 import MiddleSection from "../Components/main/MiddleSection";
 
 const Dashboard = () => {
+
+    // get all tudu from back end store it here. even filtered tudu is stored here
     const [tudu, setTudu] = useState([]);
     // eslint-disable-next-line
-    const [selectedArray, setSelectedArray] = useState([]);
-
-
     useEffect(() => {
         async function fetchData() {
             const data = Cookies.get("id");
@@ -20,14 +19,9 @@ const Dashboard = () => {
 
     return (
         <div className="flex">
-            <Sidebar tudu={tudu} setTudu={setTudu} selectedArray={selectedArray} setSelectedArray={setSelectedArray} />
-            <MiddleSection tudu={tudu} setTudu={setTudu} selectedArray={selectedArray} setSelectedArray={setSelectedArray} />
+            <Sidebar tudu={tudu} setTudu={setTudu}  />
+            <MiddleSection tudu={tudu} setTudu={setTudu}  />
         </div>
-        //error for map function in the dashboard
-        // {tudu && tudu.map((todo) => (
-        //     <TodoCard key={todo._id} todo={todo} allTodo={allTodo} />
-        // ))}
-
     );
 };
 

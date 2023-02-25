@@ -2,7 +2,7 @@ import React, { useState,useEffect } from "react";
 import axios from "axios";
 import Cookies from "js-cookie";
 import { useNavigate } from "react-router-dom";
-import { filteringTuduCategory, GetTodos } from "../../events/axiosGlobal";
+import { filteringTuduCategory, GetTodos ,filteringTuduActive} from "../../events/axiosGlobal";
 import {
   ArchiveBoxIcon,
   ArrowLeftOnRectangleIcon,
@@ -14,23 +14,26 @@ import {
 } from "@heroicons/react/24/outline";
 // import { set } from "react-hook-form";
 
-export default function Sidebar({
-  tudu,
-  setTudu,
-  selectedFilter,
-  setSelectedFilter,
-}) {
+ const Sidebar = ({tudu, setTudu}) => {
   const [open, setOpen] = useState(false);
   const [uniqueArray, setUniqueArray] = useState([]);
 
   const handleOpen = () => {
     setOpen(!open);
   };
+  //display tudu
   const navigate = useNavigate();
   useEffect(() => {
     categoryFunction();
   }, [tudu]);
 
+   //get all-tudu
+   async function fetchData() {
+    const data = Cookies.get("id");
+    setTudu(await GetTodos(data));
+  }
+
+  //filtering the tudu
   function categoryFunction() {
     if (tudu.length > 0) {
       const newArray = tudu.map((obj) => {
@@ -41,33 +44,24 @@ export default function Sidebar({
       setUniqueArray(uniqueArray);
     } 
   }
-  function handleClick(item) {
+
+  // category filter
+  const handleClick = async (item) => {
     console.log("Clicked item key:", item);
-    filteringTuduCategory(item);
+    const filterValue = await filteringTuduCategory(item);
+    console.log(filterValue,"sidebar filter category")
+    setTudu(filterValue)
   }
 
-
-  
-  const filteringTuduActive = async (data) => {
-    try {
-      const dataF = Cookies.get("id");
-      const response = await axios.get(`/user/${dataF}/${data}`, {
-        headers: {
-          "ngrok-skip-browser-warning": "69420",
-        },
-      });
-      setSelectedFilter(response.data);
-      setTudu([]);
-      return response.data;
-    } catch (err) {
-      console.log(err, "connectionError");
-    }
+  // Active & done filter    
+  const filteringTuduActif = async (data) => {
+    console.log("Clicked item key:", data);
+    const filterValue = await filteringTuduActive(data);
+    console.log(filterValue,"sidebar filter category")
+    setTudu(filterValue)
   };
 
-  async function fetchData() {
-    const data = Cookies.get("id");
-    setTudu(await GetTodos(data));
-  }
+ 
 
   return (
     <div className="">
@@ -82,9 +76,7 @@ export default function Sidebar({
             <li
               onClick={() => {
                 fetchData();
-                setSelectedFilter([]);
-                categoryFunction();
-                console.log(tudu);
+                console.log(tudu,"onclick sidebar");
               }}
             >
               <span className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
@@ -96,7 +88,7 @@ export default function Sidebar({
             </li>
 
             {/*Active Area*/}
-            <li onClick={() => filteringTuduActive(false)}>
+            <li onClick={() => filteringTuduActif(false)}>
               <span className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
                 <StarIcon className="w-6 h-6 text-cyan-300" />
                 <span className="flex-1 ml-3 whitespace-nowrap">Active</span>
@@ -115,7 +107,7 @@ export default function Sidebar({
             </li>
 
             {/*Done Area*/}
-            <li onClick={() => filteringTuduActive(true)}>
+            <li onClick={() => filteringTuduActif(true)}>
               <span className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
                 <CheckCircleIcon className="w-6 h-6 text-cyan-300" />
 
@@ -182,3 +174,4 @@ export default function Sidebar({
     </div>
   );
 }
+export default Sidebar
