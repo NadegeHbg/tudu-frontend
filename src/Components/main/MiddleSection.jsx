@@ -20,7 +20,8 @@ export default function MiddleSection({ tudu, selectedFilter }) {
         <section className="p-4 sm:ml-64 marker:text-gray-600 body-font w-full">
             <div className="container px-5 py-4 mx-auto">
                 <div className="flex flex-wrap gap-8">
-                    {tudu ? (
+                    
+                    {(tudu.length>0 )? (
                         tudu.map((todo) => (
                             <div
                                 key={todo.id}

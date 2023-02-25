@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import axios from "axios";
 import Cookies from "js-cookie";
 import { useNavigate } from "react-router-dom";
@@ -21,23 +21,33 @@ export default function Sidebar({
   setSelectedFilter,
 }) {
   const [open, setOpen] = useState(false);
+  const [uniqueArray, setUniqueArray] = useState([]);
 
   const handleOpen = () => {
     setOpen(!open);
   };
   const navigate = useNavigate();
+  useEffect(() => {
+    categoryFunction();
+  }, [tudu]);
 
-  const newArray = tudu.map((obj) => {
-    return { id: obj.id, category: obj.category };
-  });
+  function categoryFunction() {
+    if (tudu.length > 0) {
+      const newArray = tudu.map((obj) => {
+        return { id: obj.id, category: obj.category };
+      });
 
-  const uniqueArray = [...new Set(newArray.map((item) => item.category))];
-
+      const uniqueArray = [...new Set(newArray.map((item) => item.category))];
+      setUniqueArray(uniqueArray);
+    } 
+  }
   function handleClick(item) {
     console.log("Clicked item key:", item);
     filteringTuduCategory(item);
   }
 
+
+  
   const filteringTuduActive = async (data) => {
     try {
       const dataF = Cookies.get("id");
@@ -73,6 +83,7 @@ export default function Sidebar({
               onClick={() => {
                 fetchData();
                 setSelectedFilter([]);
+                categoryFunction();
                 console.log(tudu);
               }}
             >
@@ -124,22 +135,26 @@ export default function Sidebar({
               </button>
               {open
                 ? (
-                  <ul>
-                    {uniqueArray.map((item) => (
-                      <li
-                        key={item}
-                        className="flex items-center  text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
-                        onClick={() => handleClick(item)}
-                      >
-                        <ChevronRightIcon className="w-6 h-6 text-yellow-300" />
-                        <button className="flex- mr-14 whitespace-nowrap p-2 text-base font-normal">
-                          {item}
-                        </button>
-                      </li>
-                    ))}
-                  </ul>
-                ) || <p>You do not have any todo</p>
-                : null}
+                    <ul>
+                      {(uniqueArray.length>0) ?(uniqueArray.map((item) => 
+                        (
+                          <li
+                            key={item}
+                            className="flex items-center  text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
+                            onClick={() => handleClick(item)}
+                          >
+                            <ChevronRightIcon className="w-6 h-6 text-yellow-300" />
+                            <button className="flex- mr-14 whitespace-nowrap p-2 text-base font-normal">
+                              {item}
+                            </button>
+                          </li>
+                              
+                        ))):(  <p className=" pr-5">No Category</p> )
+                      }
+                    </ul>
+                  ) :(<p></p>)
+              }
+                 
             </li>
           </ul>
           <ul className="pt-4 mt-4 space-y-2 border-t border-gray-200 dark:border-gray-700">

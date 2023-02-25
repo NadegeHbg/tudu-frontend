@@ -20,8 +20,8 @@ const Dashboard = () => {
 
     return (
         <div className="flex">
-            <Sidebar tudu={tudu} />
-            <MiddleSection tudu={tudu} />
+            <Sidebar tudu={tudu} setTudu={setTudu} selectedArray={selectedArray} setSelectedArray={setSelectedArray} />
+            <MiddleSection tudu={tudu} setTudu={setTudu} selectedArray={selectedArray} setSelectedArray={setSelectedArray} />
         </div>
         //error for map function in the dashboard
         // {tudu && tudu.map((todo) => (

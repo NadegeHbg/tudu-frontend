@@ -88,7 +88,7 @@ export default function TodoItemFormAdd() {
                                             </label>
                                             <input
                                                 type="text"
-                                                id="ptaskdescription"
+                                                id="description"
                                                 className="shadow-sm text-gray-900 text-sm rounded-lg block w-full p-2.5 bg-lightcream"
                                                 {...register("description", { required: true })}
                                                 placeholder="Description "
