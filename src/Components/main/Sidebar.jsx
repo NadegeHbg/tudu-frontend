@@ -79,7 +79,7 @@ import {
                 console.log(tudu,"onclick sidebar");
               }}
             >
-              <span className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
+              <span className="flex items-center p-2 text-base font-normal text-neutral-300 hover:text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
                 <ArchiveBoxIcon className="w-6 h-6 text-cyan-300" />
 
                 <span className="flex-1 ml-3 whitespace-nowrap">All</span>
@@ -89,7 +89,7 @@ import {
 
             {/*Active Area*/}
             <li onClick={() => filteringTuduActif(false)}>
-              <span className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
+              <span className="flex items-center p-2 text-base font-normal text-neutral-300 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 hover:text-gray-900">
                 <StarIcon className="w-6 h-6 text-cyan-300" />
                 <span className="flex-1 ml-3 whitespace-nowrap">Active</span>
                 <span className="inline-flex items-center justify-center w-3 h-3 p-3 ml-3 text-sm font-medium text-blue-800 bg-blue-100 rounded-full dark:bg-blue-900 dark:text-blue-300">
@@ -100,7 +100,7 @@ import {
 
             {/*Upcoming Area*/}
             <li>
-              <span className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
+              <span className="flex items-center p-2 text-base font-normal text-neutral-300 hover:text-gray-900  rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
                 <CalendarDaysIcon className="w-6 h-6 text-cyan-300" />
                 <span className="flex-1 ml-3 whitespace-nowrap">Upcoming</span>
               </span>
@@ -108,7 +108,7 @@ import {
 
             {/*Done Area*/}
             <li onClick={() => filteringTuduActif(true)}>
-              <span className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
+              <span className="flex items-center p-2 text-base font-normal text-neutral-300 hover:text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
                 <CheckCircleIcon className="w-6 h-6 text-cyan-300" />
 
                 <span className="flex-1 ml-3 whitespace-nowrap">Done</span>
@@ -118,7 +118,7 @@ import {
             {/*Category & Tags Area*/}
             <li>
               <button
-                className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
+                className="flex items-center p-2 text-base font-normal  text-neutral-300 hover:text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
                 onClick={handleOpen}
               >
                 <TagIcon className="w-6 h-6 text-cyan-300" />
@@ -132,7 +132,7 @@ import {
                         (
                           <li
                             key={item}
-                            className="flex items-center  text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
+                            className="flex items-center  text-neutral-500 hover:text-gray-900  rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
                             onClick={() => handleClick(item)}
                           >
                             <ChevronRightIcon className="w-6 h-6 text-yellow-300" />
@@ -141,7 +141,10 @@ import {
                             </button>
                           </li>
                               
-                        ))):(  <p className=" pr-5">No Category</p> )
+                        ))):( 
+                          <button className="flex- mr-14 whitespace-nowrap p-2 text-base font-normal">
+                          No Category
+                          </button> )
                       }
                     </ul>
                   ) :(<p></p>)
@@ -161,7 +164,7 @@ import {
                 }}
               >
                 <ArrowLeftOnRectangleIcon className="w-6 h-6 text-gray-300" />
-                <span className="flex-1 ml-3 whitespace-nowrap ">
+                <span className="flex-1 ml-3 whitespace-nowrap text-neutral-500 hover:text-gray-900  ">
                   {" "}
                   Sign Out
                 </span>
