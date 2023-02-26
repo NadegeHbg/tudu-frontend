@@ -6,10 +6,12 @@ import TodoItemForm from "../forms/TodoItemForm";
 
 
 const MainFrame = ({tudu}) => {
+
+// mark a tudu as done
     const handleDone = (id) =>{
         isDoneTudu(id)
     }
-
+// delete a tudu
     const handleDelete = (id) => {
         deleteTudu(id)
     }
