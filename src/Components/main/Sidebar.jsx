@@ -17,7 +17,7 @@ import {
  const Sidebar = ({tudu, setTudu}) => {
   const [open, setOpen] = useState(false);
   const [uniqueArray, setUniqueArray] = useState([]);
-
+  const [finalCategory, setFinalCategory] = useState([])
   const handleOpen = () => {
     setOpen(!open);
   };
@@ -42,6 +42,9 @@ import {
 
       const uniqueArray = [...new Set(newArray.map((item) => item.category))];
       setUniqueArray(uniqueArray);
+      if(finalCategory.length<uniqueArray.length)
+        setFinalCategory(uniqueArray)
+
     } 
   }
 
@@ -128,7 +131,7 @@ import {
               {open
                 ? (
                     <ul>
-                      {(uniqueArray.length>0) ?(uniqueArray.map((item) => 
+                      {(finalCategory.length>0) ?(finalCategory.map((item) => 
                         (
                           <li
                             key={item}
