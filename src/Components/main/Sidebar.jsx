@@ -178,7 +178,7 @@ const Sidebar = ({ tudu, setTudu }) => {
                                 whileHover={{ scale: 1.1 }}
                                 whileTap={{ scale: 0.9 }}
                                 onClick={() => {
-                                    navigate("/");
+                                   
                                 }}
                             >
                                 <RectangleGroupIcon className="w-6 h-6 text-gray-300" />
