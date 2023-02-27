@@ -215,6 +215,7 @@ export default function Registration() {
                       </button>
                       <button
                         type="submit"
+                        onClick={handleSubmit(onSubmit)}
                         className="bg-cyan-900 text-white active:bg-emerald-600 font-logoFont uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg  mr-1 mb-1 transition-all duration-150 "
                       >
                         Register
