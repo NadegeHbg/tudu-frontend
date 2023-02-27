@@ -1,14 +1,13 @@
 import React from "react";
 import { useState } from "react";
-import MiddleSection from "../main/MiddleSection";
-import MainFrame from "../main/MainFrame";
+import { viewModalFn } from "../main/viewModelFn";
 
 function ViewMode() {
-    const [showModal, setShowModal] = useState(false);
-
+    const [showModal,setShowModal] = useState(false)
     const changeModel = () => {
         setShowModal(!showModal);
         console.log("changeModel", showModal);
+        viewModalFn(showModal)
     };
     return (
         <div className="inline-flex rounded-md shadow-sm" role="group">
