@@ -20,6 +20,8 @@ export default function MiddleSection({ tudu }) {
 
     }
 
+    console.log(tudu, "from middle")
+
     return (
         <section className="p-4 sm:ml-64 marker:text-gray-600 body-font w-full">
             <div className="container px-5 py-4 mx-auto">
