@@ -10,10 +10,14 @@ export default function MiddleSection({ tudu }) {
 
     const handleDone = (id) =>{
         isDoneTudu(id)
+        // window.location.reload()
+
     }
 
     const handleDelete = (id) => {
         deleteTudu(id)
+        // window.location.reload()
+
     }
 
     return (

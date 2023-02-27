@@ -43,6 +43,7 @@ export default function TodoItemForm({ tudu ,todo}) {
         data.user_id = userId;
         // console.log(data, "data");
         handleEdit(data);
+        window.location.reload()
     };
 
     const handleChange = (event) => {

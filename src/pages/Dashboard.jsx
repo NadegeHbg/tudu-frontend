@@ -3,6 +3,7 @@ import { GetTodos } from "../events/axiosGlobal";
 import Cookies from "js-cookie";
 import Sidebar from "../Components/main/Sidebar";
 import MiddleSection from "../Components/main/MiddleSection";
+import MainFrame from "../Components/main/MainFrame";
 
 const Dashboard = () => {
 
@@ -20,7 +21,9 @@ const Dashboard = () => {
     return (
         <div className="flex">
             <Sidebar tudu={tudu} setTudu={setTudu}  />
-            <MiddleSection tudu={tudu} setTudu={setTudu}  />
+            {/* <MiddleSection tudu={tudu} setTudu={setTudu}  /> */}
+            {/* list item table view */}
+            <MainFrame tudu={tudu} setTudu={setTudu} />
         </div>
     );
 };
