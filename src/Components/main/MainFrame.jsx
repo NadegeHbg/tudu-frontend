@@ -10,10 +10,14 @@ const MainFrame = ({tudu}) => {
 // mark a tudu as done
     const handleDone = (id) =>{
         isDoneTudu(id)
+        window.location.reload(true)
+
     }
 // delete a tudu
     const handleDelete = (id) => {
         deleteTudu(id)
+        window.location.reload(true)
+
     }
     return (
         <section className="p-4 sm:ml-64 marker:text-gray-600 body-font w-full">
@@ -24,9 +28,9 @@ const MainFrame = ({tudu}) => {
                     </h1>
                 </div>
                 <div class="px-3 py-4 flex justify-center">
-                    <table class="w-full text-md bg-white shadow-md rounded mb-4">
+                    <table class="w-full text-md bg-gray-100 shadow-md rounded mb-4">
                         <tbody>
-                            <tr class="border-b">
+                            <tr class="border-b ">
                                 <th class="text-left p-3 px-5">Title</th>
                                 <th class="text-left p-3 px-5">Category</th>
                                 <th class="text-left p-3 px-5">Description</th>
@@ -36,7 +40,7 @@ const MainFrame = ({tudu}) => {
                             </tr>
                             {(tudu.length>0 )? (
                                 tudu.map((todo) => (
-                            <tr  key={todo.id} class="border-b hover:border-gray-800 hover:bg-indigo-200  bg-gray-100 ">
+                            <tr  key={todo.id} class="border-b  hover:bg-gray-200   bg-white">
                                 <td class="p-3 px-5">{todo.ptaskname}</td>
                                 <td class="p-3 px-5">{todo.category}
                                     {/* <select value="user.role" class="bg-transparent">

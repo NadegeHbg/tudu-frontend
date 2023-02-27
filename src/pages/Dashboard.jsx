@@ -21,9 +21,9 @@ const Dashboard = () => {
     return (
         <div className="flex">
             <Sidebar tudu={tudu} setTudu={setTudu}  />
-            <MiddleSection tudu={tudu} setTudu={setTudu}  />
+            {/* <MiddleSection tudu={tudu} setTudu={setTudu}  /> */}
             {/* list item table view */}
-            {/* <MainFrame tudu={tudu} setTudu={setTudu} /> */}
+            <MainFrame tudu={tudu} setTudu={setTudu} />
         </div>
     );
 };
