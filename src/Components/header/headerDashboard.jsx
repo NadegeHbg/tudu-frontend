@@ -2,7 +2,6 @@ import TodoItemFormAdd from "../forms/TodoItemFormAdd";
 import { Bars3BottomLeftIcon } from "@heroicons/react/24/outline";
 import { useLocation } from "react-router-dom";
 import logo from "../../assets/tudu.png";
-import ViewMode from "../forms/ViewMode";
 
 const HeaderDashboardStyle = () => {
     return (
@@ -25,7 +24,6 @@ const HeaderDashboardStyle = () => {
                     </div>
                     <div className="flex items-center ml-3">
                         <TodoItemFormAdd />
-                        <ViewMode />
                     </div>
                 </div>
             </div>
