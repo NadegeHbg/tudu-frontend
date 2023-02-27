@@ -1,7 +1,7 @@
 import TodoItemFormAdd from "../forms/TodoItemFormAdd";
 import { Bars3BottomLeftIcon } from "@heroicons/react/24/outline";
 import { useLocation } from "react-router-dom";
-import logo from "../../assets/tudu.png"
+import logo from "../../assets/tudu.png";
 
 const HeaderDashboardStyle = () => {
     return (

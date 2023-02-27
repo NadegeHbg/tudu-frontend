@@ -6,13 +6,13 @@ import TodoItemForm from "../forms/TodoItemForm";
 
 const MainFrame = ({ tudu }) => {
   // mark a tudu as done
-  const handleDone = (id) => {
-    isDoneTudu(id);
+  const handleDone = async (id) => {
+    await isDoneTudu(id);
     window.location.reload(true);
   };
   // delete a tudu
-  const handleDelete = (id) => {
-    deleteTudu(id);
+  const handleDelete = async (id) => {
+    await deleteTudu(id);
     window.location.reload(true);
   };
   return (

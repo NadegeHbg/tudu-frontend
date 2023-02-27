@@ -1,23 +1,32 @@
-import React, { useState,useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Cookies from "js-cookie";
 import { useNavigate } from "react-router-dom";
-import { filteringTuduCategory, GetTodos ,filteringTuduActive} from "../../events/axiosGlobal";
+import {
+  filteringTuduCategory,
+  GetTodos,
+  filteringTuduActive,
+} from "../../events/axiosGlobal";
 import {
   ArchiveBoxIcon,
   ArrowLeftOnRectangleIcon,
   CalendarDaysIcon,
   CheckCircleIcon,
   ChevronRightIcon,
+  RectangleGroupIcon,
   StarIcon,
   TagIcon,
 } from "@heroicons/react/24/outline";
+import { motion } from "framer-motion";
+
 // import { set } from "react-hook-form";
 
- const Sidebar = ({tudu, setTudu}) => {
+const Sidebar = ({ tudu, setTudu }) => {
   const [open, setOpen] = useState(false);
   const [uniqueArray, setUniqueArray] = useState([]);
-  const [finalCategory, setFinalCategory] = useState([])
+  const [finalCategory, setFinalCategory] = useState([]);
+  const [upcomingArray, setUpcomingArray] = useState([]);
+  const [constantTudu, setConstantTudu] = useState(tudu)
   const handleOpen = () => {
     setOpen(!open);
   };
@@ -25,10 +34,11 @@ import {
   const navigate = useNavigate();
   useEffect(() => {
     categoryFunction();
+    setConstantTudu(tudu)
   }, [tudu]);
 
-   //get all-tudu
-   async function fetchData() {
+  //get all-tudu
+  async function fetchData() {
     const data = Cookies.get("id");
     setTudu(await GetTodos(data));
   }
@@ -42,36 +52,39 @@ import {
 
       const uniqueArray = [...new Set(newArray.map((item) => item.category))];
       setUniqueArray(uniqueArray);
-      if(finalCategory.length<uniqueArray.length)
-        setFinalCategory(uniqueArray)
-
-    } 
+      if (finalCategory.length < uniqueArray.length)
+        setFinalCategory(uniqueArray);
+    }
   }
 
   // category filter
   const handleClick = async (item) => {
     console.log("Clicked item key:", item);
     const filterValue = await filteringTuduCategory(item);
-    console.log(filterValue,"sidebar filter category")
-    setTudu(filterValue)
-  }
+    console.log(filterValue, "sidebar filter category");
+    setTudu(filterValue);
+  };
 
-  // Upcoming filter   
-  if(tudu.length > 0) {
-    tudu.map((todo) => {
-      todo.duedate = new Date()
-    })
-  }
+  // Upcoming filter
+  const filteringUpcoming = () => {
+    if (tudu.length >= upcomingArray.length) {
+      console.log(tudu.length, upcomingArray.length);
+      const tuduUpcoming = [...tudu].sort(
+        (a, b) => new Date(a.duedate) - new Date(b.duedate)
+      );
+      console.log(tuduUpcoming, "upcoming");
+      setTudu(tuduUpcoming);
+      setUpcomingArray(tuduUpcoming);
+    } else setTudu(upcomingArray);
+  };
 
-  // Active & done filter    
+  // Active & done filter
   const filteringTuduActif = async (data) => {
     console.log("Clicked item key:", data);
     const filterValue = await filteringTuduActive(data);
-    console.log(filterValue,"sidebar filter category")
-    setTudu(filterValue)
+    console.log(filterValue, "sidebar filter category");
+    setTudu(filterValue);
   };
-
- 
 
   return (
     <div className="">
@@ -86,99 +99,136 @@ import {
             <li
               onClick={() => {
                 fetchData();
-                console.log(tudu,"onclick sidebar");
+                console.log(tudu, "onclick sidebar");
               }}
             >
-              <span className="flex items-center p-2 text-base font-normal text-neutral-300 hover:text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
+              <motion.span
+                className="flex items-center p-2 font-normal text-white rounded-lg hover:bg-sky-700 "
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.9 }}
+              >
                 <ArchiveBoxIcon className="w-6 h-6 text-cyan-300" />
 
                 <span className="flex-1 ml-3 whitespace-nowrap">All</span>
-                <span className="inline-flex items-center justify-center px-2 ml-3 text-sm font-medium text-gray-800 bg-gray-200 rounded-full dark:bg-gray-700 dark:text-gray-300"></span>
-              </span>
+                {/* <span className="inline-flex items-center justify-center w-3 h-3 p-3 ml-3 text-sm font-medium text-blue-800 bg-blue-100 rounded-full ">
+                  {constantTudu.length}
+                </span> */}
+              </motion.span>
             </li>
 
             {/*Active Area*/}
             <li onClick={() => filteringTuduActif(false)}>
-              <span className="flex items-center p-2 text-base font-normal text-neutral-300 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 hover:text-gray-900">
+              <motion.span
+                className="flex items-center p-2 text-base font-normal text-white rounded-lg hover:bg-sky-700 "
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.9 }}
+              >
                 <StarIcon className="w-6 h-6 text-cyan-300" />
                 <span className="flex-1 ml-3 whitespace-nowrap">Active</span>
-                <span className="inline-flex items-center justify-center w-3 h-3 p-3 ml-3 text-sm font-medium text-blue-800 bg-blue-100 rounded-full dark:bg-blue-900 dark:text-blue-300">
-                  3
-                </span>
-              </span>
+                {/* <span className="inline-flex items-center justify-center w-3 h-3 p-3 ml-3 text-sm font-medium text-blue-800 bg-blue-100 rounded-full ">
+                  
+                </span> */}
+              </motion.span>
             </li>
 
             {/*Upcoming Area*/}
-            <li>
-              <span className="flex items-center p-2 text-base font-normal text-neutral-300 hover:text-gray-900  rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
+            <li onClick={() => filteringUpcoming()}>
+              <motion.span
+                className="flex items-center p-2 text-base font-normal text-white rounded-lg  hover:bg-sky-700  "
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.9 }}
+              >
                 <CalendarDaysIcon className="w-6 h-6 text-cyan-300" />
                 <span className="flex-1 ml-3 whitespace-nowrap">Upcoming</span>
-              </span>
+              </motion.span>
             </li>
 
             {/*Done Area*/}
             <li onClick={() => filteringTuduActif(true)}>
-              <span className="flex items-center p-2 text-base font-normal text-neutral-300 hover:text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
+              <motion.span
+                className="flex items-center p-2 text-base font-normal text-white rounded-lg hover:bg-sky-700 "
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.9 }}
+              >
                 <CheckCircleIcon className="w-6 h-6 text-cyan-300" />
 
                 <span className="flex-1 ml-3 whitespace-nowrap">Done</span>
-              </span>
+              </motion.span>
             </li>
 
             {/*Category & Tags Area*/}
             <li>
-              <button
-                className="flex items-center p-2 text-base font-normal  text-neutral-300 hover:text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
+              <motion.span
+                className="flex items-center p-2 text-base font-normal text-white rounded-lg hover:bg-sky-700  "
                 onClick={handleOpen}
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.9 }}
               >
                 <TagIcon className="w-6 h-6 text-cyan-300" />
 
                 <span className="flex-1 ml-3 whitespace-nowrap">Category</span>
-              </button>
-              {open
-                ? (
-                    <ul>
-                      {(finalCategory.length>0) ?(finalCategory.map((item) => 
-                        (
-                          <li
-                            key={item}
-                            className="flex items-center  text-neutral-500 hover:text-gray-900  rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
-                            onClick={() => handleClick(item)}
-                          >
-                            <ChevronRightIcon className="w-6 h-6 text-yellow-300" />
-                            <button className="flex- mr-14 whitespace-nowrap p-2 text-base font-normal">
-                              {item}
-                            </button>
-                          </li>
-                              
-                        ))):( 
-                          <button className="flex- mr-14 whitespace-nowrap p-2 text-base font-normal">
-                          No Category
-                          </button> )
-                      }
-                    </ul>
-                  ) :(<p></p>)
-              }
-                 
+              </motion.span>
+              {open ? (
+                <ul>
+                  {finalCategory.length > 0 ? (
+                    finalCategory.map((item) => (
+                      <motion.li
+                        key={item}
+                        className="flex items-center p-2 text-base font-normal text-white rounded-lg hover:bg-gray-700 "
+                        whileHover={{ scale: 1.1 }}
+                        whileTap={{ scale: 0.9 }}
+                        onClick={() => handleClick(item)}
+                      >
+                        <ChevronRightIcon className="w-6 h-6 text-yellow-300" />
+                        <span className="flex- mr-14 whitespace-nowrap p-2 text-base font-normal">
+                          {item}
+                        </span>
+                      </motion.li>
+                    ))
+                  ) : (
+                    <span className="flex- mr-14 whitespace-nowrap p-2 text-base font-normal">
+                      No Category
+                    </span>
+                  )}
+                </ul>
+              ) : (
+                <p></p>
+              )}
             </li>
           </ul>
-          <ul className="pt-4 mt-4 space-y-2 border-t border-gray-200 dark:border-gray-700">
-            {/*Sign Out Button*/}
+          <ul className="pt-4 mt-4 space-y-2 border-t border-gray-200 ">
+            {/*Change View Button*/}
             <li>
               {" "}
-              <button
-                className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 "
-                type="button"
+              <motion.span
+                className="flex items-center p-2 text-base font-normal text-white rounded-lg  hover:bg-sky-700 "
+                type="span"
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.9 }}
+                onClick={() => {}}
+              >
+                <RectangleGroupIcon className="w-6 h-6 text-gray-300" />
+                <span className="flex-1 ml-3 whitespace-nowrap "> View</span>
+              </motion.span>
+            </li>
+            {/*Sign Out span*/}
+            <li>
+              {" "}
+              <motion.span
+                className="flex items-center p-2 text-base font-normal text-white rounded-lg  hover:bg-red-800 "
+                type="span"
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.9 }}
                 onClick={() => {
                   navigate("/");
                 }}
               >
                 <ArrowLeftOnRectangleIcon className="w-6 h-6 text-gray-300" />
-                <span className="flex-1 ml-3 whitespace-nowrap text-neutral-500 hover:text-gray-900  ">
+                <span className="flex-1 ml-3 whitespace-nowrap ">
                   {" "}
                   Sign Out
                 </span>
-              </button>
+              </motion.span>
             </li>
           </ul>
         </div>
@@ -186,5 +236,5 @@ import {
       {/* <div className="p-4 sm:ml-64"></div> */}
     </div>
   );
-}
-export default Sidebar
+};
+export default Sidebar;
