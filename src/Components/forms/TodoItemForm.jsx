@@ -49,10 +49,13 @@ export default function TodoItemForm({ tudu ,todo}) {
         const { newInfo, value } = event.target;
         setValue(newInfo, value);
     }
+
+    console.log(tudu)
+
     const newArray = tudu.map((obj) => {
         return { category: obj.category };
     });
-    // console.log(newArray)
+    console.log(newArray)
 
     const categoryArray = [...new Set(newArray.map((item) =>
         item.category
