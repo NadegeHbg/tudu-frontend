@@ -33,12 +33,14 @@ const Dashboard = () => {
 
 
     return (
+        <div>
+ <HeaderDashboard tudu={tudu}/>
         <div className="flex">
             <Sidebar tudu={tudu} setTudu={setTudu}  view={view} toggleView={toggleView} />
             {view ? 
                 (<MiddleSection tudu={tudu} setTudu={setTudu}  />) : (<MainFrame tudu={tudu} setTudu={setTudu} />)
             }
-
+        </div>
         </div>
     );
 };
