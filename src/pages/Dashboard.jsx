@@ -4,6 +4,7 @@ import Cookies from "js-cookie";
 import Sidebar from "../Components/main/Sidebar";
 import MiddleSection from "../Components/main/MiddleSection";
 import MainFrame from "../Components/main/MainFrame";
+import HeaderDashboard from "../Components/header/headerDashboard";
 
 const Dashboard = () => {
 
@@ -19,12 +20,16 @@ const Dashboard = () => {
         fetchData();
     }, []);
 
+
     return (
-        <div className="flex">
-            <Sidebar tudu={tudu} setTudu={setTudu}  view={view} setView={setView}/>
-            {view ? 
-                (<MiddleSection tudu={tudu} setTudu={setTudu}  />) : (<MainFrame tudu={tudu} setTudu={setTudu} />)
-            }
+        <div>
+            <HeaderDashboard tudu={tudu}/>
+            <div className="flex">
+                <Sidebar tudu={tudu} setTudu={setTudu}  view={view} setView={setView}/>
+                {view ? 
+                    (<MiddleSection tudu={tudu} setTudu={setTudu}  />) : (<MainFrame tudu={tudu} setTudu={setTudu} />)
+                }
+            </div>
         </div>
     );
 };

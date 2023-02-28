@@ -1,16 +1,20 @@
 import React from "react";
-import { useForm } from "react-hook-form";
+import { useForm, Controller } from "react-hook-form";
 import { handleAdd } from "../../events/axiosGlobal";
 import Cookies from "js-cookie";
 import { useEffect, useState } from "react";
-// import Creatable from "react-select/creatable";
+// select
+import Creatable from "react-select/creatable";
+import customStyle from "./selectStyle"
 
-export default function TodoItemFormAdd() {
+export default function TodoItemFormAdd({tudu}) {
   const [showModal, setShowModal] = useState(false);
   const {
     register,
     handleSubmit,
     // formState: { errors },
+    setValue,
+    control,
   } = useForm({
     defaultValues: {
       entrydate: new Date().toISOString().slice(0, 10),
@@ -19,6 +23,22 @@ export default function TodoItemFormAdd() {
 
   const [userId, setUserId] = useState(null);
 
+  // console.log(`this is what we want ${tudu}`)
+  // --- Category ---
+  const newArray = tudu.map((obj) => {
+    return { category: obj.category };
+  });
+
+  const categoryArray = [...new Set(newArray.map((item) => item.category))];
+  // console.log(categoryArray)
+
+  const options = categoryArray.map((item) => {
+    return {
+      value: item,
+      label: item,
+    };
+  });
+
   useEffect(() => {
     setUserId(Cookies.get("id"));
   }, []);
@@ -26,7 +46,8 @@ export default function TodoItemFormAdd() {
   const onSubmit = async (data = {}) => {
     setShowModal(false);
     data.user_id = userId;
-    console.log(data, "data");
+    data.category = data.category.value
+    // console.log(data, "data");
     await handleAdd(data);
     window.location.reload();
   };
@@ -72,17 +93,27 @@ export default function TodoItemFormAdd() {
                       >
                         Choose your Category
                       </label>
-                      <label htmlFor="category">
-                        <select
-                          className="shadow-sm text-gray-900 text-sm rounded-lg block w-full p-2.5 bg-lightcream"
-                          name="category"
-                          {...register("category", { required: true })}
-                        >
-                          <option>Choose here</option>
-                          <option>Personal</option>
-                          <option>Business</option>
-                        </select>
-                      </label>
+                      <Controller
+                        name="category"
+                        control={control}
+                        render={({ field }) => {
+                          // sending integer instead of string.
+                          return (
+                            <Creatable
+                              styles={customStyle}
+                              options={options}
+                              value={field.value}
+                              onChange={(selectedOption) => {
+                                setValue("category", {
+                                  value: selectedOption?.value,
+                                  label: selectedOption?.label,
+                                });
+                                field.onChange(selectedOption);
+                              }} 
+                            />
+                          );
+                        }}
+                      />
                     </div>
                     <div>
                       <label

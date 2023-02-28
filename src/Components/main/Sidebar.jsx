@@ -22,6 +22,7 @@ import { motion } from "framer-motion";
 
 const Sidebar = ({ tudu, setTudu, view, setView }) => {
   const [open, setOpen] = useState(false);
+        // eslint-disable-next-line
   const [uniqueArray, setUniqueArray] = useState([]);
   const [finalCategory, setFinalCategory] = useState([]);
   const [upcomingArray, setUpcomingArray] = useState([]);
@@ -58,28 +59,28 @@ const Sidebar = ({ tudu, setTudu, view, setView }) => {
 
   // category filter
   const handleClick = async (item) => {
-    console.log("Clicked item key:", item);
+    // console.log("Clicked item key:", item);
     const filterValue = await filteringTuduCategory(item);
-    console.log(filterValue, "sidebar filter category");
+    // console.log(filterValue, "sidebar filter category");
     setTudu(filterValue);
   };
 
   // Upcoming filter
 
   const filteringUpcoming = async () => {
-    console.log(upcomingArray, "tudutoupdate");
+    // console.log(upcomingArray, "tudutoupdate");
     const tuduUpcoming = [...upcomingArray].sort(
       (a, b) => new Date(a.duedate) - new Date(b.duedate)
     );
-    console.log(tuduUpcoming, "upcoming");
+    // console.log(tuduUpcoming, "upcoming");
     setTudu(tuduUpcoming);
   };
 
   // Active & done filter
   const filteringTuduActif = async (data) => {
-    console.log("Clicked item key:", data);
+    // console.log("Clicked item key:", data);
     const filterValue = await filteringTuduActive(data);
-    console.log(filterValue, "sidebar filter category");
+    // console.log(filterValue, "sidebar filter category");
     setTudu(filterValue);
   };
 
@@ -96,7 +97,7 @@ const Sidebar = ({ tudu, setTudu, view, setView }) => {
             <li
               onClick={() => {
                 fetchData();
-                console.log(tudu, "onclick sidebar");
+                // console.log(tudu, "onclick sidebar");
               }}
             >
               <motion.span
