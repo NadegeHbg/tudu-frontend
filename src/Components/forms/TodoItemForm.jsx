@@ -23,7 +23,7 @@ export default function TodoItemForm({ tudu, todo }) {
   } = useForm({
     defaultValues: {
       id: todo.id,
-      category: { value: todo.category },
+      category: todo.category,
       ptaskname: todo.ptaskname,
       description: todo.description,
       duedate: new Date(todo.duedate).toISOString().slice(0, 10),
@@ -40,6 +40,7 @@ export default function TodoItemForm({ tudu, todo }) {
   const onSubmit = async (data = {}) => {
     setShowModal(false);
     data.user_id = userId;
+    data.category = data.category.value
     // console.log(data, "data");
     await handleEdit(data);
     window.location.reload();
@@ -126,7 +127,7 @@ export default function TodoItemForm({ tudu, todo }) {
                                   label: selectedOption?.label,
                                 });
                                 field.onChange(selectedOption);
-                              }}
+                              }} 
                             />
                           );
                         }}
