@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 // eslint-disable-next-line
 import { handleEdit, isDoneTudu } from "../../events/axiosGlobal";
 import Creatable from "react-select/creatable";
+import customStyle from "./selectStyle"
 // Cookies
 import Cookies from "js-cookie";
 // Icons and components
@@ -64,16 +65,6 @@ export default function TodoItemForm({ tudu, todo }) {
       label: item,
     };
   });
-  const customStyle = {
-    option: (provided, state) => ({
-      ...provided,
-      color: state.isFocused ? 'teal' : 'black',
-      // eslint-disable-next-line
-      color: state.isSelected ? 'white' : 'black',
-      backgroundColor: state.isSelected ? '#14375A' : 'transparent'
-    })
-  }
-
 
 
   useEffect(() => {
@@ -81,10 +72,10 @@ export default function TodoItemForm({ tudu, todo }) {
   }, []);
   return (
     <div className="container mx-auto">
-      <div className="w-full sm:w-auto bg-gray-800 hover:bg-gray-600 focus:ring-4 focus:outline-none focus:ring-gray-300 text-white">
+      <div className="w-full sm:w-auto rounded-lg bg-gray-800 hover:bg-gray-600 focus:ring-4 focus:outline-none focus:ring-gray-300 text-white">
         <EllipsisVerticalIcon
           onClick={() => setShowModal(true)}
-          className="h-6 w-6 inline-flex justify-center"
+          className="h-6 w-6  mx-2 my-2.5 inline-flex justify-center"
         />
       </div>
       {showModal ? (

@@ -4,7 +4,6 @@ import HomePage from "./pages/Home";
 import Dashboard from "./pages/Dashboard.jsx";
 import MainFrame from "./Components/main/MainFrame.jsx";
 import "./index.css";
-import Test from "./pages/TestPage.jsx";
 
 const router = createBrowserRouter(
     createRoutesFromElements(
@@ -13,7 +12,6 @@ const router = createBrowserRouter(
             <Route index element={<HomePage />} />
             <Route path="/mainframe" element={<MainFrame />} />
             <Route path="/dashboard" element={<Dashboard />} />
-            <Route path="/test" element={<Test />} />
         </Route>
     )
 );
