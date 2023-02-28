@@ -11,8 +11,8 @@ const axiosGlobal = axios.create({
     //     Authorization: AUTH_TOKEN,
   },
 });
-axios.defaults.baseURL = "https://tutu-tudu.herokuapp.com/";
-
+//axios.defaults.baseURL = "https://tutu-tudu.herokuapp.com/";
+axios.defaults.baseURL = "https://5d74-84-199-109-84.eu.ngrok.io/api/tudu/"
 //registration handler => POST
 
 const handleRegistration = async (data) => {
