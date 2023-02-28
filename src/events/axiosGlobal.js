@@ -38,6 +38,7 @@ const HandleLogin = async (data) => {
 
     Cookies.set("email", resData.email, { path: "/" });
     Cookies.set("id", resData.id, { path: "/" });
+    Cookies.set("view", true, { path: "/dashboard" });
     document.cookie = `token=${resData.token}`;
     // document.cookie = `email=${resData.email}`
   } catch (err) {
@@ -63,14 +64,13 @@ const handleAdd = async (data) => {
 //connection edit tudu => PATCH
 const handleEdit = async (data) => {
   try {
-    const response = await axios.patch(`/user/editTudu/${data.id}`,data);
-        // response.data.headers['Content-Type'];
+    const response = await axios.patch(`/user/editTudu/${data.id}`, data);
+    // response.data.headers['Content-Type'];
     console.log(response, "EditResponse");
   } catch (err) {
     console.log(err, "EditError");
   }
 };
-
 
 let allTudu = [];
 //get todos  => GET
@@ -146,17 +146,35 @@ const isDoneTudu = async (id) => {
 // delete todo
 const deleteTudu = async (id) => {
   try {
-      const response = await axios.delete(`/user/deleteTudu/${id}`, {
-          headers: {
-              "ngrok-skip-browser-warning": "69420",
-          },
-      });
-      console.log(response.data, "DeleteResponse");
+    const response = await axios.delete(`/user/deleteTudu/${id}`, {
+      headers: {
+        "ngrok-skip-browser-warning": "69420",
+      },
+    });
+    console.log(response.data, "DeleteResponse");
   } catch (err) {
-      console.log(err, "DeleteError");
+    console.log(err, "DeleteError");
   }
 };
 
+//
+const cookieSetFn = async (cookie) => {
+  try {
+    Cookies.set("view", cookie, { path: "/dashboard" });
+  } catch (err) {
+    console.log(err, "Console Cookie Error");
+  }
+};
 export default axiosGlobal;
-export { handleRegistration, HandleLogin, handleAdd, GetTodos, filteringTuduActive, filteringTuduCategory, handleEdit, isDoneTudu, deleteTudu };
-
+export {
+  handleRegistration,
+  HandleLogin,
+  handleAdd,
+  GetTodos,
+  filteringTuduActive,
+  filteringTuduCategory,
+  handleEdit,
+  isDoneTudu,
+  deleteTudu,
+  cookieSetFn,
+};
