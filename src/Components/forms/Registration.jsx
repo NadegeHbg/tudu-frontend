@@ -26,7 +26,7 @@ export default function Registration() {
   const navigate = useNavigate();
 
   const onSubmit = async (data = {}) => {
-    console.log(data, "data");
+    // console.log(data, "data");
     handleRegistration(data);
     setShowModal(false);
     setShowModalLogin(true);
@@ -34,11 +34,11 @@ export default function Registration() {
 
   const HandleLogin = async (data) => {
     try {
-      console.log(data, "axios global login");
+      // console.log(data, "axios global login");
       const response = await axios.post("/user/login", data);
       // const resStatus = response.status;
       const resData = response.data;
-      console.log(response, "login post request");
+      // console.log(response, "login post request");
 
       Cookies.set("email", resData.email, { path: "/" });
       Cookies.set("id", resData.id, { path: "/" });
