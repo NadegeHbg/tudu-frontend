@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
 import Cookies from "js-cookie";
 import { useNavigate } from "react-router-dom";
 import {
@@ -21,12 +20,12 @@ import { motion } from "framer-motion";
 
 // import { set } from "react-hook-form";
 
-const Sidebar = ({ tudu, setTudu }) => {
+const Sidebar = ({ tudu, setTudu, view, setView }) => {
   const [open, setOpen] = useState(false);
   const [uniqueArray, setUniqueArray] = useState([]);
   const [finalCategory, setFinalCategory] = useState([]);
   const [upcomingArray, setUpcomingArray] = useState([]);
-  const [constantTudu, setConstantTudu] = useState(tudu)
+
   const handleOpen = () => {
     setOpen(!open);
   };
@@ -34,13 +33,13 @@ const Sidebar = ({ tudu, setTudu }) => {
   const navigate = useNavigate();
   useEffect(() => {
     categoryFunction();
-    setConstantTudu(tudu)
   }, [tudu]);
 
   //get all-tudu
   async function fetchData() {
     const data = Cookies.get("id");
     setTudu(await GetTodos(data));
+    setUpcomingArray(await GetTodos(data));
   }
 
   //filtering the tudu
@@ -66,16 +65,14 @@ const Sidebar = ({ tudu, setTudu }) => {
   };
 
   // Upcoming filter
-  const filteringUpcoming = () => {
-    if (tudu.length >= upcomingArray.length) {
-      console.log(tudu.length, upcomingArray.length);
-      const tuduUpcoming = [...tudu].sort(
-        (a, b) => new Date(a.duedate) - new Date(b.duedate)
-      );
-      console.log(tuduUpcoming, "upcoming");
-      setTudu(tuduUpcoming);
-      setUpcomingArray(tuduUpcoming);
-    } else setTudu(upcomingArray);
+
+  const filteringUpcoming = async () => {
+    console.log(upcomingArray, "tudutoupdate");
+    const tuduUpcoming = [...upcomingArray].sort(
+      (a, b) => new Date(a.duedate) - new Date(b.duedate)
+    );
+    console.log(tuduUpcoming, "upcoming");
+    setTudu(tuduUpcoming);
   };
 
   // Active & done filter
@@ -205,7 +202,7 @@ const Sidebar = ({ tudu, setTudu }) => {
                 type="span"
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
-                onClick={() => {}}
+                onClick={() => {setView(!view)}}
               >
                 <RectangleGroupIcon className="w-6 h-6 text-gray-300" />
                 <span className="flex-1 ml-3 whitespace-nowrap "> View</span>

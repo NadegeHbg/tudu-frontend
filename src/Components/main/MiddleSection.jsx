@@ -8,15 +8,15 @@ import { isDoneTudu, deleteTudu } from "../../events/axiosGlobal";
 
 export default function MiddleSection({ tudu }) {
 
-    const handleDone = (id) =>{
-        isDoneTudu(id)
-        // window.location.reload()
+    const handleDone = async (id) =>{
+        await isDoneTudu(id)
+        window.location.reload()
 
     }
 
-    const handleDelete = (id) => {
-        deleteTudu(id)
-        // window.location.reload()
+    const handleDelete = async (id) => {
+        await deleteTudu(id)
+        window.location.reload()
 
     }
 
