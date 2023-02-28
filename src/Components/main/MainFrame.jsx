@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { GetTodos } from "../../events/axiosGlobal";
 import Cookies from "js-cookie";
 import { isDoneTudu, deleteTudu } from "../../events/axiosGlobal";

@@ -70,7 +70,7 @@ export default function MiddleSection({ tudu }) {
                                     </div>
 
                                     {/*Edit Button Gray New*/}
-                                    <button className="w-full sm:w-auto bg-gray-800 hover:bg-gray-600 focus:ring-4 focus:outline-none focus:ring-gray-300 text-white rounded-lg inline-flex items-center justify-center px-2 py-2.5 ">
+                                    <button className="w-fit sm:w-auto bg-gray-800 hover:bg-gray-600 focus:ring-4 focus:outline-none focus:ring-gray-300 text-white rounded-lg inline-flex items-center justify-center ">
                                         <TodoItemForm todo={todo} tudu={tudu}/>
                                     </button>
                                 </div>
