@@ -40,6 +40,7 @@ export default function TodoItemForm({ tudu, todo }) {
   const onSubmit = async (data = {}) => {
     setShowModal(false);
     data.user_id = userId;
+    data.category = data.category.value
     // console.log(data, "data");
     await handleEdit(data);
     window.location.reload();
@@ -49,20 +50,32 @@ export default function TodoItemForm({ tudu, todo }) {
     const { newInfo, value } = event.target;
     setValue(newInfo, value);
   };
+
+  // --- Category ---
   const newArray = tudu.map((obj) => {
     return { category: obj.category };
   });
   // console.log(newArray)
-
   const categoryArray = [...new Set(newArray.map((item) => item.category))];
   // console.log(categoryArray)
-
   const options = categoryArray.map((item) => {
     return {
       value: item,
       label: item,
     };
   });
+  const customStyle = {
+    option: (provided, state) => ({
+      ...provided,
+      color: state.isFocused ? 'teal' : 'black',
+      // eslint-disable-next-line
+      color: state.isSelected ? 'white' : 'black',
+      backgroundColor: state.isSelected ? '#14375A' : 'transparent'
+    })
+  }
+
+
+
   useEffect(() => {
     setUserId(Cookies.get("id"));
   }, []);
@@ -105,12 +118,16 @@ export default function TodoItemForm({ tudu, todo }) {
                           // sending integer instead of string.
                           return (
                             <Creatable
+                              styles={customStyle}
                               options={options}
-                              // {...field}
                               value={field.value}
-                              onChange={(selectedOption) =>
-                                field.onChange(selectedOption?.value)
-                              }
+                              onChange={(selectedOption) => {
+                                setValue("category", {
+                                  value: selectedOption?.value,
+                                  label: selectedOption?.label,
+                                });
+                                field.onChange(selectedOption);
+                              }} 
                             />
                           );
                         }}
