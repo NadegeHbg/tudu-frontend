@@ -8,17 +8,19 @@ import { isDoneTudu, deleteTudu } from "../../events/axiosGlobal";
 
 export default function MiddleSection({ tudu }) {
 
-    const handleDone = (id) =>{
-        isDoneTudu(id)
-        // window.location.reload()
+    const handleDone = async (id) =>{
+        await isDoneTudu(id)
+        window.location.reload()
 
     }
 
-    const handleDelete = (id) => {
-        deleteTudu(id)
-        // window.location.reload()
+    const handleDelete = async (id) => {
+        await deleteTudu(id)
+        window.location.reload()
 
     }
+
+    console.log(tudu, "from middle")
 
     return (
         <section className="p-4 sm:ml-64 marker:text-gray-600 body-font w-full">
