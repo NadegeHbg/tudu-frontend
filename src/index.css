@@ -43,42 +43,6 @@
     height: 108px;
 }
 
-/* woman animation area */
-.womanBox {
-    max-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.womanBoxStyle {
-    padding: 1rem 1rem;
-}
-
-.womanBoxStyle p {
-    padding-top: 1rem;
-    line-height: 150%;
-}
-
-/* The area where the description part is made invisible */
-@media (max-width: 640px) {
-    .description-column {
-        display: none;
-    }
-    /* The area where the buttons part are aligned */
-    .buttonArea {
-        display: flex;
-        flex-wrap: wrap;
-        flex-direction: column;
-        row-gap: 8px;
-    }
-}
-/* The area where the buttons part are aligned */
-@media (max-width: 1215px) {
-    .buttonArea {
-        display: flex;
-        flex-wrap: wrap;
-        flex-direction: column;
-        row-gap: 8px;
-    }
+body{
+    
 }

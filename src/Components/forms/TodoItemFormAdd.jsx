@@ -7,7 +7,7 @@ import { useEffect, useState } from "react";
 import Creatable from "react-select/creatable";
 import customStyle from "./selectStyle"
 
-export default function TodoItemFormAdd({options}) {
+export default function TodoItemFormAdd({ options }) {
   const [showModal, setShowModal] = useState(false);
   const {
     register,
@@ -21,11 +21,11 @@ export default function TodoItemFormAdd({options}) {
     },
   });
 
-  const [userId, setUserId] = useState(null); 
+  const [userId, setUserId] = useState(null);
   useEffect(() => {
     setUserId(Cookies.get("id"));
   }, []);
-  console.log(options,"options from add form")
+
 
   const onSubmit = async (data = {}) => {
     setShowModal(false);
@@ -77,8 +77,8 @@ export default function TodoItemFormAdd({options}) {
                       >
                         Choose your Category
                       </label>
-                     
-                      <Controller 
+
+                      <Controller
                         name="category"
                         control={control}
                         rules={{ required: true }}
@@ -95,14 +95,14 @@ export default function TodoItemFormAdd({options}) {
                                   label: selectedOption?.label,
                                 });
                                 field.onChange(selectedOption);
-                              }} 
+                              }}
                             />
                           );
                         }}
                       />
                       {errors.category && (
-                <span style={{ color: 'red' }}>This field is required</span>
-              )}
+                        <span style={{ color: 'red' }}>This field is required</span>
+                      )}
                     </div>
                     <div>
                       <label
