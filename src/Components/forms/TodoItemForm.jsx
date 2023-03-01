@@ -2,12 +2,11 @@
 import React from "react";
 import { useForm, Controller } from "react-hook-form";
 import { useEffect, useState } from "react";
-// import Select from 'react-select'
 // eslint-disable-next-line
-import { handleEdit, isDoneTudu } from "../../events/axiosGlobal";
 import Creatable from "react-select/creatable";
 import customStyle from "./selectStyle"
 // Cookies
+import { handleEdit } from "../../events/axiosGlobal";
 import Cookies from "js-cookie";
 // Icons and components
 import { EllipsisVerticalIcon } from "@heroicons/react/24/outline";

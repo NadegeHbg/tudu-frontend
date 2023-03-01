@@ -20,8 +20,9 @@ import { motion } from "framer-motion";
 
 // import { set } from "react-hook-form";
 
-const Sidebar = ({ tudu, setTudu, view, setView }) => {
+const Sidebar = ({ tudu, setTudu, view, setView, toggleView }) => {
   const [open, setOpen] = useState(false);
+        // eslint-disable-next-line
   const [uniqueArray, setUniqueArray] = useState([]);
   const [finalCategory, setFinalCategory] = useState([]);
   const [upcomingArray, setUpcomingArray] = useState([]);
@@ -58,30 +59,31 @@ const Sidebar = ({ tudu, setTudu, view, setView }) => {
 
   // category filter
   const handleClick = async (item) => {
-    console.log("Clicked item key:", item);
+    // console.log("Clicked item key:", item);
     const filterValue = await filteringTuduCategory(item);
-    console.log(filterValue, "sidebar filter category");
+    // console.log(filterValue, "sidebar filter category");
     setTudu(filterValue);
   };
 
   // Upcoming filter
 
   const filteringUpcoming = async () => {
-    console.log(upcomingArray, "tudutoupdate");
+    // console.log(upcomingArray, "tudutoupdate");
     const tuduUpcoming = [...upcomingArray].sort(
       (a, b) => new Date(a.duedate) - new Date(b.duedate)
     );
-    console.log(tuduUpcoming, "upcoming");
+    // console.log(tuduUpcoming, "upcoming");
     setTudu(tuduUpcoming);
   };
 
   // Active & done filter
   const filteringTuduActif = async (data) => {
-    console.log("Clicked item key:", data);
+    // console.log("Clicked item key:", data);
     const filterValue = await filteringTuduActive(data);
-    console.log(filterValue, "sidebar filter category");
+    // console.log(filterValue, "sidebar filter category");
     setTudu(filterValue);
   };
+
 
   return (
     <div className="">
@@ -96,7 +98,7 @@ const Sidebar = ({ tudu, setTudu, view, setView }) => {
             <li
               onClick={() => {
                 fetchData();
-                console.log(tudu, "onclick sidebar");
+                // console.log(tudu, "onclick sidebar");
               }}
             >
               <motion.span
@@ -202,7 +204,7 @@ const Sidebar = ({ tudu, setTudu, view, setView }) => {
                 type="span"
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
-                onClick={() => {setView(!view)}}
+                onClick={toggleView}
               >
                 <RectangleGroupIcon className="w-6 h-6 text-gray-300" />
                 <span className="flex-1 ml-3 whitespace-nowrap "> View</span>
