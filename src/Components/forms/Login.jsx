@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import Cookies from "js-cookie";
+import './Login.css'
 // import { HandleLogin } from "../../events/axiosGlobal";import { useNavigate } from "react-router-dom";
 
 export default function Login() {
@@ -10,19 +11,20 @@ export default function Login() {
     const {
         register,
         handleSubmit,
-        formState: { errors },
+        setError,
+        formState: { errors }
     } = useForm();
 
-
+    console.log(errors)
 
     const location = useNavigate(); //the old version was using LOCATION in react. In the new version, NAVIGATE is used. can be controlled
     const HandleLogin = async (data) => {
         try {
-            console.log(data, "axios global login");
+            // console.log(data, "axios global login");
             const response = await axios.post("/user/login", data);
-            const resStatus = response.status;
+            // const resStatus = response.status;
             const resData = response.data;
-            console.log(response, "login post request");
+            // console.log(response, "login post request");
 
             Cookies.set("email", resData.email, { path: "/" });
             Cookies.set("id", resData.id, { path: "/" });
@@ -31,11 +33,17 @@ export default function Login() {
 
             location("/dashboard");
         } catch (err) {
-            const errStatus = err.response.status;
-            alert(err.response.data);
+            // const errStatus = err.response.status;
+            console.log(err.message)
         }
     };
     const onSubmit = async (data = {}) => {
+        if (data.email === 'user@example.com' && data.password === 'password') {
+            // login successful
+        } else {
+            setError('email', { type: 'manual', message: 'Invalid email or password' });
+            setError('password', { type: 'manual', message: 'Invalid email or password' });
+        }
         HandleLogin(data);
     };
 
@@ -63,11 +71,13 @@ export default function Login() {
                                         <input
                                             type="email"
                                             name="email"
-                                            className="shadow-sm text-gray-900 text-sm rounded-lg block w-full p-2.5 bg-lightcream"
-                                            {...register("email")}
+                                            className={`shadow-sm text-gray-900 text-sm rounded-lg block w-full p-2.5 bg-lightcream ${errors.email ? 'error' : ''} `}
+                                            {...register("email", { required: true })}
                                             placeholder="Add E-mail"
-                                            required
+
                                         />
+                                        {errors.email && errors.email.type === 'required' && (<span style={{color: 'red'}}>This field is required a valid input</span>)}
+                                        {errors.email && errors.email.type === 'manual' && (<span style={{color: 'red' }}>{errors.email.message}</span>)}
                                     </div>
                                     <div>
                                         <label htmlFor="password" className="block mb-2 text-sm font-logoFont text-gray-900 ">
@@ -76,11 +86,12 @@ export default function Login() {
                                         <input
                                             type="password"
                                             name="password"
-                                            className="shadow-sm text-gray-900 text-sm rounded-lg block w-full p-2.5 bg-lightcream"
-                                            {...register("password")}
+                                            className={`shadow-sm text-gray-900 text-sm rounded-lg block w-full p-2.5 bg-lightcream ${errors.password ? 'error' : ''}`}
+                                            {...register("password", { required: true })}
                                             placeholder="Add Password"
-                                            required
                                         />
+                                       {errors.password && errors.password.type === 'required' && (<span style={{color: 'red'}}>This field is required a valid input</span>)}
+                                        {errors.password && errors.password.type === 'manual' && (<span style={{color: 'red'}}>{errors.password.message}</span>)}
                                     </div>
                                     {/*footer*/}
                                     <div className="flex items-center justify-end p-6 border-t border-solid border-slate-200 rounded-b">

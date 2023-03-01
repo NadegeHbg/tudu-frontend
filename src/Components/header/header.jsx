@@ -12,7 +12,7 @@ import { useLocation } from "react-router-dom";
 import { Bars3BottomLeftIcon } from "@heroicons/react/24/outline";
 import Login from "../forms/Login";
 import Register from "../forms/Registration";
-import logo from "../assets/tudu.png"
+// import logo from "../assets/tudu.png"
 
 
 
@@ -31,12 +31,12 @@ const HeaderStyle = () => {
                         y1="0%"
                         x2="100%"
                         y2="100%" >
-                        <stop offset="0%" stopColor="#45BCB7" stopOpacity=".5" />
-                        <stop offset="20%" stopColor="#064566" stopOpacity=".5" />
-                        <stop offset="25%" stopColor="#1C373F" stopOpacity=".5" />
-                        <stop offset="50%" stopColor="#DE3F4D" stopOpacity=".5" />
-                        <stop offset="75%" stopColor="#733C47" stopOpacity=".5" />
-                        <stop offset="100%" stopColor="#733C47" stopOpacity=".5" />
+                        <stop offset="0%" stopColor="#45BCB7" stopOpacity=".3" />
+                        <stop offset="20%" stopColor="#064566" stopOpacity=".3" />
+                        <stop offset="25%" stopColor="#1C373F" stopOpacity=".3" />
+                        <stop offset="50%" stopColor="#DE3F4D" stopOpacity=".3" />
+                        <stop offset="75%" stopColor="#733C47" stopOpacity=".3" />
+                        <stop offset="100%" stopColor="#733C47" stopOpacity=".3" />
                     </linearGradient>
 
                     <path id="head1" d="M985.66,92.83C906.67,72,823.78,31,743.84,14.19c-82.26-17.34-168.06-16.33-250.45.39-57.84,11.73-114,31.07-172,41.86A600.21,600.21,0,0,1,0,27.35V120H1200V95.8C1132.19,118.92,1055.71,111.31,985.66,92.83Z" fill="url(#gradient)" />
@@ -58,7 +58,7 @@ const HeaderStyle = () => {
                         <Bars3BottomLeftIcon className="w-6 h-6 text-secondary" />
                     </button>
                 </div>
-                <div className="flex items-center ml-3 hidden md:block">
+                <div className=" items-center ml-3 hidden md:flex">
                     <div className="container mx-auto flex justify-end z-50">
                         <Login />
                         <Register />
@@ -66,7 +66,7 @@ const HeaderStyle = () => {
                 </div>
             </div>
         </div>
-       
+
     );
 };
 
@@ -79,3 +79,4 @@ const Header = () => {
 };
 
 export default Header;
+
