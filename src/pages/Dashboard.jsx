@@ -44,7 +44,7 @@ const Dashboard = () => {
         if (localStorage.getItem('view') !== null) {
             setView(localStorage.getItem('view') === 'true');
         }
-    }, [userId, tudu]);
+    }, [userId]);
 
 
     const toggleView = () => {
