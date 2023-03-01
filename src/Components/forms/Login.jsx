@@ -42,6 +42,7 @@ export default function Login() {
             // login successful
         } else {
             setError('email', { type: 'manual', message: 'Invalid email or password' });
+            setError('password', { type: 'manual', message: 'Invalid email or password' });
         }
         HandleLogin(data);
     };
@@ -90,7 +91,7 @@ export default function Login() {
                                             placeholder="Add Password"
                                         />
                                        {errors.password && errors.password.type === 'required' && (<span style={{color: 'red'}}>This field is required a valid input</span>)}
-                                        {errors.password && errors.password.type === 'manual' && (<span>{errors.password.message}</span>)}
+                                        {errors.password && errors.password.type === 'manual' && (<span style={{color: 'red'}}>{errors.password.message}</span>)}
                                     </div>
                                     {/*footer*/}
                                     <div className="flex items-center justify-end p-6 border-t border-solid border-slate-200 rounded-b">
