@@ -13,32 +13,42 @@ const Dashboard = () => {
     const [view, setView] = useState(localStorage.getItem('view') === 'true' || true);
     const userId = Cookies.get('id');
     const [options, setOptions] = useState([]);
-
+    const [loading, setLoading] = useState(true);
 
     
     // eslint-disable-next-line
     useEffect(() => {
 
         async function fetchData() {
-            setTudu(await GetTodos(userId));
-            if(tudu.length>0){
-                const newArray = tudu.map((obj) => {
-                    return { category: obj.category };
-                });
-                const categoryArray = [...new Set(newArray.map((item) => item.category))];
-                setOptions( categoryArray.map((item) => {
-                    return {
-                    value: item,
-                    label: item,
-                    };
-                }))
-            }else setOptions ([{value: 'Personal', label: 'Personal'},{value: 'Buisiness', label: 'Buisiness'}])
-        }
+            try{
+                setTudu(await GetTodos(userId));
+                if(tudu.length>0){
+                    const newArray = tudu.map((obj) => {
+                        return { category: obj.category };
+                    });
+                    const categoryArray = [...new Set(newArray.map((item) => item.category))];
+                    setOptions( categoryArray.map((item) => {
+                        return {
+                        value: item,
+                        label: item,
+                        };
+                    }))
+                }
+                else setOptions ([
+                    {value: 'Personal', label: 'Personal'},
+                    {value: 'Buisiness', label: 'Buisiness'}])
+            
+            }catch (error) {
+                    console.error(error);
+                  } finally {
+                    setLoading(false);
+                  }
+            }
         fetchData();
         if (localStorage.getItem('view') !== null) {
             setView(localStorage.getItem('view') === 'true');
         }
-    }, [userId]);
+    }, [tudu]);
 
 
     const toggleView = () => {
