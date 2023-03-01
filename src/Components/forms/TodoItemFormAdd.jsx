@@ -12,7 +12,7 @@ export default function TodoItemFormAdd({options}) {
   const {
     register,
     handleSubmit,
-    // formState: { errors },
+    formState: { errors },
     setValue,
     control,
   } = useForm({
@@ -81,6 +81,7 @@ export default function TodoItemFormAdd({options}) {
                       <Controller 
                         name="category"
                         control={control}
+                        rules={{ required: true }}
                         render={({ field }) => {
                           // sending integer instead of string.
                           return (
@@ -99,7 +100,9 @@ export default function TodoItemFormAdd({options}) {
                           );
                         }}
                       />
-                     
+                      {errors.category && (
+                <span style={{ color: 'red' }}>This field is required</span>
+              )}
                     </div>
                     <div>
                       <label
