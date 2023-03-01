@@ -5,21 +5,23 @@ import Sidebar from "../Components/main/Sidebar";
 import MiddleSection from "../Components/main/MiddleSection";
 import MainFrame from "../Components/main/MainFrame";
 import HeaderDashboard from "../Components/header/headerDashboard";
+import { useNavigate } from "react-router-dom";
 
 const Dashboard = () => {
-
+    
     // get all tudu from back end store it here. even filtered tudu is stored here
     const [tudu, setTudu] = useState([]);
     const [view, setView] = useState(localStorage.getItem('view') === 'true' || true);
     const userId = Cookies.get('id');
     const [options, setOptions] = useState([])
+    const navigate = useNavigate()
 
     // eslint-disable-next-line
     useEffect(() => {
 
+        if(userId==undefined) navigate('/')
         async function fetchData() {
             setTudu(await GetTodos(userId));
-            console.log(tudu.length > 0)
             if (tudu.length > 0) {
                 // console.log('here I am')
                 const newArray = tudu.map((obj) => {
@@ -44,7 +46,7 @@ const Dashboard = () => {
         if (localStorage.getItem('view') !== null) {
             setView(localStorage.getItem('view') === 'true');
         }
-    }, [userId, tudu]);
+    }, [userId]);
 
 
     const toggleView = () => {

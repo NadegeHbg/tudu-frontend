@@ -7,12 +7,12 @@ import { useEffect, useState } from "react";
 import Creatable from "react-select/creatable";
 import customStyle from "./selectStyle"
 
-export default function TodoItemFormAdd({ options }) {
+export default function TodoItemFormAdd({options}) {
   const [showModal, setShowModal] = useState(false);
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    // formState: { errors },
     setValue,
     control,
   } = useForm({
@@ -22,10 +22,13 @@ export default function TodoItemFormAdd({ options }) {
   });
 
   const [userId, setUserId] = useState(null);
+
+  // console.log(`this is what we want ${tudu}`)
+  // --- Category ---
+ 
   useEffect(() => {
     setUserId(Cookies.get("id"));
   }, []);
-
 
   const onSubmit = async (data = {}) => {
     setShowModal(false);
@@ -77,11 +80,9 @@ export default function TodoItemFormAdd({ options }) {
                       >
                         Choose your Category
                       </label>
-
                       <Controller
                         name="category"
                         control={control}
-                        rules={{ required: true }}
                         render={({ field }) => {
                           // sending integer instead of string.
                           return (
@@ -95,14 +96,11 @@ export default function TodoItemFormAdd({ options }) {
                                   label: selectedOption?.label,
                                 });
                                 field.onChange(selectedOption);
-                              }}
+                              }} 
                             />
                           );
                         }}
                       />
-                      {errors.category && (
-                        <span style={{ color: 'red' }}>This field is required</span>
-                      )}
                     </div>
                     <div>
                       <label
