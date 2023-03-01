@@ -1,6 +1,4 @@
 import React from "react";
-import { GetTodos } from "../../events/axiosGlobal";
-import Cookies from "js-cookie";
 import { isDoneTudu, deleteTudu } from "../../events/axiosGlobal";
 import TodoItemForm from "../forms/TodoItemForm";
 

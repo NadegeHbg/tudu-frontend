@@ -12,7 +12,8 @@ const axiosGlobal = axios.create({
   },
 });
 axios.defaults.baseURL = "https://tutu-tudu.herokuapp.com/";
-
+//https://5d74-84-199-109-84.eu.ngrok.io/api/tudu/ 
+//https://tutu-tudu.herokuapp.com/
 //registration handler => POST
 
 const handleRegistration = async (data) => {
@@ -36,9 +37,9 @@ const HandleLogin = async (data) => {
     const resData = await response.data;
     console.log(resData, "login post request");
 
-    Cookies.set("email", resData.email, { path: "/" });
+    // Cookies.set("email", resData.email, { path: "/" });
     Cookies.set("id", resData.id, { path: "/" });
-    document.cookie = `token=${resData.token}`;
+    // document.cookie = `token=${resData.token}`;
     // document.cookie = `email=${resData.email}`
   } catch (err) {
     console.log(err, "connectionError");
@@ -52,7 +53,7 @@ const handleAdd = async (data) => {
   console.log(data, "axiosGlobal");
 
   try {
-    const response = await axios.post(`personal/addTudu`, data);
+    const response = await axios.post(`/personal/addTudu`, data);
     // response.data.headers['Content-Type'];
     console.log(response, "AddTuduResponse");
   } catch (err) {
