@@ -83,8 +83,9 @@ const MainFrame = ({ tudu }) => {
                                             }}
                                             type="button"
                                             className="mr-3 p-2 text-sm  bg-cyan-600  text-white  rounded focus:outline-none focus:shadow-outline"
-                                            whileHover={{ scale: 1.1 }}
-                                            transition={{ type: "spring", stiffness: 400, damping: 10 }}
+                                            initial={{ x: -100 }}
+                                            animate={{ x: 0, rotate: [0, 10, -10, 0] }}
+                                            transition={{ type: "spring", bounce: 0.1, duration: 4 }}
                                         >
                                             Done
                                         </motion.button>
@@ -95,8 +96,9 @@ const MainFrame = ({ tudu }) => {
                                             }}
                                             type="button"
                                             className="mr-3 p-2.5 text-sm  bg-cyan-600 hover:bg-cyan-400 text-white rounded focus:outline-none focus:shadow-outline"
-                                            whileHover={{ scale: 1.1 }}
-                                            transition={{ type: "spring", stiffness: 400, damping: 10 }}
+                                            initial={{ x: -100 }}
+                                            animate={{ x: 0, rotate: [0, 10, -10, 0] }}
+                                            transition={{ type: "spring", bounce: 0.1, duration: 3 }}
                                         >
                                             Done
                                         </motion.button>
@@ -107,16 +109,18 @@ const MainFrame = ({ tudu }) => {
                                         }}
                                         type="button"
                                         className="mr-3 p-2.5 text-sm bg-red-500 hover:bg-red-700 text-white rounded focus:outline-none focus:shadow-outline"
-                                        whileHover={{ scale: 1.1 }}
-                                        transition={{ type: "spring", stiffness: 400, damping: 10 }}
+                                        initial={{ x: -100 }}
+                                        animate={{ x: 0, rotate: [0, 10, -10, 0] }}
+                                        transition={{ type: "spring", bounce: 0.1, duration: 2 }}
                                     >
                                         Delete
                                     </motion.button>
                                     <motion.button
                                         type="button"
                                         className="mr-3  text-sm bg-gray-800 hover:bg-cyan-600 text-white  rounded focus:outline-none focus:shadow-outline"
-                                        whileHover={{ scale: 1.1 }}
-                                        transition={{ type: "spring", stiffness: 400, damping: 10 }}
+                                        initial={{ x: -100 }}
+                                        animate={{ x: 0, rotate: [0, 10, -10, 0] }}
+                                        transition={{ type: "spring", bounce: 0.1, duration: 1 }}
                                     >
                                         <TodoItemForm todo={todo} tudu={tudu} />
                                     </motion.button>
