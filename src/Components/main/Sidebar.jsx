@@ -20,7 +20,7 @@ import { motion } from "framer-motion";
 
 // import { set } from "react-hook-form";
 
-const Sidebar = ({ tudu, setTudu, view, setView }) => {
+const Sidebar = ({ tudu, setTudu, view, setView, toggleView }) => {
   const [open, setOpen] = useState(false);
         // eslint-disable-next-line
   const [uniqueArray, setUniqueArray] = useState([]);
@@ -83,6 +83,7 @@ const Sidebar = ({ tudu, setTudu, view, setView }) => {
     // console.log(filterValue, "sidebar filter category");
     setTudu(filterValue);
   };
+
 
   return (
     <div className="">
@@ -203,7 +204,7 @@ const Sidebar = ({ tudu, setTudu, view, setView }) => {
                 type="span"
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
-                onClick={() => {setView(!view)}}
+                onClick={toggleView}
               >
                 <RectangleGroupIcon className="w-6 h-6 text-gray-300" />
                 <span className="flex-1 ml-3 whitespace-nowrap "> View</span>
