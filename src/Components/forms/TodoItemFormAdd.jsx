@@ -25,7 +25,7 @@ export default function TodoItemFormAdd({options}) {
   useEffect(() => {
     setUserId(Cookies.get("id"));
   }, []);
-  
+  console.log(options,"options from add form")
 
   const onSubmit = async (data = {}) => {
     setShowModal(false);

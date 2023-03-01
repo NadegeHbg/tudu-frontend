@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { GetTodos } from "../events/axiosGlobal";
 import Cookies from "js-cookie";
 import Sidebar from "../Components/main/Sidebar";
@@ -12,25 +12,27 @@ const Dashboard = () => {
     const [tudu, setTudu] = useState([]);
     const [view, setView] = useState(localStorage.getItem('view') === 'true' || true);
     const userId = Cookies.get('id');
-
-    let options
+    const [options,setOptions] = useState([])
+   
     // eslint-disable-next-line
     useEffect(() => {
         async function fetchData() {
             setTudu(await GetTodos(userId));
-            if(tudu.length>0){
+            if (tudu.length > 0) {
                 const newArray = tudu.map((obj) => {
                     return { category: obj.category };
                 });
                 const categoryArray = [...new Set(newArray.map((item) => item.category))];
-                options = categoryArray.map((item) => {
+                setOptions ( categoryArray.map((item) => {
                     return {
-                    value: item,
-                    label: item,
+                        value: item,
+                        label: item,
                     };
-                })
-            } else   options  = [{value:'Personal', lable:'personal'},
-                                    {value:'Buisiness', lable:'Buisiness'}]
+                }))
+            console.log(newArray ,"newArray",categoryArray,"catArray")
+            console.log(options,"options")
+            } else setOptions ([{value: 'Personal', label: 'Personal'},{value: 'Buisiness', label: 'Buisiness'}])
+
         }
         fetchData();
         if (localStorage.getItem('view') !== null) {
@@ -47,16 +49,16 @@ const Dashboard = () => {
 
 
     return (
-        <div>     
-            <HeaderDashboard options={options}/>
-        <div className="flex">
-            <Sidebar tudu={tudu} setTudu={setTudu}  view={view} toggleView={toggleView} />
-            {view ? 
-                (<MiddleSection tudu={tudu} setTudu={setTudu}  />) 
-                : 
-                (<MainFrame tudu={tudu} setTudu={setTudu} />)
-            }
-        </div>
+        <div>
+            <HeaderDashboard options={options} />
+            <div className="flex">
+                <Sidebar tudu={tudu} setTudu={setTudu} view={view} toggleView={toggleView} />
+                {view ?
+                    (<MiddleSection tudu={tudu} setTudu={setTudu} />)
+                    :
+                    (<MainFrame tudu={tudu} setTudu={setTudu} />)
+                }
+            </div>
         </div>
     );
 };
