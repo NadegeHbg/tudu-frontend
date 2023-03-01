@@ -1,16 +1,20 @@
 import React from "react";
-import { useForm } from "react-hook-form";
+import { useForm, Controller } from "react-hook-form";
 import { handleAdd } from "../../events/axiosGlobal";
 import Cookies from "js-cookie";
 import { useEffect, useState } from "react";
+// select
 import Creatable from "react-select/creatable";
+import customStyle from "./selectStyle"
 
-export default function TodoItemFormAdd() {
+export default function TodoItemFormAdd({tudu}) {
   const [showModal, setShowModal] = useState(false);
   const {
     register,
     handleSubmit,
     // formState: { errors },
+    setValue,
+    control,
   } = useForm({
     defaultValues: {
       entrydate: new Date().toISOString().slice(0, 10),
@@ -19,6 +23,22 @@ export default function TodoItemFormAdd() {
 
   const [userId, setUserId] = useState(null);
 
+  // console.log(`this is what we want ${tudu}`)
+  // --- Category ---
+  const newArray = tudu.map((obj) => {
+    return { category: obj.category };
+  });
+
+  const categoryArray = [...new Set(newArray.map((item) => item.category))];
+  // console.log(categoryArray)
+
+  const options = categoryArray.map((item) => {
+    return {
+      value: item,
+      label: item,
+    };
+  });
+
   useEffect(() => {
     setUserId(Cookies.get("id"));
   }, []);
@@ -26,7 +46,8 @@ export default function TodoItemFormAdd() {
   const onSubmit = async (data = {}) => {
     setShowModal(false);
     data.user_id = userId;
-    console.log(data, "data");
+    data.category = data.category.value
+    // console.log(data, "data");
     await handleAdd(data);
     window.location.reload();
   };
@@ -42,10 +63,12 @@ export default function TodoItemFormAdd() {
       </button>
       {showModal ? (
         <>
-          <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
+          <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none"
+           onClick={() => {setShowModal(false)}}>
             <div className="relative w-auto my-6 mx-auto max-w-3xl">
               {/*Content*/}
-              <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
+              <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none"
+              onClick={(e) => {e.stopPropagation()}}>
                 {/*Edit Section Header*/}
                 <div className="flex items-start justify-between p-5 border-b border-solid border-slate-200 rounded-t">
                   <h3 className="text-3xl font-logoFont"> Add </h3>
@@ -72,17 +95,27 @@ export default function TodoItemFormAdd() {
                       >
                         Choose your Category
                       </label>
-                      <label htmlFor="category">
-                        <select
-                          className="shadow-sm text-gray-900 text-sm rounded-lg block w-full p-2.5 bg-lightcream"
-                          name="category"
-                          {...register("category", { required: true })}
-                        >
-                          <option>Choose here</option>
-                          <option>Personal</option>
-                          <option>Business</option>
-                        </select>
-                      </label>
+                      <Controller
+                        name="category"
+                        control={control}
+                        render={({ field }) => {
+                          // sending integer instead of string.
+                          return (
+                            <Creatable
+                              styles={customStyle}
+                              options={options}
+                              value={field.value}
+                              onChange={(selectedOption) => {
+                                setValue("category", {
+                                  value: selectedOption?.value,
+                                  label: selectedOption?.label,
+                                });
+                                field.onChange(selectedOption);
+                              }} 
+                            />
+                          );
+                        }}
+                      />
                     </div>
                     <div>
                       <label

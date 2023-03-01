@@ -2,11 +2,11 @@
 import React from "react";
 import { useForm, Controller } from "react-hook-form";
 import { useEffect, useState } from "react";
-// import Select from 'react-select'
 // eslint-disable-next-line
-import { handleEdit, isDoneTudu } from "../../events/axiosGlobal";
 import Creatable from "react-select/creatable";
+import customStyle from "./selectStyle"
 // Cookies
+import { handleEdit } from "../../events/axiosGlobal";
 import Cookies from "js-cookie";
 // Icons and components
 import { EllipsisVerticalIcon } from "@heroicons/react/24/outline";
@@ -40,6 +40,7 @@ export default function TodoItemForm({ tudu, todo }) {
   const onSubmit = async (data = {}) => {
     setShowModal(false);
     data.user_id = userId;
+    data.category = data.category.value
     // console.log(data, "data");
     await handleEdit(data);
     window.location.reload();
@@ -49,37 +50,41 @@ export default function TodoItemForm({ tudu, todo }) {
     const { newInfo, value } = event.target;
     setValue(newInfo, value);
   };
+
+  // --- Category ---
   const newArray = tudu.map((obj) => {
     return { category: obj.category };
   });
   // console.log(newArray)
-
   const categoryArray = [...new Set(newArray.map((item) => item.category))];
   // console.log(categoryArray)
-
   const options = categoryArray.map((item) => {
     return {
       value: item,
       label: item,
     };
   });
+
+
   useEffect(() => {
     setUserId(Cookies.get("id"));
   }, []);
   return (
     <div className="container mx-auto">
-      <div className="w-full sm:w-auto bg-gray-800 hover:bg-gray-600 focus:ring-4 focus:outline-none focus:ring-gray-300 text-white">
+      <div className="w-full sm:w-auto rounded-lg bg-gray-800 hover:bg-gray-600 focus:ring-4 focus:outline-none focus:ring-gray-300 text-white">
         <EllipsisVerticalIcon
           onClick={() => setShowModal(true)}
-          className="h-6 w-6 inline-flex justify-center"
+          className="h-6 w-6  mx-2 my-2.5 inline-flex justify-center"
         />
       </div>
       {showModal ? (
         <>
-          <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
+          <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none"
+          onClick={() => {setShowModal(false)}}>
             <div className="relative w-auto my-6 mx-auto max-w-3xl">
               {/*Content*/}
-              <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
+              <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none"
+              onClick={(e) => {e.stopPropagation()}}>
                 {/*Edit Section Header*/}
                 <div className="flex items-start justify-between p-5 border-b border-solid border-slate-200 rounded-t">
                   <h3 className="text-3xl font-logoFont"> Edit </h3>
@@ -105,12 +110,16 @@ export default function TodoItemForm({ tudu, todo }) {
                           // sending integer instead of string.
                           return (
                             <Creatable
+                              styles={customStyle}
                               options={options}
-                              // {...field}
                               value={field.value}
-                              onChange={(selectedOption) =>
-                                field.onChange(selectedOption?.value)
-                              }
+                              onChange={(selectedOption) => {
+                                setValue("category", {
+                                  value: selectedOption?.value,
+                                  label: selectedOption?.label,
+                                });
+                                field.onChange(selectedOption);
+                              }} 
                             />
                           );
                         }}

@@ -5,7 +5,6 @@ import {
   filteringTuduCategory,
   GetTodos,
   filteringTuduActive,
-  cookieSetFn,
 } from "../../events/axiosGlobal";
 import {
   ArchiveBoxIcon,
@@ -21,11 +20,11 @@ import { motion } from "framer-motion";
 
 // import { set } from "react-hook-form";
 
-const Sidebar = ({ tudu, setTudu, view, setView, cookie, setCookie }) => {
+const Sidebar = ({ tudu, setTudu, view, setView, upcomingArray }) => {
   const [open, setOpen] = useState(false);
+  // eslint-disable-next-line
   const [uniqueArray, setUniqueArray] = useState([]);
   const [finalCategory, setFinalCategory] = useState([]);
-  const [upcomingArray, setUpcomingArray] = useState([]);
 
   const handleOpen = () => {
     setOpen(!open);
@@ -40,7 +39,6 @@ const Sidebar = ({ tudu, setTudu, view, setView, cookie, setCookie }) => {
   async function fetchData() {
     const data = Cookies.get("id");
     setTudu(await GetTodos(data));
-    setUpcomingArray(await GetTodos(data));
   }
 
   //filtering the tudu
@@ -59,9 +57,9 @@ const Sidebar = ({ tudu, setTudu, view, setView, cookie, setCookie }) => {
 
   // category filter
   const handleClick = async (item) => {
-    console.log("Clicked item key:", item);
+    // console.log("Clicked item key:", item);
     const filterValue = await filteringTuduCategory(item);
-    console.log(filterValue, "sidebar filter category");
+    // console.log(filterValue, "sidebar filter category");
     setTudu(filterValue);
   };
 
@@ -78,9 +76,9 @@ const Sidebar = ({ tudu, setTudu, view, setView, cookie, setCookie }) => {
 
   // Active & done filter
   const filteringTuduActif = async (data) => {
-    console.log("Clicked item key:", data);
+    // console.log("Clicked item key:", data);
     const filterValue = await filteringTuduActive(data);
-    console.log(filterValue, "sidebar filter category");
+    // console.log(filterValue, "sidebar filter category");
     setTudu(filterValue);
   };
 
@@ -205,10 +203,7 @@ const Sidebar = ({ tudu, setTudu, view, setView, cookie, setCookie }) => {
                 whileTap={{ scale: 0.9 }}
                 onClick={async () => {
                   await setView(!view);
-                  await setCookie(!view);
-                  // await cookieSetFn(view);
-                  console.log(cookie, "cookie");
-                  Cookies.set("view", cookie, { path: "/dashboard" });
+                  navigate("/dashboard1");
                 }}
               >
                 <RectangleGroupIcon className="w-6 h-6 text-gray-300" />

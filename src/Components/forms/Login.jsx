@@ -10,7 +10,7 @@ export default function Login() {
     const {
         register,
         handleSubmit,
-        formState: { errors },
+        // formState: { errors },
     } = useForm();
 
 
@@ -18,11 +18,11 @@ export default function Login() {
     const location = useNavigate(); //the old version was using LOCATION in react. In the new version, NAVIGATE is used. can be controlled
     const HandleLogin = async (data) => {
         try {
-            console.log(data, "axios global login");
+            // console.log(data, "axios global login");
             const response = await axios.post("/user/login", data);
-            const resStatus = response.status;
+            // const resStatus = response.status;
             const resData = response.data;
-            console.log(response, "login post request");
+            // console.log(response, "login post request");
 
             Cookies.set("email", resData.email, { path: "/" });
             Cookies.set("id", resData.id, { path: "/" });
@@ -31,7 +31,7 @@ export default function Login() {
 
             location("/dashboard");
         } catch (err) {
-            const errStatus = err.response.status;
+            // const errStatus = err.response.status;
             alert(err.response.data);
         }
     };
@@ -49,10 +49,13 @@ export default function Login() {
                 Login
             </button>
             {!showModal ? null : (
-                <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none ">
+                <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none "
+                onClick={() => {setShowModal(false)}}>
                     <div className="relative w-auto my-6 mx-auto max-w-3xl">
                         {/*Content*/}
-                        <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none">
+                        <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none"
+                        onClick={(e) => {e.stopPropagation()}}
+                        >
                             {/*Body*/}
                             <div className="relative p-6 flex-auto">
                                 <form onSubmit={handleSubmit(onSubmit)} className="space-y-8">
