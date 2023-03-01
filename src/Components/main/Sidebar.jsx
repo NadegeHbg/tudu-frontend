@@ -15,6 +15,7 @@ import {
   RectangleGroupIcon,
   StarIcon,
   TagIcon,
+  BellAlertIcon
 } from "@heroicons/react/24/outline";
 import { motion } from "framer-motion";
 
@@ -127,6 +128,7 @@ const Sidebar = ({ tudu, setTudu, view, setView, toggleView }) => {
                 {/* <span className="inline-flex items-center justify-center w-3 h-3 p-3 ml-3 text-sm font-medium text-blue-800 bg-blue-100 rounded-full ">
                   
                 </span> */}
+
               </motion.span>
             </li>
 
@@ -139,7 +141,15 @@ const Sidebar = ({ tudu, setTudu, view, setView, toggleView }) => {
               >
                 <CalendarDaysIcon className="w-6 h-6 text-cyan-300" />
                 <span className="flex-1 ml-3 whitespace-nowrap">Upcoming</span>
+                <button className="relative">
+                    <BellAlertIcon className="  w-6 h-6 text-cyan-300" />
+                    <div
+                    class="absolute top-0 right-0  z-10 inline-block translate-x-2/4 translate-y-1/2 rotate-0 skew-x-0 skew-y-0 scale-x-100 scale-y-100 rounded-full bg-pink-700 p-2 text-xs">
+                    </div>
+                </button>
+                
               </motion.span>
+
             </li>
 
             {/*Done Area*/}
