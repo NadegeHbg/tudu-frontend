@@ -12,8 +12,8 @@ const Dashboard = () => {
     const [tudu, setTudu] = useState([]);
     const [view, setView] = useState(localStorage.getItem('view') === 'true' || true);
     const userId = Cookies.get('id');
-
-    let options
+    const [options,setOptions] = useState([])
+   
     // eslint-disable-next-line
     useEffect(() => {
         async function fetchData() {
@@ -23,13 +23,16 @@ const Dashboard = () => {
                     return { category: obj.category };
                 });
                 const categoryArray = [...new Set(newArray.map((item) => item.category))];
-                options = categoryArray.map((item) => {
+                setOptions ( categoryArray.map((item) => {
                     return {
                         value: item,
                         label: item,
                     };
-                })
-            } else options = null
+                }))
+            console.log(newArray ,"newArray",categoryArray,"catArray")
+            console.log(options,"options")
+            } else setOptions ([{value: 'Personal', label: 'Personal'},{value: 'Buisiness', label: 'Buisiness'}])
+
         }
         fetchData();
         if (localStorage.getItem('view') !== null) {

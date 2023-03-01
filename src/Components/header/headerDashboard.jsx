@@ -4,6 +4,8 @@ import { useLocation } from "react-router-dom";
 import logo from "../../assets/tudu.png";
 
 const HeaderDashboardStyle = ({options}) => {
+  console.log(options,"options from header style")
+
     return (
         <nav className="z-50 w-full border-b bg-gray-800 border-gray-700">
             <div className="px-3 py-3 lg:px-5 lg:pl-3">
