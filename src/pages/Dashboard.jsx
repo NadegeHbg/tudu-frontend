@@ -1,4 +1,4 @@
-import { useEffect, useState,useRef } from "react";
+import { useEffect, useState} from "react";
 import { GetTodos } from "../events/axiosGlobal";
 import Cookies from "js-cookie";
 import Sidebar from "../Components/main/Sidebar";
@@ -12,7 +12,8 @@ const Dashboard = () => {
     const [tudu, setTudu] = useState([]);
     const [view, setView] = useState(localStorage.getItem('view') === 'true' || true);
     const userId = Cookies.get('id');
-    let options = useRef(null)
+    const [options, setOptions] = useState([]);
+
 
     
     // eslint-disable-next-line
@@ -25,13 +26,13 @@ const Dashboard = () => {
                     return { category: obj.category };
                 });
                 const categoryArray = [...new Set(newArray.map((item) => item.category))];
-                options.current = categoryArray.map((item) => {
+                setOptions( categoryArray.map((item) => {
                     return {
                     value: item,
                     label: item,
                     };
-                })
-            } else   options.current  = null
+                }))
+            }else setOptions ([{value: 'Personal', label: 'Personal'},{value: 'Buisiness', label: 'Buisiness'}])
         }
         fetchData();
         if (localStorage.getItem('view') !== null) {
