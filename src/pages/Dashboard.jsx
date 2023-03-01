@@ -1,4 +1,4 @@
-import { useEffect, useState} from "react";
+import { useEffect, useState } from "react";
 import { GetTodos } from "../events/axiosGlobal";
 import Cookies from "js-cookie";
 import Sidebar from "../Components/main/Sidebar";
@@ -12,43 +12,39 @@ const Dashboard = () => {
     const [tudu, setTudu] = useState([]);
     const [view, setView] = useState(localStorage.getItem('view') === 'true' || true);
     const userId = Cookies.get('id');
-    const [options, setOptions] = useState([]);
-    const [loading, setLoading] = useState(true);
+    const [options, setOptions] = useState([])
 
-    
     // eslint-disable-next-line
     useEffect(() => {
 
         async function fetchData() {
-            try{
-                setTudu(await GetTodos(userId));
-                if(tudu.length>0){
-                    const newArray = tudu.map((obj) => {
-                        return { category: obj.category };
-                    });
-                    const categoryArray = [...new Set(newArray.map((item) => item.category))];
-                    setOptions( categoryArray.map((item) => {
-                        return {
+            setTudu(await GetTodos(userId));
+            console.log(tudu.length > 0)
+            if (tudu.length > 0) {
+                // console.log('here I am')
+                const newArray = tudu.map((obj) => {
+                    return { category: obj.category };
+                });
+                const categoryArray = [...new Set(newArray.map((item) => item.category))];
+                setOptions(categoryArray.map((item) => {
+                    return {
                         value: item,
                         label: item,
-                        };
-                    }))
-                }
-                else setOptions ([
-                    {value: 'Personal', label: 'Personal'},
-                    {value: 'Buisiness', label: 'Buisiness'}])
-            
-            }catch (error) {
-                    console.error(error);
-                  } finally {
-                    setLoading(false);
-                  }
+                    };
+                }))
+                // console.log(newArray, "newArray", categoryArray, "catArray")
+                // console.log(options, "options")
             }
+            else {
+                // console.log('but I am also here')
+                setOptions([{ value: 'Personal', label: 'Personal' }, { value: 'Buisiness', label: 'Buisiness' }])
+            }
+        }
         fetchData();
         if (localStorage.getItem('view') !== null) {
             setView(localStorage.getItem('view') === 'true');
         }
-    }, [tudu]);
+    }, [userId, tudu]);
 
 
     const toggleView = () => {
@@ -59,16 +55,16 @@ const Dashboard = () => {
 
 
     return (
-        <div>     
-            <HeaderDashboard options={options}/>
-        <div className="flex">
-            <Sidebar tudu={tudu} setTudu={setTudu}  view={view} toggleView={toggleView} />
-            {view ? 
-                (<MiddleSection tudu={tudu} setTudu={setTudu}  />) 
-                : 
-                (<MainFrame tudu={tudu} setTudu={setTudu} />)
-            }
-        </div>
+        <div>
+            <HeaderDashboard options={options} />
+            <div className="flex">
+                <Sidebar tudu={tudu} setTudu={setTudu} view={view} toggleView={toggleView} />
+                {view ?
+                    (<MiddleSection tudu={tudu} setTudu={setTudu} />)
+                    :
+                    (<MainFrame tudu={tudu} setTudu={setTudu} />)
+                }
+            </div>
         </div>
     );
 };

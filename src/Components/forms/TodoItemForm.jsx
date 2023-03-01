@@ -118,14 +118,14 @@ export default function TodoItemForm({ tudu, todo }) {
                                   label: selectedOption?.label,
                                 });
                                 field.onChange(selectedOption);
-                              }} 
+                              }}
                             />
                           );
                         }}
                       />
-                          {errors.category && (
-                <span style={{ color: 'red' }}>This field is required</span>
-              )}
+                      {errors.category && (
+                        <span style={{ color: 'red' }}>This field is required</span>
+                      )}
                     </div>
                     <div>
                       <label
