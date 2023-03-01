@@ -12,18 +12,40 @@ const Dashboard = () => {
     const [tudu, setTudu] = useState([]);
     const [view, setView] = useState(localStorage.getItem('view') === 'true' || true);
     const userId = Cookies.get('id');
-
+    const [options, setOptions] = useState([])
 
     // eslint-disable-next-line
     useEffect(() => {
+
         async function fetchData() {
             setTudu(await GetTodos(userId));
+            console.log(tudu.length > 0)
+            if (tudu.length > 0) {
+                // console.log('here I am')
+                const newArray = tudu.map((obj) => {
+                    return { category: obj.category };
+                });
+                const categoryArray = [...new Set(newArray.map((item) => item.category))];
+                setOptions(categoryArray.map((item) => {
+                    return {
+                        value: item,
+                        label: item,
+                    };
+                }))
+                // console.log(newArray, "newArray", categoryArray, "catArray")
+                // console.log(options, "options")
+            }
+            else {
+                // console.log('but I am also here')
+                setOptions([{ value: 'Personal', label: 'Personal' }, { value: 'Buisiness', label: 'Buisiness' }])
+            }
         }
         fetchData();
         if (localStorage.getItem('view') !== null) {
             setView(localStorage.getItem('view') === 'true');
         }
     }, [userId]);
+
 
     const toggleView = () => {
         const newView = !view;
@@ -34,13 +56,15 @@ const Dashboard = () => {
 
     return (
         <div>
- <HeaderDashboard tudu={tudu}/>
-        <div className="flex">
-            <Sidebar tudu={tudu} setTudu={setTudu}  view={view} toggleView={toggleView} />
-            {view ? 
-                (<MiddleSection tudu={tudu} setTudu={setTudu}  />) : (<MainFrame tudu={tudu} setTudu={setTudu} />)
-            }
-        </div>
+            <HeaderDashboard options={options} />
+            <div className="flex">
+                <Sidebar tudu={tudu} setTudu={setTudu} view={view} toggleView={toggleView} />
+                {view ?
+                    (<MiddleSection tudu={tudu} setTudu={setTudu} />)
+                    :
+                    (<MainFrame tudu={tudu} setTudu={setTudu} />)
+                }
+            </div>
         </div>
     );
 };

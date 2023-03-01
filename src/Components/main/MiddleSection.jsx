@@ -34,6 +34,7 @@ export default function MiddleSection({ tudu }) {
         <section className="p-4 sm:ml-64 marker:text-gray-600 body-font w-full">
             <div className="container px-5 py-4 mx-auto">
                 <div className="flex flex-wrap gap-8">
+                    {/*paramater ' i ' is added for duration (framer motion) */}
                     {tudu.length > 0 ? (
                         tudu.map((todo, i) => (
                             <motion.div
@@ -96,6 +97,7 @@ export default function MiddleSection({ tudu }) {
 
                                     {/*Edit Button Gray New*/}
                                     <motion.button
+                                        className="w-fit sm:w-auto bg-gray-800 hover:bg-gray-600 focus:ring-4 focus:outline-none focus:ring-gray-300 text-white rounded-lg inline-flex items-center justify-center "
                                         initial={{ x: -100 }}
                                         animate={{ x: 0, rotate: [0, 10, -10, 0] }}
                                         transition={{ type: "spring", bounce: 0.1, duration: 1 }}

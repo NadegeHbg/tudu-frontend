@@ -18,7 +18,7 @@ export default function TodoItemForm({ tudu, todo }) {
     register,
     handleSubmit,
     setValue,
-    // formState: { errors },
+    formState: { errors },
     control,
   } = useForm({
     defaultValues: {
@@ -104,6 +104,7 @@ export default function TodoItemForm({ tudu, todo }) {
                       <Controller
                         name="category"
                         control={control}
+                        rules={{ required: true }}
                         render={({ field }) => {
                           // sending integer instead of string.
                           return (
@@ -117,11 +118,14 @@ export default function TodoItemForm({ tudu, todo }) {
                                   label: selectedOption?.label,
                                 });
                                 field.onChange(selectedOption);
-                              }} 
+                              }}
                             />
                           );
                         }}
                       />
+                      {errors.category && (
+                        <span style={{ color: 'red' }}>This field is required</span>
+                      )}
                     </div>
                     <div>
                       <label
@@ -169,7 +173,7 @@ export default function TodoItemForm({ tudu, todo }) {
                           type="date"
                           name="entrydate"
                           className="shadow-sm text-gray-900 text-sm rounded-lg block w-full p-2.5 bg-lightcream"
-                          {...register("entrydate")}
+                          {...register("entrydate", { required: true })}
                         />
                       </label>
                       <label htmlFor="duedate">
@@ -185,7 +189,7 @@ export default function TodoItemForm({ tudu, todo }) {
                           name="duedate"
                           className="shadow-sm text-gray-900 text-sm rounded-lg block w-full p-2.5 bg-lightcream "
                           // style={{ WebkitAppearance: "none", color: "white", filter: "invert(1)" }}
-                          {...register("duedate")}
+                          {...register("duedate", { required: true })}
                         />
                       </label>
                     </div>
