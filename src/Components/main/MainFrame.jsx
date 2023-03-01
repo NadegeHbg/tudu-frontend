@@ -112,14 +112,9 @@ const MainFrame = ({ tudu }) => {
                                     >
                                         Delete
                                     </motion.button>
-                                    <motion.button
-                                        type="button"
-                                        className="mr-3  text-sm bg-gray-800 hover:bg-cyan-600 text-white  rounded focus:outline-none focus:shadow-outline"
-                                        whileHover={{ scale: 1.1 }}
-                                        transition={{ type: "spring", stiffness: 400, damping: 10 }}
-                                    >
+                                    <div className="w-fit sm:w-auto bg-gray-800 hover:bg-gray-600 focus:ring-4 focus:outline-none focus:ring-gray-300 text-white rounded-lg inline-flex items-center justify-center ">
                                         <TodoItemForm todo={todo} tudu={tudu} />
-                                    </motion.button>
+                                    </div>
                                 </td>
                             </tr>
                         ))

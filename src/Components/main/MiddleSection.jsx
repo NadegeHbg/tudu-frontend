@@ -95,13 +95,9 @@ export default function MiddleSection({ tudu }) {
                                     </motion.div>
 
                                     {/*Edit Button Gray New*/}
-                                    <motion.button
-                                        initial={{ x: -100 }}
-                                        animate={{ x: 0, rotate: [0, 10, -10, 0] }}
-                                        transition={{ type: "spring", bounce: 0.1, duration: 1 }}
-                                    >
+                                    <div className="w-fit sm:w-auto bg-gray-800 hover:bg-gray-600 focus:ring-4 focus:outline-none focus:ring-gray-300 text-white rounded-lg inline-flex items-center justify-center ">
                                         <TodoItemForm todo={todo} tudu={tudu} />
-                                    </motion.button>
+                                    </div>
                                 </div>
                             </motion.div>
                         ))
