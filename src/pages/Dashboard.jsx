@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { GetTodos } from "../events/axiosGlobal";
 import Cookies from "js-cookie";
 import Sidebar from "../Components/main/Sidebar";
@@ -13,17 +13,30 @@ const Dashboard = () => {
     const [view, setView] = useState(localStorage.getItem('view') === 'true' || true);
     const userId = Cookies.get('id');
 
-
+    let options
     // eslint-disable-next-line
     useEffect(() => {
         async function fetchData() {
             setTudu(await GetTodos(userId));
+            if (tudu.length > 0) {
+                const newArray = tudu.map((obj) => {
+                    return { category: obj.category };
+                });
+                const categoryArray = [...new Set(newArray.map((item) => item.category))];
+                options = categoryArray.map((item) => {
+                    return {
+                        value: item,
+                        label: item,
+                    };
+                })
+            } else options = null
         }
         fetchData();
         if (localStorage.getItem('view') !== null) {
             setView(localStorage.getItem('view') === 'true');
         }
     }, [userId]);
+
 
     const toggleView = () => {
         const newView = !view;
@@ -34,13 +47,15 @@ const Dashboard = () => {
 
     return (
         <div>
- <HeaderDashboard tudu={tudu}/>
-        <div className="flex">
-            <Sidebar tudu={tudu} setTudu={setTudu}  view={view} toggleView={toggleView} />
-            {view ? 
-                (<MiddleSection tudu={tudu} setTudu={setTudu}  />) : (<MainFrame tudu={tudu} setTudu={setTudu} />)
-            }
-        </div>
+            <HeaderDashboard options={options} />
+            <div className="flex">
+                <Sidebar tudu={tudu} setTudu={setTudu} view={view} toggleView={toggleView} />
+                {view ?
+                    (<MiddleSection tudu={tudu} setTudu={setTudu} />)
+                    :
+                    (<MainFrame tudu={tudu} setTudu={setTudu} />)
+                }
+            </div>
         </div>
     );
 };
