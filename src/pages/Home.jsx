@@ -24,13 +24,6 @@ const HomePageDesktop = () => {
     const translateY = useTransform(x, [0, 400], [-45, 45]);
     const translateX2 = useTransform(y, [400, 0], [30, -30]);
     const translateY2 = useTransform(x, [400, 200], [-30, 30]);
-    const bounceTransition = {
-        y: {
-          duration: 0.4,
-          yoyo: Infinity,
-          ease: "easeOut",
-        },
-      }
 
     function handleMouse(event) {
         const rect = event.currentTarget.getBoundingClientRect();
@@ -190,15 +183,16 @@ const HomePageDesktop = () => {
                         className="max-h-32 col-start-2 col-end-4 row-start-3 row-end-4 translate-x-[50%] z-[2]"
                         transition={
                             {y: {
-                            duration: .75,
+                            duration: 2,
                             repeat: Infinity,
-                            repeatType: "mirror",
-                            ease: "easeOut",
+                            repeatDelay: 1,
+                            repeatType: "reverse",
+                            ease: "easeInOut",
                           }}
                         }
                         animate={{
-                        // y: ["50%", "-50%"],
-                        translateY: ['0%', '15%', '30%', '15%', '0%']
+                        y: ["30%", "-30%"],
+                        // translateY: ['0%', '50%', '30%', '15%', '30%', '50%']
                         }} />
                 </div>
             </motion.div>
