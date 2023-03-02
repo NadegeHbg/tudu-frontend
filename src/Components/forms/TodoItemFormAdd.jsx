@@ -12,7 +12,7 @@ export default function TodoItemFormAdd({tudu}) {
   const {
     register,
     handleSubmit,
-    // formState: { errors },
+    formState: { errors },
     setValue,
     control,
   } = useForm({
@@ -98,6 +98,7 @@ export default function TodoItemFormAdd({tudu}) {
                       <Controller
                         name="category"
                         control={control}
+                        rules={{ required: true }}
                         render={({ field }) => {
                           // sending integer instead of string.
                           return (
@@ -116,6 +117,9 @@ export default function TodoItemFormAdd({tudu}) {
                           );
                         }}
                       />
+                      {errors.category && (
+                <span style={{ color: 'red' }}>This field is required</span>
+              )}
                     </div>
                     <div>
                       <label
