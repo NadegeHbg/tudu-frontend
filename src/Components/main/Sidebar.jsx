@@ -21,12 +21,11 @@ import { motion } from "framer-motion";
 
 // import { set } from "react-hook-form";
 
-const Sidebar = ({ tudu, setTudu, view, setView, toggleView }) => {
+const Sidebar = ({ tudu, setTudu, view, setView, toggleView, upcomingArray }) => {
   const [open, setOpen] = useState(false);
   // eslint-disable-next-line
   const [uniqueArray, setUniqueArray] = useState([]);
   const [finalCategory, setFinalCategory] = useState([]);
-  const [upcomingArray, setUpcomingArray] = useState([]);
 
   const handleOpen = () => {
     setOpen(!open);
@@ -41,7 +40,6 @@ const Sidebar = ({ tudu, setTudu, view, setView, toggleView }) => {
   async function fetchData() {
     const data = Cookies.get("id");
     setTudu(await GetTodos(data));
-    setUpcomingArray(await GetTodos(data));
   }
 
   //filtering the tudu
@@ -69,11 +67,11 @@ const Sidebar = ({ tudu, setTudu, view, setView, toggleView }) => {
   // Upcoming filter
 
   const filteringUpcoming = async () => {
-    // console.log(upcomingArray, "tudutoupdate");
+    console.log(upcomingArray, "tudutoupdate");
     const tuduUpcoming = [...upcomingArray].sort(
       (a, b) => new Date(a.duedate) - new Date(b.duedate)
     );
-    // console.log(tuduUpcoming, "upcoming");
+    console.log(tuduUpcoming, "upcoming");
     setTudu(tuduUpcoming);
   };
 
@@ -118,7 +116,7 @@ const Sidebar = ({ tudu, setTudu, view, setView, toggleView }) => {
             <li
               onClick={() => {
                 fetchData();
-                // console.log(tudu, "onclick sidebar");
+                console.log(tudu, "onclick sidebar");
               }}
             >
               <motion.span
