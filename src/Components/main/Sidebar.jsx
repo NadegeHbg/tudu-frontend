@@ -234,7 +234,8 @@ const Sidebar = ({ tudu, setTudu, view, setView, toggleView }) => {
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
                 onClick={() => {
-                  navigate("/");
+                    Cookies.remove('id',"email","token")
+                    navigate("/");
                 }}
               >
                 <ArrowLeftOnRectangleIcon className="w-6 h-6 text-gray-300" />
