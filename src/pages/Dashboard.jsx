@@ -48,6 +48,7 @@ const Dashboard = () => {
   useEffect(() => {
     async function fetchData() {
       setTudu(await GetTodos(userId));
+      setUpcomingArray(await GetTodos(userId));
     }
     fetchData();
     if (localStorage.getItem("view") !== null) {
