@@ -33,23 +33,26 @@ export default function MiddleSection({ tudu }) {
     return (
         <section className="p-4 sm:ml-64 marker:text-gray-600 body-font w-full">
             <div className="container px-5 py-4 mx-auto">
-                <div className="flex flex-wrap gap-8">
+                <div className="flex flex-wrap gap-8 ">
                     {/*paramater ' i ' is added for duration (framer motion) */}
                     {tudu.length > 0 ? (
                         tudu.map((todo, i) => (
                             <motion.div
                                 key={todo.id}
-                                className="bg-gray-100 bg-opacity-75 px-8 pt-8 pb-8 rounded-lg overflow-auto text-center relative "
+                                className=" bg-gray-100 bg-opacity-75 px-8 pt-8 pb-8 rounded-lg overflow-auto text-center relative  "
                                 initial={{ opacity: 0, translateX: -50, translateY: -50 }}
                                 animate={{ opacity: 1, translateX: 0, translateY: 0 }}
                                 transition={{ duration: 0.3, delay: i * 0.4 }}
                             >
-                                <h2 className="tracking-widest text-xs title-font font-medium text-gray-400 mb-1 ">{todo.category}</h2>
+                                {/*Category Area*/}
+                                <h2 className="area tracking-widest  overflow-auto  title-font font-medium text-gray-400 mb-1 ">{todo.category}</h2>
                                 {/*To Do Area*/}
-                                <h1 className=" w-48  title-font sm:text-2xl text-xl font-medium text-gray-900 mb-3 rounded-lg overflow-auto h-10 m-2">{todo.ptaskname}</h1>
+                                <h1 className="area overflow-auto title-font sm:text-2xl text-xl font-medium text-gray-900 mb-3 rounded-lg h-10 m-2">
+                                    {todo.ptaskname}
+                                </h1>
 
                                 {/*Description Area*/}
-                                <div className="rounded-lg overflow-auto h-10 w-48 bg-white m-2">{todo.description}</div>
+                                <div className="area rounded-lg overflow-auto h-10 m-2 bg-white ">{todo.description}</div>
 
                                 {/*Date-Calendar Area*/}
                                 <p className="leading-relaxed mb-3">{new Date(todo.duedate).toISOString().slice(0, 10)}</p>
