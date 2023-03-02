@@ -39,14 +39,14 @@ export default function MiddleSection({ tudu }) {
                         tudu.map((todo, i) => (
                             <motion.div
                                 key={todo.id}
-                                className="h-full bg-gray-100 bg-opacity-75 px-8 pt-8 pb-8 rounded-lg overflow-hidden text-center relative"
+                                className="bg-gray-100 bg-opacity-75 px-8 pt-8 pb-8 rounded-lg overflow-auto text-center relative "
                                 initial={{ opacity: 0, translateX: -50, translateY: -50 }}
                                 animate={{ opacity: 1, translateX: 0, translateY: 0 }}
                                 transition={{ duration: 0.3, delay: i * 0.4 }}
                             >
-                                <h2 className="tracking-widest text-xs title-font font-medium text-gray-400 mb-1">{todo.category}</h2>
+                                <h2 className="tracking-widest text-xs title-font font-medium text-gray-400 mb-1 ">{todo.category}</h2>
                                 {/*To Do Area*/}
-                                <h1 className="title-font sm:text-2xl text-xl font-medium text-gray-900 mb-3">{todo.ptaskname}</h1>
+                                <h1 className=" w-48  title-font sm:text-2xl text-xl font-medium text-gray-900 mb-3 rounded-lg overflow-auto h-10 m-2">{todo.ptaskname}</h1>
 
                                 {/*Description Area*/}
                                 <div className="rounded-lg overflow-auto h-10 w-48 bg-white m-2">{todo.description}</div>

@@ -36,10 +36,10 @@ const MainFrame = ({ tudu }) => {
             <table className="w-full text-md text-slate-600 bg-gray-100 shadow-md rounded mb-4 ">
                 <tbody>
                     <tr className="border-b ">
-                        <th className="text-left p-3 px-5">
+                        <th className="titles text-left p-3 px-5">
                             <p>Title</p>
                         </th>
-                        <th className="text-left p-3 px-5">
+                        <th className="category-column text-left p-3 px-5">
                             <p>Category</p>
                         </th>
                         <th className="description-column text-left p-3 px-5">
@@ -56,10 +56,10 @@ const MainFrame = ({ tudu }) => {
                     {tudu.length > 0 ? (
                         tudu.map((todo) => (
                             <tr key={todo.id} className="border-b hover:bg-blue-50 bg-white">
-                                <motion.td className="p-3 px-5 max-w-xs" whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
+                                <motion.td className="title-column p-3 px-5 max-w-xs" whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
                                     {todo.ptaskname}
                                 </motion.td>
-                                <motion.td className="p-3 px-5max-w-xs" whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
+                                <motion.td className="category-column p-3 px-5 max-w-xs" whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
                                     {todo.category}
                                     {/* can i delete this part ? */}
                                     {/* <select value="user.role" class="bg-transparent">
@@ -67,7 +67,7 @@ const MainFrame = ({ tudu }) => {
                                         <option value="admin">admin</option>
                                     </select> */}
                                 </motion.td>
-                                <motion.td className="p-3 px-5 max-w-xs description-column" whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
+                                <motion.td className="description-column p-3 px-5 max-w-xs " whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
                                     {" "}
                                     {todo.description}
                                 </motion.td>
