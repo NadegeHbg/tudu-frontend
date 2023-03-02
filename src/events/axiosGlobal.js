@@ -36,10 +36,11 @@ const HandleLogin = async (data) => {
     const resData = await response.data;
     // console.log(resData, "login post request");
 
-    Cookies.set("email", resData.email, { path: "/" });
+    // Cookies.set("email", resData.email, { path: "/" });
     Cookies.set("id", resData.id, { path: "/" });
-    Cookies.set("view", true, { path: "/dashboard" });
+    // Cookies.set("view", true, { path: "/dashboard" });
     document.cookie = `token=${resData.token}`;
+    // document.cookie = `token=${resData.token}`;
     // document.cookie = `email=${resData.email}`
   } catch (err) {
     console.log(err, "connectionError");

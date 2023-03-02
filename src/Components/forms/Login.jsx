@@ -3,7 +3,6 @@ import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import Cookies from "js-cookie";
-import './Login.css'
 // import { HandleLogin } from "../../events/axiosGlobal";import { useNavigate } from "react-router-dom";
 
 export default function Login() {
@@ -79,8 +78,8 @@ export default function Login() {
                                             placeholder="Add E-mail"
 
                                         />
-                                        {errors.email && errors.email.type === 'required' && (<span style={{color: 'red'}}>This field is required a valid input</span>)}
-                                        {errors.email && errors.email.type === 'manual' && (<span style={{color: 'red' }}>{errors.email.message}</span>)}
+                                        {errors.email && errors.email.type === 'required' && (<span style={{ color: 'red' }}>This field is required a valid input</span>)}
+                                        {errors.email && errors.email.type === 'manual' && (<span style={{ color: 'red' }}>{errors.email.message}</span>)}
                                     </div>
                                     <div>
                                         <label htmlFor="password" className="block mb-2 text-sm font-logoFont text-gray-900 ">
@@ -93,8 +92,8 @@ export default function Login() {
                                             {...register("password", { required: true })}
                                             placeholder="Add Password"
                                         />
-                                       {errors.password && errors.password.type === 'required' && (<span style={{color: 'red'}}>This field is required a valid input</span>)}
-                                        {errors.password && errors.password.type === 'manual' && (<span style={{color: 'red'}}>{errors.password.message}</span>)}
+                                        {errors.password && errors.password.type === 'required' && (<span style={{ color: 'red' }}>This field is required a valid input</span>)}
+                                        {errors.password && errors.password.type === 'manual' && (<span style={{ color: 'red' }}>{errors.password.message}</span>)}
                                     </div>
                                     {/*footer*/}
                                     <div className="flex items-center justify-end p-6 border-t border-solid border-slate-200 rounded-b">

@@ -3,7 +3,7 @@ import { Bars3BottomLeftIcon } from "@heroicons/react/24/outline";
 import { useLocation } from "react-router-dom";
 import logo from "../../assets/tudu.png";
 
-const HeaderDashboardStyle = ({tudu}) => {
+const HeaderDashboardStyle = ({ options }) => {
     return (
         <nav className="z-50 w-full border-b bg-gray-800 border-gray-700">
             <div className="px-3 py-3 lg:px-5 lg:pl-3">
@@ -23,7 +23,7 @@ const HeaderDashboardStyle = ({tudu}) => {
                         </button>
                     </div>
                     <div className="flex items-center ml-3">
-                        <TodoItemFormAdd tudu={tudu} />
+                        <TodoItemFormAdd options={options} />
                     </div>
                 </div>
             </div>
@@ -31,11 +31,11 @@ const HeaderDashboardStyle = ({tudu}) => {
     );
 };
 
-const HeaderDashboard = ({tudu}) => {
-    const location = useLocation({tudu});
+const HeaderDashboard = ({ options }) => {
+    const location = useLocation({ options });
 
     if (location.pathname !== "/" && location.pathname !== "/login") {
-        return <HeaderDashboardStyle tudu={tudu} />;
+        return <HeaderDashboardStyle options={options} />;
     }
 };
 

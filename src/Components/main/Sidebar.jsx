@@ -15,6 +15,7 @@ import {
   RectangleGroupIcon,
   StarIcon,
   TagIcon,
+  BellAlertIcon
 } from "@heroicons/react/24/outline";
 import { motion } from "framer-motion";
 
@@ -91,7 +92,26 @@ const Sidebar = ({ tudu, setTudu, view, setView, toggleView, upcomingArray }) =>
         aria-label="Sidebar"
       >
         <div className="h-full px-3 py-4 pt-24 overflow-y-auto bg-gray-800 border-gray-700">
-          <ul className="space-y-2">
+          <ul>
+            <li>
+              {" "}
+              <motion.span
+                className="flex items-center p-2 text-base font-normal text-white rounded-lg  hover:bg-sky-700 "
+                type="span"
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.9 }}
+                onClick={toggleView}
+              >
+                <RectangleGroupIcon className="w-6 h-6 text-gray-300" />
+                <span className="flex-1 ml-3 whitespace-nowrap "> View</span>
+              </motion.span>
+            </li>
+          </ul>
+
+          <ul className="pt-4 mt-4 space-y-2 border-t border-gray-200 ">
+            {/*Change View Button*/}
+
+
             {/*All Area*/}
             <li
               onClick={() => {
@@ -125,6 +145,7 @@ const Sidebar = ({ tudu, setTudu, view, setView, toggleView, upcomingArray }) =>
                 {/* <span className="inline-flex items-center justify-center w-3 h-3 p-3 ml-3 text-sm font-medium text-blue-800 bg-blue-100 rounded-full ">
                   
                 </span> */}
+
               </motion.span>
             </li>
 
@@ -137,7 +158,15 @@ const Sidebar = ({ tudu, setTudu, view, setView, toggleView, upcomingArray }) =>
               >
                 <CalendarDaysIcon className="w-6 h-6 text-cyan-300" />
                 <span className="flex-1 ml-3 whitespace-nowrap">Upcoming</span>
+                <button className="relative">
+                  <BellAlertIcon className="  w-6 h-6 text-cyan-300" />
+                  <div
+                    className="absolute top-0 right-0  z-10 inline-block translate-x-2/4 translate-y-1/2 rotate-0 skew-x-0 skew-y-0 scale-x-100 scale-y-100 rounded-full bg-pink-700 p-2 text-xs">
+                  </div>
+                </button>
+
               </motion.span>
+
             </li>
 
             {/*Done Area*/}
@@ -194,20 +223,6 @@ const Sidebar = ({ tudu, setTudu, view, setView, toggleView, upcomingArray }) =>
             </li>
           </ul>
           <ul className="pt-4 mt-4 space-y-2 border-t border-gray-200 ">
-            {/*Change View Button*/}
-            <li>
-              {" "}
-              <motion.span
-                className="flex items-center p-2 text-base font-normal text-white rounded-lg  hover:bg-sky-700 "
-                type="span"
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.9 }}
-                onClick={toggleView}
-              >
-                <RectangleGroupIcon className="w-6 h-6 text-gray-300" />
-                <span className="flex-1 ml-3 whitespace-nowrap "> View</span>
-              </motion.span>
-            </li>
             {/*Sign Out span*/}
             <li>
               {" "}
