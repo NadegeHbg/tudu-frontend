@@ -21,8 +21,8 @@ const HeaderStyle = () => {
 
     return (
 
-        <div className=' min-h-20 w-full fixed top-0 left-0'>
-            <div className="hidden md:block wave h-26 -z-50">
+        <div className=' min-h-20 w-full absolute top-0 left-0'>
+            <div className="hidden md:block wave h-26">
                 <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
                     <linearGradient
                         id="gradient"

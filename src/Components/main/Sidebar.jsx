@@ -93,7 +93,7 @@ const Sidebar = ({ tudu, setTudu, view, setView, toggleView }) => {
         className="fixed top-0 left-0 z-40 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0"
         aria-label="Sidebar"
       >
-        <div className="h-full px-3 py-4 pt-24 overflow-y-auto bg-gray-800 border-gray-700">
+        <div className="h-full px-3 py-4 pt-24 overflow-y-auto bg-gray-800 border-gray-700 flex flex-col justify-between">
           <ul>
             <li>
               {" "}
@@ -110,7 +110,7 @@ const Sidebar = ({ tudu, setTudu, view, setView, toggleView }) => {
             </li>
           </ul>
 
-          <ul className="pt-4 mt-4 space-y-2 border-t border-gray-200 ">
+          <ul className="pt-4 mt-4 space-y-2 border-t border-gray-200 grow">
             {/*Change View Button*/}
 
 
@@ -202,7 +202,7 @@ const Sidebar = ({ tudu, setTudu, view, setView, toggleView }) => {
                     finalCategory.map((item) => (
                       <motion.li
                         key={item}
-                        className="flex items-center p-2 text-base font-normal text-white rounded-lg hover:bg-gray-700 "
+                        className="flex items-center pl-8 text-base font-normal text-white rounded-lg hover:bg-gray-700 "
                         whileHover={{ scale: 1.1 }}
                         whileTap={{ scale: 0.9 }}
                         onClick={() => handleClick(item)}
