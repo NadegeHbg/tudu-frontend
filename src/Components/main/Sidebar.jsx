@@ -159,14 +159,19 @@ const Sidebar = ({ tudu, setTudu, view, setView, toggleView, upcomingArray }) =>
                 <CalendarDaysIcon className="w-6 h-6 text-cyan-300" />
                 <span className="flex-1 ml-3 whitespace-nowrap">Upcoming</span>
                 <button className="relative">
-                  <BellAlertIcon className="  w-6 h-6 text-cyan-300" />
+                  <BellAlertIcon data-tooltip-target="tooltip-no-arrow" className="  w-6 h-6 text-cyan-300" />
+                  
                   <div
                     className="absolute top-0 right-0  z-10 inline-block translate-x-2/4 translate-y-1/2 rotate-0 skew-x-0 skew-y-0 scale-x-100 scale-y-100 rounded-full bg-pink-700 p-2 text-xs">
                   </div>
+                  <div id="tooltip-no-arrow" role="tooltip" className="absolute z+50 invisible inline-block px-3 py-2 text-sm font-medium text-white bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
+                        Tooltip content
+                    </div>
                 </button>
+                
 
               </motion.span>
-
+            
             </li>
 
             {/*Done Area*/}
@@ -232,7 +237,8 @@ const Sidebar = ({ tudu, setTudu, view, setView, toggleView, upcomingArray }) =>
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
                 onClick={() => {
-                  navigate("/");
+                    Cookies.remove('id',"email","token")
+                    navigate("/");
                 }}
               >
                 <ArrowLeftOnRectangleIcon className="w-6 h-6 text-gray-300" />

@@ -5,6 +5,7 @@ import Sidebar from "../Components/main/Sidebar";
 import MiddleSection from "../Components/main/MiddleSection";
 import MainFrame from "../Components/main/MainFrame";
 import HeaderDashboard from "../Components/header/headerDashboard";
+import { useNavigate } from "react-router-dom";
 
 const Dashboard = () => {
   // useEffect(() => {
@@ -42,10 +43,13 @@ const Dashboard = () => {
     const [view, setView] = useState(localStorage.getItem('view') === 'true' || true);
     const userId = Cookies.get('id');
     const [options, setOptions] = useState([])
+    const navigate = useNavigate()
 
 
     // eslint-disable-next-line
     useEffect(() => {
+
+        if(userId==undefined) navigate('/')
         async function fetchData() {
             setTudu(await GetTodos(userId));
             setUpcomingArray(await GetTodos(userId));
