@@ -95,7 +95,7 @@ const MainFrame = ({ tudu }) => {
                                                 handleDone(todo.id);
                                             }}
                                             type="button"
-                                            className="mr-3 p-2.5 text-sm  bg-cyan-600 hover:bg-cyan-400 text-white rounded focus:outline-none focus:shadow-outline"
+                                            className="mr-3 p-2 text-sm  bg-gray-600 hover:bg-cyan-400 text-white rounded focus:outline-none focus:shadow-outline"
                                             initial={{ x: -100 }}
                                             animate={{ x: 0, rotate: [0, 10, -10, 0] }}
                                             transition={{ type: "spring", bounce: 0.1, duration: 3 }}
@@ -108,7 +108,7 @@ const MainFrame = ({ tudu }) => {
                                             handleDelete(todo.id);
                                         }}
                                         type="button"
-                                        className="mr-3 p-2.5 text-sm bg-red-500 hover:bg-red-700 text-white rounded focus:outline-none focus:shadow-outline"
+                                        className="mr-3 p-2 text-sm bg-red-500 hover:bg-red-700 text-white rounded focus:outline-none focus:shadow-outline"
                                         initial={{ x: -100 }}
                                         animate={{ x: 0, rotate: [0, 10, -10, 0] }}
                                         transition={{ type: "spring", bounce: 0.1, duration: 2 }}
@@ -117,7 +117,7 @@ const MainFrame = ({ tudu }) => {
                                     </motion.button>
                                     <motion.button
                                         type="button"
-                                        className="mr-3  text-sm bg-gray-800 hover:bg-cyan-600 text-white  rounded focus:outline-none focus:shadow-outline"
+                                        className="mr-3  sm:w-auto w-fit text-sm bg-gray-800 hover:bg-cyan-600 text-white  rounded focus:outline-none focus:shadow-outline"
                                         initial={{ x: -100 }}
                                         animate={{ x: 0, rotate: [0, 10, -10, 0] }}
                                         transition={{ type: "spring", bounce: 0.1, duration: 1 }}

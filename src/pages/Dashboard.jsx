@@ -89,7 +89,7 @@ const Dashboard = () => {
 
     return (
         <div>
- <HeaderDashboard tudu={tudu} options={options}/>
+        <HeaderDashboard tudu={tudu} options={options}/>
         <div className="flex">
             <Sidebar tudu={tudu} setTudu={setTudu}  view={view} toggleView={toggleView} upcomingArray={upcomingArray}/>
             {view ? 

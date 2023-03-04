@@ -71,8 +71,9 @@ const Sidebar = ({ tudu, setTudu, view, setView, toggleView, upcomingArray }) =>
     const tuduUpcoming = [...upcomingArray].sort(
       (a, b) => new Date(a.duedate) - new Date(b.duedate)
     );
-    console.log(tuduUpcoming, "upcoming");
-    setTudu(tuduUpcoming);
+    const finalUpcomming = tuduUpcoming.filter(array =>array.isdone === false)
+    console.log(finalUpcomming, "upcoming");
+    setTudu(finalUpcomming);
   };
 
   // Active & done filter
