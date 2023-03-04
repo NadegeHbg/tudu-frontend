@@ -21,12 +21,11 @@ import { motion } from "framer-motion";
 
 // import { set } from "react-hook-form";
 
-const Sidebar = ({ tudu, setTudu, view, setView, toggleView }) => {
+const Sidebar = ({ tudu, setTudu, view, setView, toggleView, upcomingArray }) => {
   const [open, setOpen] = useState(false);
-        // eslint-disable-next-line
+  // eslint-disable-next-line
   const [uniqueArray, setUniqueArray] = useState([]);
   const [finalCategory, setFinalCategory] = useState([]);
-  const [upcomingArray, setUpcomingArray] = useState([]);
 
   const handleOpen = () => {
     setOpen(!open);
@@ -41,7 +40,6 @@ const Sidebar = ({ tudu, setTudu, view, setView, toggleView }) => {
   async function fetchData() {
     const data = Cookies.get("id");
     setTudu(await GetTodos(data));
-    setUpcomingArray(await GetTodos(data));
   }
 
   //filtering the tudu
@@ -69,12 +67,13 @@ const Sidebar = ({ tudu, setTudu, view, setView, toggleView }) => {
   // Upcoming filter
 
   const filteringUpcoming = async () => {
-    // console.log(upcomingArray, "tudutoupdate");
+    console.log(upcomingArray, "tudutoupdate");
     const tuduUpcoming = [...upcomingArray].sort(
       (a, b) => new Date(a.duedate) - new Date(b.duedate)
     );
-    // console.log(tuduUpcoming, "upcoming");
-    setTudu(tuduUpcoming);
+    const finalUpcomming = tuduUpcoming.filter(array =>array.isdone === false)
+    console.log(finalUpcomming, "upcoming");
+    setTudu(finalUpcomming);
   };
 
   // Active & done filter
@@ -93,13 +92,32 @@ const Sidebar = ({ tudu, setTudu, view, setView, toggleView }) => {
         className="fixed top-0 left-0 z-40 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0"
         aria-label="Sidebar"
       >
-        <div className="h-full px-3 py-4 pt-24 overflow-y-auto bg-gray-800 border-gray-700">
-          <ul className="space-y-2">
+        <div className="h-full px-3 py-4 pt-24 overflow-y-auto bg-gray-800 border-gray-700 flex flex-col justify-between">
+          <ul>
+            <li>
+              {" "}
+              <motion.span
+                className="flex items-center p-2 text-base font-normal text-white rounded-lg  hover:bg-sky-700 "
+                type="span"
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.9 }}
+                onClick={toggleView}
+              >
+                <RectangleGroupIcon className="w-6 h-6 text-gray-300" />
+                <span className="flex-1 ml-3 whitespace-nowrap "> View</span>
+              </motion.span>
+            </li>
+          </ul>
+
+          <ul className="pt-4 mt-4 space-y-2 border-t border-gray-200 grow">
+            {/*Change View Button*/}
+
+
             {/*All Area*/}
             <li
               onClick={() => {
                 fetchData();
-                // console.log(tudu, "onclick sidebar");
+                console.log(tudu, "onclick sidebar");
               }}
             >
               <motion.span
@@ -142,14 +160,19 @@ const Sidebar = ({ tudu, setTudu, view, setView, toggleView }) => {
                 <CalendarDaysIcon className="w-6 h-6 text-cyan-300" />
                 <span className="flex-1 ml-3 whitespace-nowrap">Upcoming</span>
                 <button className="relative">
-                    <BellAlertIcon className="  w-6 h-6 text-cyan-300" />
-                    <div
-                    class="absolute top-0 right-0  z-10 inline-block translate-x-2/4 translate-y-1/2 rotate-0 skew-x-0 skew-y-0 scale-x-100 scale-y-100 rounded-full bg-pink-700 p-2 text-xs">
+                  <BellAlertIcon data-tooltip-target="tooltip-no-arrow" className="  w-6 h-6 text-cyan-300" />
+                  
+                  <div
+                    className="absolute top-0 right-0  z-10 inline-block translate-x-2/4 translate-y-1/2 rotate-0 skew-x-0 skew-y-0 scale-x-100 scale-y-100 rounded-full bg-pink-700 p-2 text-xs">
+                  </div>
+                  <div id="tooltip-no-arrow" role="tooltip" className="absolute z+50 invisible inline-block px-3 py-2 text-sm font-medium text-white bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
+                        Tooltip content
                     </div>
                 </button>
                 
-              </motion.span>
 
+              </motion.span>
+            
             </li>
 
             {/*Done Area*/}
@@ -183,7 +206,7 @@ const Sidebar = ({ tudu, setTudu, view, setView, toggleView }) => {
                     finalCategory.map((item) => (
                       <motion.li
                         key={item}
-                        className="flex items-center p-2 text-base font-normal text-white rounded-lg hover:bg-gray-700 "
+                        className="flex items-center pl-8 text-base font-normal text-white rounded-lg hover:bg-gray-700 "
                         whileHover={{ scale: 1.1 }}
                         whileTap={{ scale: 0.9 }}
                         onClick={() => handleClick(item)}
@@ -206,20 +229,6 @@ const Sidebar = ({ tudu, setTudu, view, setView, toggleView }) => {
             </li>
           </ul>
           <ul className="pt-4 mt-4 space-y-2 border-t border-gray-200 ">
-            {/*Change View Button*/}
-            <li>
-              {" "}
-              <motion.span
-                className="flex items-center p-2 text-base font-normal text-white rounded-lg  hover:bg-sky-700 "
-                type="span"
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.9 }}
-                onClick={toggleView}
-              >
-                <RectangleGroupIcon className="w-6 h-6 text-gray-300" />
-                <span className="flex-1 ml-3 whitespace-nowrap "> View</span>
-              </motion.span>
-            </li>
             {/*Sign Out span*/}
             <li>
               {" "}
@@ -229,7 +238,8 @@ const Sidebar = ({ tudu, setTudu, view, setView, toggleView }) => {
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
                 onClick={() => {
-                  navigate("/");
+                    Cookies.remove('id',"email","token")
+                    navigate("/");
                 }}
               >
                 <ArrowLeftOnRectangleIcon className="w-6 h-6 text-gray-300" />

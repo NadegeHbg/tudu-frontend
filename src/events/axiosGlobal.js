@@ -12,6 +12,7 @@ const axiosGlobal = axios.create({
   },
 });
 axios.defaults.baseURL = "https://tutu-tudu.herokuapp.com/";
+axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
 // axios.defaults.baseURL = "https://5d74-84-199-109-84.eu.ngrok.io/api/tudu/"
 //registration handler => POST
 
@@ -38,6 +39,8 @@ const HandleLogin = async (data) => {
 
     // Cookies.set("email", resData.email, { path: "/" });
     Cookies.set("id", resData.id, { path: "/" });
+    // Cookies.set("view", true, { path: "/dashboard" });
+    document.cookie = `token=${resData.token}`;
     // document.cookie = `token=${resData.token}`;
     // document.cookie = `email=${resData.email}`
   } catch (err) {
@@ -69,7 +72,6 @@ const handleEdit = async (data) => {
     console.log(err, "EditError");
   }
 };
-
 
 let allTudu = [];
 //get todos  => GET
@@ -150,12 +152,30 @@ const deleteTudu = async (id) => {
               "ngrok-skip-browser-warning": "69420",
           },
       });
-      // console.log(response.data, "DeleteResponse");
+      console.log(response.data, "DeleteResponse");
   } catch (err) {
-      console.log(err, "DeleteError");
+    console.log(err, "DeleteError");
   }
 };
 
+//
+const cookieSetFn = async (cookie) => {
+  try {
+    Cookies.set("view", cookie, { path: "/dashboard" });
+  } catch (err) {
+    console.log(err, "Console Cookie Error");
+  }
+};
 export default axiosGlobal;
-export { handleRegistration, HandleLogin, handleAdd, GetTodos, filteringTuduActive, filteringTuduCategory, handleEdit, isDoneTudu, deleteTudu };
-
+export {
+  handleRegistration,
+  HandleLogin,
+  handleAdd,
+  GetTodos,
+  filteringTuduActive,
+  filteringTuduCategory,
+  handleEdit,
+  isDoneTudu,
+  deleteTudu,
+  cookieSetFn,
+};

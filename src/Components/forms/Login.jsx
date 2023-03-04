@@ -3,7 +3,6 @@ import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import Cookies from "js-cookie";
-import './Login.css'
 // import { HandleLogin } from "../../events/axiosGlobal";import { useNavigate } from "react-router-dom";
 
 export default function Login() {
@@ -57,10 +56,13 @@ export default function Login() {
                 Login
             </button>
             {!showModal ? null : (
-                <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none ">
+                <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none "
+                onClick={() => {setShowModal(false)}}>
                     <div className="relative w-auto my-6 mx-auto max-w-3xl">
                         {/*Content*/}
-                        <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none">
+                        <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none"
+                        onClick={(e) => {e.stopPropagation()}}
+                        >
                             {/*Body*/}
                             <div className="relative p-6 flex-auto">
                                 <form onSubmit={handleSubmit(onSubmit)} className="space-y-8">
@@ -76,8 +78,8 @@ export default function Login() {
                                             placeholder="Add E-mail"
 
                                         />
-                                        {errors.email && errors.email.type === 'required' && (<span style={{color: 'red'}}>This field is required a valid input</span>)}
-                                        {errors.email && errors.email.type === 'manual' && (<span style={{color: 'red' }}>{errors.email.message}</span>)}
+                                        {errors.email && errors.email.type === 'required' && (<span style={{ color: 'red' }}>This field is required a valid input</span>)}
+                                        {errors.email && errors.email.type === 'manual' && (<span style={{ color: 'red' }}>{errors.email.message}</span>)}
                                     </div>
                                     <div>
                                         <label htmlFor="password" className="block mb-2 text-sm font-logoFont text-gray-900 ">
@@ -90,8 +92,8 @@ export default function Login() {
                                             {...register("password", { required: true })}
                                             placeholder="Add Password"
                                         />
-                                       {errors.password && errors.password.type === 'required' && (<span style={{color: 'red'}}>This field is required a valid input</span>)}
-                                        {errors.password && errors.password.type === 'manual' && (<span style={{color: 'red'}}>{errors.password.message}</span>)}
+                                        {errors.password && errors.password.type === 'required' && (<span style={{ color: 'red' }}>This field is required a valid input</span>)}
+                                        {errors.password && errors.password.type === 'manual' && (<span style={{ color: 'red' }}>{errors.password.message}</span>)}
                                     </div>
                                     {/*footer*/}
                                     <div className="flex items-center justify-end p-6 border-t border-solid border-slate-200 rounded-b">

@@ -4,7 +4,7 @@ import { useForm, Controller } from "react-hook-form";
 import { useEffect, useState } from "react";
 // eslint-disable-next-line
 import Creatable from "react-select/creatable";
-import customStyle from "./selectStyle"
+import customStyle from "./selectStyle";
 // Cookies
 import { handleEdit } from "../../events/axiosGlobal";
 import Cookies from "js-cookie";
@@ -40,7 +40,7 @@ export default function TodoItemForm({ tudu, todo }) {
   const onSubmit = async (data = {}) => {
     setShowModal(false);
     data.user_id = userId;
-    data.category = data.category.value
+    data.category = data.category.value;
     // console.log(data, "data");
     await handleEdit(data);
     window.location.reload();
@@ -65,7 +65,6 @@ export default function TodoItemForm({ tudu, todo }) {
     };
   });
 
-
   useEffect(() => {
     setUserId(Cookies.get("id"));
   }, []);
@@ -79,10 +78,20 @@ export default function TodoItemForm({ tudu, todo }) {
       </div>
       {showModal ? (
         <>
-          <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
+          <div
+            className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none"
+            onClick={() => {
+              setShowModal(false);
+            }}
+          >
             <div className="relative w-auto my-6 mx-auto max-w-3xl">
               {/*Content*/}
-              <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
+              <div
+                className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none"
+                onClick={(e) => {
+                  e.stopPropagation();
+                }}
+              >
                 {/*Edit Section Header*/}
                 <div className="flex items-start justify-between p-5 border-b border-solid border-slate-200 rounded-t">
                   <h3 className="text-3xl font-logoFont"> Edit </h3>
@@ -118,14 +127,16 @@ export default function TodoItemForm({ tudu, todo }) {
                                   label: selectedOption?.label,
                                 });
                                 field.onChange(selectedOption);
-                              }} 
+                              }}
                             />
                           );
                         }}
                       />
-                          {errors.category && (
-                <span style={{ color: 'red' }}>This field is required</span>
-              )}
+                      {errors.category && (
+                        <span style={{ color: "red" }}>
+                          This field is required
+                        </span>
+                      )}
                     </div>
                     <div>
                       <label

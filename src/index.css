@@ -43,6 +43,76 @@
     height: 108px;
 }
 
-body{
-    
+input.error {
+    border: 1px solid red;
+}
+
+/* woman animation area */
+.womanBox {
+    max-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.womanBoxStyle {
+    padding: 1rem 1rem;
+}
+
+.womanBoxStyle p {
+    padding-top: 1rem;
+    line-height: 150%;
+}
+
+/* description and category */
+.title-column {
+    max-width: 8rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.area {
+    min-width: 12rem;
+    max-width: 12rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.description-column {
+    max-width: 14rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.category-column {
+    max-width: 7rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* The area where the description part is made invisible */
+@media (max-width: 640px) {
+    .description-column {
+        display: none;
+    }
+    /* The area where the buttons part are aligned */
+    .buttonArea {
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: column;
+        row-gap: 8px;
+    }
+}
+/* The area where the buttons part are aligned */
+@media (max-width: 1215px) {
+    .buttonArea {
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: column;
+        row-gap: 8px;
+    }
 }
