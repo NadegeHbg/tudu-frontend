@@ -136,7 +136,7 @@ const MainFrame = ({ tudu }) => {
                     )}
                 </tbody>
             </table>
-            <div className="womanBox w-36 h-96 fixed bottom-0 right-0 ">
+            <div className="womanBox w-36 h-96 fixed bottom-0 right-0 hidden md:block ">
                 <motion.div
                     transition={{ layout: { duration: 1, type: "spring" } }}
                     layout
