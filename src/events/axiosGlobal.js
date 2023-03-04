@@ -13,7 +13,7 @@ const axiosGlobal = axios.create({
 });
 axios.defaults.baseURL = "https://tutu-tudu.herokuapp.com/";
 axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
-// axios.defaults.baseURL = "https://b7b2-84-199-109-84.eu.ngrok.io/api/tudu/"
+// axios.defaults.baseURL = "https://5d74-84-199-109-84.eu.ngrok.io/api/tudu/"
 //registration handler => POST
 
 const handleRegistration = async (data) => {
