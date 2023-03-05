@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import { isDoneTudu, deleteTudu } from "../../events/axiosGlobal";
 import TodoItemForm from "../forms/TodoItemForm";
 import { motion } from "framer-motion";
-import womanFigure from "../../assets/woman.png";
+import womanFigurePre from "../../assets/woman_pre.png";
+import womanFigurePost from "../../assets/woman_post.png";
 
 const MainFrame = ({ tudu }) => {
     // mark a tudu as done
@@ -18,13 +19,15 @@ const MainFrame = ({ tudu }) => {
     // women animation
     const [isOpen, setIsOpen] = useState(false);
     let motivations = [
-        "Amateurs sit and wait for inspiration, the rest of us just get up and go to work. – Stephen King",
-        "Words may show a man’s wit but actions will show his meaning. – Benjamin Franklin",
-        "Ordinary people think merely of spending time, great people think of using it. – Arthur Schopenhauer",
-        "Take time to deliberate, but when the time for action has arrived, stop thinking and go in. – Napoleon Bonaparte",
-        "You see, in life, lots of people know what to do, but few people actually do what they know. Knowing is not enough! You must take action. – Tony Robbins",
-        "The key is not to prioritize what’s on your schedule, but to schedule your priorities. – Stephen Covey",
-        "If you spend too much time thinking about a thing, you’ll never get it done. – Bruce Lee",
+        ["Amateurs sit and wait for inspiration, the rest of us just get up and go to work. → Stephen King"],
+        ["Words may show a man’s wit but actions will show his meaning. → Benjamin Franklin"],
+        ["Ordinary people think merely of spending time, great people think of using it. → Arthur Schopenhauer"],
+        ["Take time to deliberate, but when the time for action has arrived, stop thinking and go in. → Napoleon Bonaparte"],
+        [
+            "You see, in life, lots of people know what to do, but few people actually do what they know. Knowing is not enough! You must take action. →Tony Robbins",
+        ],
+        ["The key is not to prioritize what’s on your schedule, but to schedule your priorities. → Stephen Covey"],
+        ["If you spend too much time thinking about a thing, you’ll never get it done. → Bruce Lee"],
     ];
     function randomNumber(max) {
         return Math.floor(Math.random() * max);
@@ -141,11 +144,10 @@ const MainFrame = ({ tudu }) => {
                     transition={{ layout: { duration: 1, type: "spring" } }}
                     layout
                     onClick={() => setIsOpen(!isOpen)}
-                    className="womanBoxStyle rounded-lg shadow-lg absolute bottom-28 right-28  hover:shadow-blue-500/50"
+                    className="womanBoxStyle rounded-lg shadow-lg absolute bottom-28 right-28 bg-white hover:shadow-blue-500/50"
                 >
-                    <p className=" text-slate-600 text-center font-bold">
-                        Get <a className="text-8xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-pink-600 "> motivated</a> with
-                        one click!
+                    <p className=" text-slate-600 text-center ">
+                        <a className="text-xxl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-red-600 "> ✓</a>
                     </p>
 
                     {isOpen && (
@@ -153,15 +155,25 @@ const MainFrame = ({ tudu }) => {
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
                             transition={{ duration: 2 }}
-                            className="expand indent-8
+                            className="expand
 
                       "
                         >
-                            <p className="w-64 text-slate-500 ">{motivations[randomNumber(motivations.length)]}</p>
+                            <p className=" text-slate-600 font-logoFont font-m">
+                                <p className=" text-center text-l text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-red-600 ">
+                                    Power up your day!
+                                </p>
+                                <p className="w-64">{motivations[randomNumber(motivations.length)]}</p>
+                            </p>
                         </motion.div>
                     )}
                 </motion.div>
-                <img className="full w-36  hover:grayscale-0 absolute bottom-5 right-5" src={womanFigure} alt="woman_figure" />
+                <img
+                    className="full w-36  hover:grayscale-0 absolute bottom-5 right-5"
+                    src={isOpen ? womanFigurePost : womanFigurePre}
+                    onClick={() => setIsOpen(!isOpen)}
+                    alt="woman_figure"
+                />
             </div>
         </section>
     );
