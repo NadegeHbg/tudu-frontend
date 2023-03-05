@@ -136,16 +136,19 @@ const MainFrame = ({ tudu }) => {
                     )}
                 </tbody>
             </table>
+            {/* women animation */}
+            {/* <div className="womanBox w-36 h-96 fixed bottom-0 right-0 "> */}
+            {/* className="womanBoxStyle rounded-lg shadow-lg absolute bottom-28 right-28  hover:shadow-blue-500/50" */}
+
             <div className="womanBox w-36 h-96 fixed bottom-0 right-0 hidden md:block ">
                 <motion.div
                     transition={{ layout: { duration: 1, type: "spring" } }}
                     layout
                     onClick={() => setIsOpen(!isOpen)}
-                    className="womanBoxStyle rounded-lg shadow-lg absolute bottom-28 right-28  hover:shadow-blue-500/50"
+                    className="womanBoxStyle bg-white rounded-lg shadow-lg absolute bottom-14 right-20  hover:shadow-blue-500/50"
                 >
-                    <p className=" text-slate-600 text-center font-bold">
-                        Get <a className="text-8xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-pink-600 "> motivated</a> with
-                        one click!
+                    <p className=" text-slate-600 text-center font-bold text-l">
+                        Get <a className="text-6xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-pink-600 "> motivated</a>
                     </p>
 
                     {isOpen && (
@@ -161,7 +164,7 @@ const MainFrame = ({ tudu }) => {
                         </motion.div>
                     )}
                 </motion.div>
-                <img className="full w-36  hover:grayscale-0 absolute bottom-5 right-5" src={womanFigure} alt="woman_figure" />
+                <img className="full w-24  hover:grayscale-0 absolute bottom-5 right-5" src={womanFigure} alt="woman_figure" />
             </div>
         </section>
     );
