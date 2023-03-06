@@ -82,7 +82,7 @@ const MainFrame = ({ tudu }) => {
                                                 handleDone(todo.id);
                                             }}
                                             type="button"
-                                            className="mr-3 p-2 text-sm  bg-cyan-600  text-white  rounded focus:outline-none focus:shadow-outline"
+                                            className="mr-3 p-2.5 text-sm  bg-cyan-600  text-white  rounded focus:outline-none focus:shadow-outline"
                                             initial={{ x: -100 }}
                                             animate={{ x: 0, rotate: [0, 10, -10, 0] }}
                                             transition={{ type: "spring", bounce: 0.1, duration: 4 }}
@@ -95,7 +95,7 @@ const MainFrame = ({ tudu }) => {
                                                 handleDone(todo.id);
                                             }}
                                             type="button"
-                                            className="mr-3 p-2.5 text-sm  bg-cyan-600 hover:bg-cyan-400 text-white rounded focus:outline-none focus:shadow-outline"
+                                            className="mr-3 p-2.5 text-sm  bg-gray-600 hover:bg-cyan-400 text-white rounded focus:outline-none focus:shadow-outline"
                                             initial={{ x: -100 }}
                                             animate={{ x: 0, rotate: [0, 10, -10, 0] }}
                                             transition={{ type: "spring", bounce: 0.1, duration: 3 }}
@@ -136,7 +136,7 @@ const MainFrame = ({ tudu }) => {
                     )}
                 </tbody>
             </table>
-            <div className="womanBox w-36 h-96 fixed bottom-0 right-0 ">
+            <div className="womanBox w-36 h-96 fixed bottom-0 right-0 hidden md:block ">
                 <motion.div
                     transition={{ layout: { duration: 1, type: "spring" } }}
                     layout
